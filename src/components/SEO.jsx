@@ -20,7 +20,7 @@ const Head = props => {
 
   if (article || single) {
     const postMeta = postNode.frontmatter
-    const postImage = postMeta.cover.childImageSharp.resize.src
+    const postImage = ""//postMeta.cover.childImageSharp.resize.src
     title = `${postMeta.title} | ${config.siteTitle}`
     description = postNode.excerpt
     image = `${homeURL}${postImage}`
