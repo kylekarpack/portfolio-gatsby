@@ -7,7 +7,7 @@ import config from '../../config/website'
 const Wrapper = styled.header`
   align-items: center;
   display: flex;
-  padding: 1rem 0 1rem 0;
+  padding: 0;
   position: relative;
   z-index: 1000;
   a {
@@ -20,7 +20,7 @@ const Wrapper = styled.header`
     }
   }
   @media (max-width: ${props => props.theme.breakpoints.s}) {
-    padding: 1rem 0 1rem 0;
+    padding: 0;
     flex-wrap: wrap;
   }
 `
@@ -29,9 +29,9 @@ const Nav = styled.nav`
   display: flex;
   flex: 1;
   justify-content: flex-start;
-  padding: 0 ${props => props.theme.spacer.horizontal};
-  a:not(:first-child) {
-    margin-left: 1rem;
+  padding: 0;
+  a {
+    padding 1rem 1.5rem;
   }
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     padding: 0 1rem;
@@ -104,6 +104,9 @@ const Navigation = () => (
 							{nav.node.frontmatter.title}
 						</Link>
 					))}
+					<Link to="/contact" data-testid="contact-title-link">
+						Contact
+          			</Link>
 				</Nav>
 				<SocialMedia>
 					<a

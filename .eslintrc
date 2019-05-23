@@ -63,19 +63,19 @@
     ],
     "quotes": [
       2,
-      "single",
+      "double",
       {
         "avoidEscape": true,
         "allowTemplateLiterals": true
       }
     ],
-    "indent": ["error", 2, {"SwitchCase": 1}],
+    "indent": ["error", "tab", {"SwitchCase": 1}],
     "prettier/prettier": [
-      "error",
+      "warning",
       {
         "trailingComma": "es5",
         "semi": false,
-        "singleQuote": true,
+        "singleQuote": false,
         "printWidth": 120
       }
     ],
