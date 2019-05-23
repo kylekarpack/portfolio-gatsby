@@ -11,12 +11,10 @@ const Wrapper = styled.footer`
     color: ${props => props.theme.brand.primary};
   }
 `
-
+const year = new Date().getFullYear();
 const Footer = () => (
   <Wrapper data-testid="footer">
-    Copyright &copy; 2018. All right reserved. Pictures by Unsplash.{' '}
-    <a href="https://github.com/LekoArts/gatsby-starter-portfolio-emma">Emma Theme</a> {' by '}{' '}
-    <a href="https://www.lekoarts.de/en">LekoArts</a>.
+    Copyright &copy; {year} Kyle Karpack
   </Wrapper>
 )
 
