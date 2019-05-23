@@ -110,9 +110,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMM YYYY")
-        client
-        color
-        service
         cover {
           childImageSharp {
             fluid(maxWidth: 1920, quality: 90) {
