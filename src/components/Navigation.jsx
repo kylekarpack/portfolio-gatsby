@@ -47,7 +47,7 @@ const Name = styled.div`
   justify-content: center;
   a {
     font-size: 1.25rem;
-    font-family: 'Merriweather', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 700;
     &:hover,
     &:focus {
@@ -85,47 +85,46 @@ const SocialMedia = styled.div`
 // Grabs all MDX files from src/pages and puts them into the navigation
 
 const Navigation = () => (
-  <StaticQuery
-    query={query}
-    render={data => (
-      <Wrapper data-testid="navigation">
-        <Nav>
-          {data.nav.edges.map((nav, index) => (
-            <Link
-              key={nav.node.fields.slug}
-              to={nav.node.fields.slug}
-              data-testid={`navItem-${index}`}
-              activeClassName="nav-active"
-            >
-              {nav.node.frontmatter.title}
-            </Link>
-          ))}
-        </Nav>
-        <Name>
-          <Link to="/" data-testid="home-title-link">
-            {config.siteTitle}
-          </Link>
-        </Name>
-        <SocialMedia>
-          <a
-            href="https://github.com/kylekarpack"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Github"
-          >
-            <FaGithub />
-          </a>
-		  <a 
-			  href="https://www.linkedin.com/in/kylekarpack" 
-			target="_blank" 
-			rel="noopener noreferrer" 
-			aria-label="LinkedIn">
-            <FaLinkedin />
-          </a>
-        </SocialMedia>
-      </Wrapper>
-    )}
-  />
+	<StaticQuery
+		query={query}
+		render={data => (
+			<Wrapper data-testid="navigation">
+
+				<Nav>
+					<Link to="/" data-testid="home-title-link">
+						Home
+          			</Link>
+					{data.nav.edges.map((nav, index) => (
+						<Link
+							key={nav.node.fields.slug}
+							to={nav.node.fields.slug}
+							data-testid={`navItem-${index}`}
+							activeClassName="nav-active"
+						>
+							{nav.node.frontmatter.title}
+						</Link>
+					))}
+				</Nav>
+				<SocialMedia>
+					<a
+						href="https://github.com/kylekarpack"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Github"
+					>
+						<FaGithub />
+					</a>
+					<a
+						href="https://www.linkedin.com/in/kylekarpack"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="LinkedIn">
+						<FaLinkedin />
+					</a>
+				</SocialMedia>
+			</Wrapper>
+		)}
+	/>
 )
 
 export default Navigation

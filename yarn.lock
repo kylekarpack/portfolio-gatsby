@@ -12607,6 +12607,16 @@ typeface-merriweather@^0.0.72:
   resolved "https://registry.yarnpkg.com/typeface-merriweather/-/typeface-merriweather-0.0.72.tgz#2b990f5293252052d51d170c82d3892319ff0555"
   integrity sha512-gO0+fcZ1fTyKUsYY1ltYOOTI6FmBGeEdyIfeQg9NL8aInndk0feiJJVJsKHm/DiyYrnQEezraAQhz/KQoqMGtw==
 
+typeface-noto-sans@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-noto-sans/-/typeface-noto-sans-0.0.72.tgz#44f1022fe094595240c89f1e362517b1fe35be6c"
+  integrity sha512-a5wI6LUIQ/6XRRf9x/ZXjO4NwfTfcPmkMVe0SoUKVWw/s7GGWERAK73PKFLEmKKGaN59OkwFsotPgYtea0d34A==
+
+typeface-poppins@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-poppins/-/typeface-poppins-0.0.72.tgz#3262d6533dea2e99a5cafb3be7d8fa876e105206"
+  integrity sha512-FgzdU4XfGYc4aTq6WZD9FC+le4Foz6cyzjdjDvVnQePTQSUD0dkrXiVaTK/cyNVXQrEl2ykV39PxeKeFqqkrTA==
+
 typeface-roboto@^0.0.54:
   version "0.0.54"
   resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"

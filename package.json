@@ -53,6 +53,8 @@
     "styled-components": "^4.2.0",
     "styled-theming": "^2.2.0",
     "typeface-merriweather": "^0.0.72",
+    "typeface-noto-sans": "^0.0.72",
+    "typeface-poppins": "^0.0.72",
     "typeface-roboto": "^0.0.54"
   },
   "keywords": [
