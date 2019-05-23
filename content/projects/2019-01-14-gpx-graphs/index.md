@@ -18,7 +18,7 @@ embeddable: "true"
 count: "4"
 name: "wp"
 templated: "true"
-cover: "./gpx-graphs.png"
+cover: "./cover.png"
 ---
 ## Case Study
 
@@ -31,4 +31,4 @@ I&#x2019;ve been tracking most of my hiking for the last few years in an app cal
 - Turf.js
 - DevExtreme
 
-[![](./gpx-graphs.png)](https://i2.wp.com/www.kylekarpack.com/wordpress/wp-content/uploads/2018/11/gpx-graphs.png?fit=1276%2C826&amp;ssl=1)
+[![](./gpx-graphs.png)](./gpx-graphs.png)
