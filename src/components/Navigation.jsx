@@ -10,8 +10,9 @@ const Wrapper = styled.header`
   padding: 0;
   position: relative;
   z-index: 1000;
+  background: ${props => props.theme.brand.secondary};
   a {
-    color: ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.white};
     text-decoration: none;
     transition: all 0.3s ease-in-out;
     z-index: 100;
@@ -91,7 +92,7 @@ const Navigation = () => (
 			<Wrapper data-testid="navigation">
 
 				<Nav>
-					<Link to="/" data-testid="home-title-link">
+					<Link to="/" data-testid="home-title-link" activeClassName="nav-active">
 						Home
           			</Link>
 					{data.nav.edges.map((nav, index) => (
@@ -104,7 +105,7 @@ const Navigation = () => (
 							{nav.node.frontmatter.title}
 						</Link>
 					))}
-					<Link to="/contact" data-testid="contact-title-link">
+					<Link to="/contact" data-testid="contact-title-link" activeClassName="nav-active">
 						Contact
           			</Link>
 				</Nav>

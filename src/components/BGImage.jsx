@@ -10,12 +10,11 @@ const BGImage = styled.div`
   width: 100%;
   .gatsby-image-wrapper {
     position: static !important;
-    filter: grayscale(100%);
     > div {
-      padding-bottom: ${props => (props.single ? '30vw' : '40vw')} !important;
+      padding-bottom: ${props => (props.single ? '30vh' : '50vh')} !important;
       @media (max-width: ${props => props.theme.breakpoints.m}),
         (max-device-width: ${props => props.theme.breakpoints.m}) {
-        padding-bottom: ${props => (props.single ? '40vw' : '60vw')};!important;
+        padding-bottom: ${props => (props.single ? '40vh' : '60vh')};!important;
       }
       @media (max-width: ${props => props.theme.breakpoints.s}),
         (max-device-width: ${props => props.theme.breakpoints.s}) {
