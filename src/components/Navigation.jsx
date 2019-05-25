@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { Link, Image, StaticQuery, graphql } from 'gatsby'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import styled from 'styled-components'
 import config from '../../config/website'
@@ -39,6 +39,9 @@ const Nav = styled.nav`
   }
   @media (max-width: ${props => props.theme.breakpoints.xs}) {
     order: 2;
+  }
+  img {
+	  max-width: 100%;
   }
 `
 
@@ -92,6 +95,9 @@ const Navigation = () => (
 			<Wrapper data-testid="navigation">
 
 				<Nav>
+					<Link to="/">
+						<img src="logo.png" />
+					</Link>
 					<Link to="/" data-testid="home-title-link" activeClassName="nav-active">
 						Home
           			</Link>
@@ -114,8 +120,7 @@ const Navigation = () => (
 						href="https://github.com/kylekarpack"
 						target="_blank"
 						rel="noopener noreferrer"
-						aria-label="Github"
-					>
+						aria-label="Github">
 						<FaGithub />
 					</a>
 					<a

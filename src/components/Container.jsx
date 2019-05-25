@@ -16,7 +16,7 @@ const Wrapper = styled.div`
         --baseline-multiplier: 0.179;
         --x-height-multiplier: 0.35;
         @media (max-width: ${props.theme.breakpoints.l}), (max-device-width: ${props.theme.breakpoints.l}) {
-          font-size: 1.1rem;
+          font-size: 1rem;
         }
         @media (max-width: ${props.theme.breakpoints.m}), (max-device-width: ${props.theme.breakpoints.m}) {
           font-size: 1rem;
