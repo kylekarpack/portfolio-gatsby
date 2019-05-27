@@ -11,10 +11,16 @@ const Content = styled(Container)`
 	  padding: .75em 1em;
 	  width: 100%;
 	  display: block;
-	  border: 1px solid #ccc;
 	  margin-bottom: 1em;
 	  font-size: 16px;
 	  font-family: sans-serif;
+	  background: #f2f4f5;
+	  border: none;
+	  outline: none;
+	  box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08) inset;
+	  &:focus {
+		  box-shadow: 0 0 0 2px ${props => props.theme.brand.primary};
+	  }
   }
   button {
 	background: ${props => props.theme.brand.primary};

@@ -27,9 +27,9 @@ cover: "./rockies.jpg"
 ---
 ## Kyle Karpack
 
-#### Front-End / Full-Stack Developer
+### Front-End / Full-Stack Engineer
 
-Thanks for checking out my site. I&#x2019;m a front-end developer based out of Seattle. I love building things for the web, but outside work, I enjoy hiking, soccer, cooking, reading, and spending time with my family.
+Thanks for checking out my site. I'm a software engineer based in Seattle. Outside work, I enjoy hiking, soccer, cooking, reading, and spending time with family.
 
 ### My Skills
 
@@ -46,7 +46,7 @@ Thanks for checking out my site. I&#x2019;m a front-end developer based out of S
 - C# (working knowledge)
 - Amazon Web Services (working knowledge)
 
-![](rockies.jpg)
+![Kyle and Kristin in the Rockies](rockies.jpg)
 
 - [Facebook](https://facebook.com/kylekarpack)
 - [LinkedIn](https://www.linkedin.com/in/kylekarpack)

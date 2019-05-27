@@ -41,7 +41,9 @@ const Nav = styled.nav`
     order: 2;
   }
   img {
-	  max-width: 100%;
+	  width: 15%;
+	  max-width: 10em;
+	  min-width: 5em;
   }
 `
 
