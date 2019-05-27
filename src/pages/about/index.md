@@ -29,26 +29,8 @@ cover: "./rockies.jpg"
 
 ### Front-End / Full-Stack Engineer
 
-Thanks for checking out my site. I'm a software engineer based in Seattle. Outside work, I enjoy hiking, soccer, cooking, reading, and spending time with family.
+[Facebook](https://facebook.com/kylekarpack) | [LinkedIn](https://www.linkedin.com/in/kylekarpack) | [GitHub](https://github.com/kylekarpack) | [Email](mailto:kylekarpack@gmail.com)
 
-### My Skills
-
-- HTML + CSS
-- SASS + LESS
-- JavaScript + TypeScript
-- Angular + AngularJS
-- NodeJS
-- npm + Yarn
-- MSSQL & MySQL
-- Microsoft Azure
-- PHP
-- MongoDB, ElasticSearch (working knowledge)
-- C# (working knowledge)
-- Amazon Web Services (working knowledge)
+Thanks for checking out my site. I'm a software engineer based in Seattle. If you are looking to hire an experienced front-end developer, please check out my [resume](/resume) and feel free to [contact me](/contact) any time. Outside work, I enjoy hiking, soccer, cooking, reading, and spending time with family.
 
 ![Kyle and Kristin in the Rockies](rockies.jpg)
-
-- [Facebook](https://facebook.com/kylekarpack)
-- [LinkedIn](https://www.linkedin.com/in/kylekarpack)
-- [GitHub](https://github.com/kylekarpack)
-- [Email](mailto:kylekarpack@gmail.com)
