@@ -4,10 +4,11 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import styled from 'styled-components'
 
 const Wrapper = styled.header`
+	position: sticky;
+	top: 0;
   align-items: center;
   display: flex;
   padding: 0;
-  position: relative;
   z-index: 1000;
   background: ${props => props.theme.brand.secondary};
   a {
