@@ -49,13 +49,14 @@ const Content = styled.div`
     height: 100%;
     left: 0;
     opacity: 0;
-    padding: 2rem;
+    padding: 2vw;
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 10;
     transition: all 0.3s ease-in-out;
-    text-decoration: none;
+	text-decoration: none;
+	overflow: hidden;
 
     &:hover {
       color: #fff;

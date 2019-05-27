@@ -77,6 +77,8 @@ const Index = ({
 				/>
 				))}
 			</ListWrapper>
+
+			
 		</Wrapper>
     </Layout>
   )
