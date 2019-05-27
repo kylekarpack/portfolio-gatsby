@@ -1,6 +1,6 @@
 /* eslint react/display-name: 0 */
 import React from 'react'
-import { Img, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { useTrail } from 'react-spring'
 import styled from 'styled-components'
@@ -8,32 +8,7 @@ import { Layout, ProjectItem } from '../components'
 
 const Wrapper = styled.div`
 	padding: 2vw;
-	color: #444;
 `
-const ImageContainer = styled.div`
-	align-self: center;
-	text-align: center;
-`
-
-const Profile = styled.div`
-	h1, h2 { 
-		margin: 0;
-	}
-	h2 {
-		font-size: 1.4rem;
-	}
-	img {
-		border-radius: 100%;
-		max-height: 150px;
-	}
-	display: grid;
-	grid-template-columns 1fr 6fr;
-	grid-column-gap: 2vw;
-	margin-bottom: 2vw;
-	padding-bottom: 2vw;
-	border-bottom: 1px solid #eee;
-`
-
 const ListWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -42,7 +17,7 @@ const ListWrapper = styled.div`
 	width: 100%;
 `
 
-const Index = ({
+const Portfolio = ({
   data: {
     allMdx: { edges: projectEdges },
   },
@@ -56,17 +31,7 @@ const Index = ({
   return (
     <Layout pathname={location.pathname}>
 		<Wrapper>
-			<Profile>
-				<ImageContainer>
-					<img src="headshot.jpeg" alt="Kyle headshot" />
-				</ImageContainer>
-				<div>
-					<h1>Kyle Karpack</h1>
-					<h2>Software Engineer in Seattle</h2>
-				</div>
-			</Profile>
-
-			<h2>Recent Work</h2>
+			<h1>Recent Work</h1>
 			<ListWrapper>
 				{trail.map((style, index) => (
 				<ProjectItem
@@ -82,9 +47,9 @@ const Index = ({
   )
 }
 
-export default Index
+export default Portfolio
 
-Index.propTypes = {
+Portfolio.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       edges: PropTypes.array.isRequired,
@@ -94,11 +59,10 @@ Index.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query PortfolioQuery {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "projects" } } },
-	  limit: 4
+      filter: { fields: { sourceInstanceName: { eq: "projects" } } }
     ) {
       edges {
 		node {

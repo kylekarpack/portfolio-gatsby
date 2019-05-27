@@ -91,6 +91,9 @@ const Navigation = () => (
 							{nav.node.frontmatter.title}
 						</Link>
 					))}
+					<Link to="/portfolio" data-testid="portfolio-title-link" activeClassName="nav-active">
+						Portfolio
+          			</Link>
 					<Link to="/contact" data-testid="contact-title-link" activeClassName="nav-active">
 						Contact
           			</Link>

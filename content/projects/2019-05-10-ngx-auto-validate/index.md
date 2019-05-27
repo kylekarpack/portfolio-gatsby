@@ -13,7 +13,7 @@ cover: "./ngx-auto-validate.png"
 ---
 ### Case Study
 
-An automatic validation library for Angular
+ngx-auto-validate is a validation module for Angular that favors dynamic element modification to show client-side validation errors. It's a good solution for large forms or applications where writing out all validation combinations could result in excess HTML in your templates.
 
 ### Skills Used
 
