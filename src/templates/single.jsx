@@ -35,9 +35,6 @@ const Single = ({ data: { mdx }, location }) => {
     <Layout pathname={location.pathname} customSEO>
       <SEO pathname={location.pathname} postNode={mdx} single />
       <Hero single>
-        <BGImage single>
-          <Img fluid={single.cover.childImageSharp.fluid} alt="" />
-        </BGImage>
         <Content type="text">
           <Title data-testid="single-title" style={titleProps}>
             {single.title}

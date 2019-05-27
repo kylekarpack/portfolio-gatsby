@@ -7,8 +7,11 @@ import styled from 'styled-components'
 import { Layout, ProjectItem } from '../components'
 
 const ListWrapper = styled.div`
+	padding: 2%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-column-gap: 2%;
+  grid-row-gap: 2%;
   width: 100%;
 `
 
@@ -60,6 +63,7 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
+			color
           }
           frontmatter {
 			title
