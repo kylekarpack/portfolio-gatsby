@@ -6,12 +6,30 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 
 const Item = styled(animated.div)`
-  position: relative;
-  &:before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
+	box-shadow: 0 0 2px rgba(0, 0, 0, .1);
+`
+
+const TextContent = styled.div`
+	background: ${props => (props.customcolor ? props.customcolor : props.theme.colors.grey)};
+	padding: .1em 1em;
+	h2 {
+		color: #fff;
+		font-size: 1.2rem;
+		text-align: center;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		max-width: 100%;
+	}
+`
+
+const ImageContent = styled(animated.div)`
+	position: relative;
+	&:before {
+		content: '';
+		display: block;
+		padding-top: 100%;
+	}
 `
 
 const Content = styled.div`
@@ -20,6 +38,11 @@ const Content = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
+  word-break: break-word;
+
+  p {
+	font-weight: 300;
+  }
 
   a {
     color: #fff;
@@ -42,7 +65,8 @@ const Content = styled.div`
   }
   h2 {
     margin-top: 0;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font-size: 1.2rem;
   }
 `
 
@@ -84,28 +108,26 @@ const TracedGlow = styled.img`
   z-index: -1;
 `
 
-const Service = styled.div`
-  opacity: 0.8;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-`
-
-const ProjectItem = ({ node, style, testid }) => {
-	console.warn(node)
-	return (
+const ProjectItem = ({ node, style, testid }) => (
   <Item key={node.fields.slug} style={style} data-testid={testid}>
-    <Content>
+    <ImageContent>
+	<Content>
       <ImageWrapper>
         <Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
       </ImageWrapper>
       <Link to={node.fields.slug}>
         <TracedGlow src={node.frontmatter.cover.childImageSharp.fluid.tracedSVG} alt="" />
         <Overlay style={{ backgroundColor: node.fields.color }} />
-        <h2>{node.frontmatter.title}</h2>
+		<h2>{node.frontmatter.title}</h2>
+		<p>{node.excerpt.replace("Case Study", "").replace("Project Description", "").split("Skills Used")[0]}</p>
       </Link>
     </Content>
+	</ImageContent>
+	<TextContent customcolor={node.fields.color}>
+		<h2>{node.frontmatter.title}</h2>
+	</TextContent>
   </Item>
 )
-	}
 
 export default ProjectItem
 

@@ -7,12 +7,12 @@ import styled from 'styled-components'
 import { Layout, ProjectItem } from '../components'
 
 const ListWrapper = styled.div`
-	padding: 2%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-column-gap: 2%;
-  grid-row-gap: 2%;
-  width: 100%;
+	padding: 2vw;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	grid-column-gap: 2vw;
+	grid-row-gap: 2vw;
+	width: 100%;
 `
 
 const Index = ({
@@ -60,6 +60,9 @@ export const pageQuery = graphql`
       filter: { fields: { sourceInstanceName: { eq: "projects" } } }
     ) {
       edges {
+		node {
+			excerpt(pruneLength: 140)
+		}
         node {
           fields {
             slug

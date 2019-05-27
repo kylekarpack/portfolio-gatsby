@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     props.type === 'text' &&
     css`
       p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         letter-spacing: -0.003em;
         line-height: 1.58;
         --baseline-multiplier: 0.179;

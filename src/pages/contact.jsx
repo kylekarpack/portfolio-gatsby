@@ -12,12 +12,11 @@ const Content = styled(Container)`
 	  width: 100%;
 	  display: block;
 	  margin-bottom: 1em;
-	  font-size: 16px;
-	  font-family: sans-serif;
+	  font-size: 1rem;
 	  background: #f2f4f5;
 	  border: none;
 	  outline: none;
-	  box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08) inset;
+	  box-shadow: 0 0 1px rgba(0,0,0,0.2);
 	  &:focus {
 		  box-shadow: 0 0 0 2px ${props => props.theme.brand.primary};
 	  }
@@ -59,7 +58,7 @@ const ContactPage = ({ location }) => (
 		<form method="POST" action="https://formspree.io/kylekarpack@gmail.com">
 			<input type="text" name="name" placeholder="Your name" />
 			<input type="email" name="email" placeholder="Your email" />
-			<textarea name="message" placeholder="Your Message" rows="4"></textarea>
+			<textarea name="message" placeholder="Your message" rows="4"></textarea>
 			<button type="submit">Send</button>
 		</form>
 	</Content>

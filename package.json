@@ -55,10 +55,12 @@
     "react-spring": "^8.0.20",
     "styled-components": "^4.2.0",
     "styled-theming": "^2.2.0",
+    "typeface-cabin": "^0.0.72",
     "typeface-merriweather": "^0.0.72",
     "typeface-noto-sans": "^0.0.72",
-    "typeface-poppins": "^0.0.72",
-    "typeface-roboto": "^0.0.54"
+    "typeface-palanquin": "^0.0.72",
+    "typeface-roboto": "^0.0.54",
+    "typeface-roboto-condensed": "^0.0.54"
   },
   "keywords": [
     "gatsby",

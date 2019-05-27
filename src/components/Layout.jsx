@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import 'typeface-poppins'
-import 'typeface-noto-sans'
+import 'typeface-cabin'
+import 'typeface-palanquin'
 import SEO from './SEO'
 import Navigation from './Navigation'
 import Footer from './Footer'
@@ -11,12 +11,12 @@ import reset from '../styles/reset'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-  html {
-    font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  html, input, textarea, button {
+    font-family: "Cabin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
-  h1, h2, h3, h4, h5, h6 {
-	font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	font-weight: 400;
+  h1, h2, h3, h4, h5, h6, nav a {
+	font-family: "Palanquin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-weight: 700;
   }
   .nav-active {
     color: ${theme.brand.primary} !important;

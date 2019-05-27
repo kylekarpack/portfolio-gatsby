@@ -42,6 +42,12 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 			try {
 				const colors = await getColors(path.join(node.fileAbsolutePath, "../", node.frontmatter.cover));
 				color = colors[0].hex();
+				for (let c of colors) {
+					if (c.get("lab.l") < 90) {
+						color = c.hex();
+						break; 
+					}
+				}
 			} catch (e) {
 				console.error("could not get color", e);
 			}

@@ -12,12 +12,13 @@ const ImageContainer = styled(animated.div)`
 `
 
 const Content = styled(Container)`
-padding-top: 2em;
+	padding-top: 2em;
 	width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  color: #777;
-  `
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	grid-auto-rows: 1fr;
+	color: #777;
+`
 
 const InformationWrapper = styled(animated.div)`
   display: flex;
@@ -28,31 +29,33 @@ const InformationWrapper = styled(animated.div)`
 
 const Title = styled(animated.h1)`
   margin-top: 0;
+  border-bottom: 4px solid;
+  display: inline-block;
 `
 
-const InfoBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 2rem 0 0;
-  div:first-child {
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: ${props => (props.customcolor ? props.customcolor : props.theme.colors.grey)};
-  }
-  div:last-child {
-    font-size: 1rem;
+const ContentBlock = styled.div`
+  h2, h3 {
+	  color: ${props => (props.customcolor ? props.customcolor : props.theme.colors.grey)};
+	  text-transform: uppercase;
+	  font-size: 1.1rem;
+	  font-weight: 600;
+	  margin: 2em 0 0;
   }
 `
 
 const Project = ({ data: { mdx: postNode }, location }) => {
 	const project = postNode.frontmatter
 
-	const titleProps = useSpring({
-		config: config.slow,
-		from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
-		to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-	})
+	const titleProps = {
+		...useSpring({
+			config: config.slow,
+			from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
+			to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+		}),
+		...{
+			borderBottomColor: project.color
+		}
+	}
 	const infoProps = useSpring({ config: config.slow, delay: 500, from: { opacity: 0 }, to: { opacity: 1 } })
 	const contentProps = useSpring({ config: config.slow, delay: 1000, from: { opacity: 0 }, to: { opacity: 1 } })
 	const imageProps = useSpring({
@@ -71,18 +74,19 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 						{project.title}
 					</Title>
 					<InformationWrapper style={infoProps}>
-						<InfoBlock customcolor={project.color}>
-							<div>Date</div>
-							<div>{project.date}</div>
-						</InfoBlock>
+						<ContentBlock customcolor={project.color}>
+							<h3>Date</h3>
+							<p>{project.date}</p>
+						</ContentBlock>
 					</InformationWrapper>
-					<animated.div style={contentProps}>
-						<MDXRenderer>{postNode.code.body}</MDXRenderer>
-					</animated.div>
+					<ContentBlock customcolor={project.color}>
+						<animated.div style={contentProps}>
+							<MDXRenderer>{postNode.code.body}</MDXRenderer>
+						</animated.div>
+					</ContentBlock>
 				</Container>
 				<ImageContainer style={imageProps}>
 					<Img fluid={project.cover.childImageSharp.fluid} alt="" />
-
 				</ImageContainer>
 
 			</Content>
