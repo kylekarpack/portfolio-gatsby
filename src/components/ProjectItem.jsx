@@ -111,21 +111,23 @@ const TracedGlow = styled.img`
 const ProjectItem = ({ node, style, testid }) => (
   <Item key={node.fields.slug} style={style} data-testid={testid}>
     <ImageContent>
-	<Content>
-      <ImageWrapper>
-        <Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
-      </ImageWrapper>
-      <Link to={node.fields.slug}>
-        <TracedGlow src={node.frontmatter.cover.childImageSharp.fluid.tracedSVG} alt="" />
-        <Overlay style={{ backgroundColor: node.fields.color }} />
-		<h2>{node.frontmatter.title}</h2>
-		<p>{node.excerpt.replace("Case Study", "").replace("Project Description", "").split("Skills Used")[0]}</p>
-      </Link>
-    </Content>
+		<Content>
+		<ImageWrapper>
+			<Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
+		</ImageWrapper>
+		<Link to={node.fields.slug}>
+			<TracedGlow src={node.frontmatter.cover.childImageSharp.fluid.tracedSVG} alt="" />
+			<Overlay style={{ backgroundColor: node.fields.color }} />
+			<h2>{node.frontmatter.title}</h2>
+			<p>{node.excerpt.replace("Case Study", "").replace("Project Description", "").split("Skills Used")[0]}</p>
+		</Link>
+		</Content>
 	</ImageContent>
-	<TextContent customcolor={node.fields.color}>
-		<h2>{node.frontmatter.title}</h2>
-	</TextContent>
+	<Link to={node.fields.slug}>
+		<TextContent customcolor={node.fields.color}>
+			<h2>{node.frontmatter.title}</h2>
+		</TextContent>
+	</Link>
   </Item>
 )
 

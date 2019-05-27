@@ -4,17 +4,14 @@ import styled from 'styled-components'
 import { animated, useSpring, config } from 'react-spring'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { SEO, Container, Layout, Hero, BGImage } from '../components'
 
 const Content = styled(Container)`
-  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  z-index: 3;
 `
 
 const Title = styled(animated.h1)`

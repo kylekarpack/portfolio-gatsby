@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link, Image, StaticQuery, graphql } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import styled from 'styled-components'
-import config from '../../config/website'
 
 const Wrapper = styled.header`
   align-items: center;
@@ -47,27 +46,6 @@ const Nav = styled.nav`
   }
 `
 
-const Name = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  a {
-    font-size: 1.25rem;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-weight: 700;
-    &:hover,
-    &:focus {
-      color: ${props => props.theme.colors.body_color};
-      text-decoration: none;
-    }
-  }
-  @media (max-width: ${props => props.theme.breakpoints.xs}) {
-    order: 1;
-    flex: 1 0 100%;
-    margin-bottom: 0.75rem;
-  }
-`
-
 const SocialMedia = styled.div`
   display: flex;
   flex: 1;
@@ -98,7 +76,7 @@ const Navigation = () => (
 
 				<Nav>
 					<Link to="/">
-						<img src="logo.png" />
+						<img src="logo.png" alt="Site Logo" />
 					</Link>
 					<Link to="/" data-testid="home-title-link" activeClassName="nav-active">
 						Home

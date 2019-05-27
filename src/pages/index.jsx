@@ -6,8 +6,30 @@ import { useTrail } from 'react-spring'
 import styled from 'styled-components'
 import { Layout, ProjectItem } from '../components'
 
-const ListWrapper = styled.div`
+const Wrapper = styled.div`
 	padding: 2vw;
+`
+
+const Profile = styled.div`
+	color: #777;
+	h1, h2 { 
+		margin: 0;
+		font-weight: 400;
+	}
+	h2 {
+		font-size: 1.4rem;
+	}
+	img {
+		border-radius: 100%;
+		max-height: 150px;
+	}
+	display: grid;
+	grid-template-columns 1fr 6fr;
+	grid-column-gap: 2vw;
+	margin-bottom: 2vw;
+`
+
+const ListWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	grid-column-gap: 2vw;
@@ -28,16 +50,27 @@ const Index = ({
 
   return (
     <Layout pathname={location.pathname}>
-      <ListWrapper>
-        {trail.map((style, index) => (
-          <ProjectItem
-            testid={`projectItem-${index}`}
-            style={style}
-            key={projectEdges[index].node.fields.slug}
-            node={projectEdges[index].node}
-          />
-        ))}
-      </ListWrapper>
+		<Wrapper>
+			<Profile>
+				<div>
+					<img src="headshot.jpeg" alt="Kyle headshot" />
+				</div>
+				<div>
+					<h1>Kyle Karpack</h1>
+					<h2>Software Engineer in Seattle</h2>
+				</div>
+			</Profile>
+			<ListWrapper>
+				{trail.map((style, index) => (
+				<ProjectItem
+					testid={`projectItem-${index}`}
+					style={style}
+					key={projectEdges[index].node.fields.slug}
+					node={projectEdges[index].node}
+				/>
+				))}
+			</ListWrapper>
+		</Wrapper>
     </Layout>
   )
 }
