@@ -31,5 +31,3 @@ I built an industry-leading application for quality management. It implements bi
 - CSS
 - .NET
 - Data Visualization
-
-![](./pqz.jpg)

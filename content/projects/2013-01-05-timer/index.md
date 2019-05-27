@@ -20,14 +20,12 @@ name: "wp"
 templated: "true"
 cover: "./timer.png"
 ---
-# Case Study
+## Case Study
 
 A timer application built to show presenters how long they have been speaking. Developed from the ground up with jQuery. Includes a several customizable features and automated responsive design.
 
-# Skills Used
+## Skills Used
 
 - Responsive text size with jQuery
 - Adaptive calculated colors with CSS preprocessing
 - Responsive design
-
-![](./timer.png)

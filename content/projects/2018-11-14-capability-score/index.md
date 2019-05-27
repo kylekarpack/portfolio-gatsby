@@ -34,5 +34,3 @@ I have worked to develop an industry-leading method to provide capability inform
 ## Patent Number
 
 US9182758B1
-
-[![](./capability.png)](https://i2.wp.com/www.kylekarpack.com/wordpress/wp-content/uploads/2018/11/capability.png?fit=1543%2C870&amp;ssl=1)

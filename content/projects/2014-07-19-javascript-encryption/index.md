@@ -22,6 +22,4 @@ cover: "./crypto.jpg"
 ---
 ## Project Description
 
-Using Google&#x2019;s AES library, I built a quick UI that allows users to encrypt arbitrary content in their browsers. It includes webcam interaction and the ability to add any content from the computer.
-
-[![crypto](./crypto.jpg)](https://i2.wp.com/www.kylekarpack.com/wordpress/wp-content/uploads/2014/07/crypto.jpg)&#xA0;
+Using Google's AES library, I built a quick UI that allows users to encrypt arbitrary content in their browsers. It includes webcam interaction and the ability to add any content from the computer.

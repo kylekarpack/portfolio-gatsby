@@ -26,8 +26,6 @@ This supplier map allows unprecedented visibility into the manufacturing supply 
 
 ## Skills Used
 
-- LeafletJS,
-- TileMill,
+- LeafletJS
+- TileMill
 - AngularJS
-
-[![map](./map.png)](https://i0.wp.com/www.kylekarpack.com/wordpress/wp-content/uploads/2014/07/map.png)&#xA0;

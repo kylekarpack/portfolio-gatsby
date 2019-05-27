@@ -20,8 +20,7 @@ name: "wp"
 templated: "true"
 cover: "./wedding.jpg"
 ---
+
 ## Project Description
 
 A part of my hand-built wedding website, I used MapBox to tell an animated story of how Kristin and I met.
-
-[![wedding](./wedding.jpg)](https://i2.wp.com/www.kylekarpack.com/wordpress/wp-content/uploads/2014/07/wedding.jpg)

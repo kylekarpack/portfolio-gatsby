@@ -20,16 +20,14 @@ name: "wp"
 templated: "true"
 cover: "./flights1.jpg"
 ---
-# Case Study
+## Case Study
 
 This is a class project in Information Visualization. I collected data, put it in a relational database, retrieved and sent it with an API, and displayed it on a page with D3.js. It was a great exercise in full-stack web development and info viz both, and I hope to continue in this area.
 
-# Skills Used
+## Skills Used
 
 - D3.js
 - LESS
 - MySQL
 - jQuery
 - SVG Graphics
-
-[![](./flights1.jpg)](https://i0.wp.com/www.kylekarpack.com/wordpress/wp-content/uploads/2013/02/flights1.jpg?fit=1240%2C677&amp;ssl=1)

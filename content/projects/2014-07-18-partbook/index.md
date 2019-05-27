@@ -23,5 +23,3 @@ cover: "./books-e1405720984516.jpg"
 ## Project Description
 
 A 3-dimensional library of books containing information about aerospace parts.
-
-[![](./books-e1405720984516.jpg)](https://i2.wp.com/www.kylekarpack.com/wordpress/wp-content/uploads/2013/01/books-e1405720984516.jpg?fit=1920%2C969&amp;ssl=1)

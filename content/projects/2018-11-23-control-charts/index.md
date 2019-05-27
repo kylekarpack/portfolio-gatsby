@@ -23,5 +23,3 @@ cover: "./spc.png"
 ## Project Description
 
 Built a digital representation of the most commonly used manufacturing control charts. Users can view interactive IX, Moving Range, XBar, RBar and SBar charts.
-
-![](./spc.png)

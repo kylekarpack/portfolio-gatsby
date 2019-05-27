@@ -29,5 +29,3 @@ The FAIR portal allows companies to evaluate risks in their supply chain in a vi
 - Google Maps
 - Angular
 - TypeScript
-
-![](./map.jpg)

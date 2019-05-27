@@ -27,7 +27,5 @@ A custom-built timetracker application that integrates with BaseCamp&#x2019;s AP
 ## Skills Used
 
 - AngularJS
-- SASS
+- SCSS
 - AJAX
-
-![](./timetracker.jpg)

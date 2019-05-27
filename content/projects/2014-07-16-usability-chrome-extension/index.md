@@ -20,10 +20,13 @@ name: "wp"
 templated: "true"
 cover: "./heat.jpg"
 ---
-[![heat](./heat.jpg)](https://i1.wp.com/www.kylekarpack.com/wordpress/wp-content/uploads/2014/07/heat.jpg)&#xA0;
 
 ## Project Description
 
-A Chrome extension to take metrics in order to automate some data collection aspects of usability testing. Tracks clicks, keypresses, mouse movements, and more, stores them in the browser&#x2019;s local storage, and then generates relevant reports.
+A Chrome extension to take metrics in order to automate some data collection aspects of usability testing. Tracks clicks, keypresses, mouse movements, and more, stores them in the browser's local storage, and then generates relevant reports.
 
-Built with JavaScript, jQuery, and LESS
+## Skills Used
+
+- JavaScript
+- jQuery
+- LESS
