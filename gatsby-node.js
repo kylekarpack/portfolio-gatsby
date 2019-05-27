@@ -1,4 +1,7 @@
-const _ = require('lodash')
+const _ = require('lodash');
+const getColors = require('get-image-colors');
+const path = require("path");
+const config = require('./config/website')
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
 const wrapper = promise =>
@@ -9,7 +12,7 @@ const wrapper = promise =>
 		return result
 	})
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = async ({ node, actions, getNode }) => {
 	const { createNodeField } = actions
 	let slug
 	// Only use MDX nodes
@@ -32,7 +35,22 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 		createNodeField({ node, name: 'slug', value: slug })
 		// Adds the name of "gatsby-source-filesystem" as field (in this case "projects" or "pages")
 		createNodeField({ node, name: 'sourceInstanceName', value: fileNode.sourceInstanceName })
-		createNodeField({ node, name: "color", value: "#ff0000" })
+
+		let color = config.themeColor;
+
+		if (node.frontmatter.cover) {
+			try {
+				const colors = await getColors(path.join(node.fileAbsolutePath, "../", node.frontmatter.cover));
+				color = colors[0].hex();
+			} catch (e) {
+				console.error("could not get color", e);
+			}
+
+		} 
+		node.frontmatter.color = color;
+		createNodeField({ node, name: 'frontmatter.color', value: color })
+		createNodeField({ node, name: 'color', value: color })
+
 	}
 }
 
@@ -74,7 +92,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			component: projectPage,
 			context: {
 				// Pass "slug" through context so we can reference it in our query like "$slug: String!"
-				slug: edge.node.fields.slug,
+				slug: edge.node.fields.slug
 			},
 		})
 	})

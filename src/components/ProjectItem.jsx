@@ -89,7 +89,9 @@ const Service = styled.div`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 `
 
-const ProjectItem = ({ node, style, testid }) => (
+const ProjectItem = ({ node, style, testid }) => {
+	console.warn(node)
+	return (
   <Item key={node.fields.slug} style={style} data-testid={testid}>
     <Content>
       <ImageWrapper>
@@ -97,13 +99,13 @@ const ProjectItem = ({ node, style, testid }) => (
       </ImageWrapper>
       <Link to={node.fields.slug}>
         <TracedGlow src={node.frontmatter.cover.childImageSharp.fluid.tracedSVG} alt="" />
-        <Overlay style={{ backgroundColor: node.frontmatter.color }} />
+        <Overlay style={{ backgroundColor: node.fields.color }} />
         <h2>{node.frontmatter.title}</h2>
-        <Service>{node.frontmatter.service}</Service>
       </Link>
     </Content>
   </Item>
 )
+	}
 
 export default ProjectItem
 
