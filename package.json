@@ -45,7 +45,7 @@
     "get-image-colors": "^2.0.0",
     "lodash": "^4.17.11",
     "mapbox-gl": "^1.0.0",
-    "polished": "^3.3.0",
+    "polished": "^3.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

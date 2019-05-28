@@ -5,22 +5,44 @@ import PropTypes from 'prop-types'
 import { useTrail } from 'react-spring'
 import styled from 'styled-components'
 import { Layout, ProjectItem } from '../components'
+import { darken } from "polished";
 
 const Wrapper = styled.div`
 	padding: 2vw;
-	color: #444;
+	color: #555;
 `
+
+const MoreWrapper = styled.div`
+	text-align: center;
+	a {
+		background: ${props => props.theme.brand.primary};
+		border: 1px solid ${props => darken(0.05, props.theme.brand.primary)};
+		transition: all .25s ease-in-out;
+		color: #fff;
+		font-size: 1.3rem;
+		padding: 0.75rem 2rem;
+		&:hover {
+			box-shadow: 0 0 4px ${props => props.theme.brand.primary};
+			background: ${props => darken(0.1, props.theme.brand.primary)}
+		}
+	}
+`
+
 const ImageContainer = styled.div`
 	align-self: center;
 	text-align: center;
 `
 
 const Profile = styled.div`
-	h1, h2 { 
+	h1 {
+		color: ${props => props.theme.brand.primary};
+	}
+	h1, h2, p { 
 		margin: 0;
+		line-height: 1.5;
 	}
 	h2 {
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 	}
 	img {
 		border-radius: 100%;
@@ -63,6 +85,7 @@ const Index = ({
 				<div>
 					<h1>Kyle Karpack</h1>
 					<h2>Software Engineer in Seattle</h2>
+					<p>Specializing in user-centered design for large web applications</p>
 				</div>
 			</Profile>
 
@@ -78,7 +101,13 @@ const Index = ({
 				))}
 			</ListWrapper>
 
-			
+			<MoreWrapper>
+				<br />
+				<br />
+				<br />
+				<br />
+				<a class="btn" href="/portfolio">View More</a>
+			</MoreWrapper>
 		</Wrapper>
     </Layout>
   )
