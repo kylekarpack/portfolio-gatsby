@@ -10,11 +10,10 @@ module.exports = {
   siteDescription: 'The software development portfolio of Kyle Karpack',
   author: 'Kyle Karpack', // Author for schema.org JSONLD
 
-  // siteFBAppID: '123456789', // Facebook App ID - Optional
   userTwitter: '@kylekarpack', // Twitter Username
   ogSiteName: 'kylekarpack', // Facebook Site Name
   ogLanguage: 'en_US',
-  //googleAnalyticsID: 'UA-47519312-3',
+  googleAnalyticsID: 'UA-41473428-2',
 
   // Manifest and Progress color
   themeColor: '#3498DB',
