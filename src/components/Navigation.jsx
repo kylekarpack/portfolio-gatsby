@@ -6,65 +6,76 @@ import styled from 'styled-components'
 const Wrapper = styled.header`
 	position: sticky;
 	top: 0;
-  align-items: center;
-  display: flex;
-  padding: 0;
-  z-index: 1000;
-  background: ${props => props.theme.brand.secondary};
-  a {
-    color: ${props => props.theme.colors.white};
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    z-index: 100;
-    &:hover {
-      color: ${props => props.theme.brand.primary};
-    }
-  }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    padding: 0;
-    flex-wrap: wrap;
-  }
+	align-items: center;
+	display: flex;
+	padding: 0;
+	z-index: 1000;
+	background: ${props => props.theme.brand.secondary};
+	a {
+		color: ${props => props.theme.colors.white};
+		text-decoration: none;
+		transition: all 0.3s ease-in-out;
+		z-index: 100;
+		&:hover {
+		color: ${props => props.theme.brand.primary};
+		}
+	}
+	@media (max-width: ${props => props.theme.breakpoints.s}) {
+		padding: 0;
+		display: block;
+		position: static;
+	}
 `
 
 const Nav = styled.nav`
-  display: flex;
-  flex: 1;
-  justify-content: flex-start;
-  padding: 0;
-  a {
-    padding 1rem 1.5rem;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    padding: 0 1rem;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.xs}) {
-    order: 2;
-  }
-  img {
-	  width: 15%;
-	  max-width: 10em;
-	  min-width: 5em;
-  }
+	display: flex;
+	flex: 1;
+	justify-content: flex-start;
+	padding: 0;
+	a {
+		padding: 1rem 1.5rem;
+	}
+	@media (max-width: ${props => props.theme.breakpoints.s}) {
+		padding: 0 1rem;
+		display: block;
+		a {
+			display: block;	
+			text-align: center;
+		}
+	}
+	@media (max-width: ${props => props.theme.breakpoints.xs}) {
+		order: 2;
+	}
+	.logo {
+		@media (max-width: ${props => props.theme.breakpoints.s}) {
+			display: none;
+		}
+	}
+	img {
+		width: 15%;
+		max-width: 10em;
+		min-width: 5em;
+	}
 `
 
 const SocialMedia = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  padding: 0 ${props => props.theme.spacer.horizontal};
-  a {
-    font-size: 1.25rem;
-    line-height: 20px;
-  }
-  a:not(:first-child) {
-    margin-left: 1rem;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    padding: 0 1rem;
-  }
-  @media (max-width: ${props => props.theme.breakpoints.xs}) {
-    order: 3;
-  }
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+	padding: 0 ${props => props.theme.spacer.horizontal};
+	a {
+		font-size: 1.25rem;
+		line-height: 20px;
+	}
+	a:not(:first-child) {
+		margin-left: 1rem;
+	}
+	@media (max-width: ${props => props.theme.breakpoints.s}) {
+		display: none;
+	}
+	@media (max-width: ${props => props.theme.breakpoints.xs}) {
+		order: 3;
+	}
 `
 
 // Grabs all MDX files from src/pages and puts them into the navigation
@@ -76,7 +87,7 @@ const Navigation = () => (
 			<Wrapper data-testid="navigation">
 
 				<Nav>
-					<Link to="/">
+					<Link to="/" className="logo">
 						<img src="logo.png" alt="Site Logo" />
 					</Link>
 					<Link to="/" data-testid="home-title-link" activeClassName="nav-active">
