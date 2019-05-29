@@ -50,11 +50,13 @@ const Nav = styled.nav`
 		@media (max-width: ${props => props.theme.breakpoints.s}) {
 			display: none;
 		}
-	}
-	img {
 		width: 15%;
 		max-width: 10em;
 		min-width: 5em;
+		padding: 1rem 1vw;
+		img {
+			max-width: 100%;
+		}
 	}
 `
 
@@ -88,7 +90,7 @@ const Navigation = () => (
 
 				<Nav>
 					<Link to="/" className="logo">
-						<img src="logo.png" alt="Site Logo" />
+						<img src="/logo.png" alt="Site Logo" />
 					</Link>
 					<Link to="/" data-testid="home-title-link" activeClassName="nav-active">
 						Home
