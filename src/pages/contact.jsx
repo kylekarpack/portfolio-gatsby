@@ -65,7 +65,7 @@ class ContactPage extends React.Component {
 			
 					<h3>Based Out of the PNW</h3>
 					<p>Born and raised here, I love the Pacific Northwest and plan on being here for a long while.</p> */}
-					<form method="POST" action="https://formspree.io/kylekarpack@gmail.com">
+					<form name="contact" method="POST" data-netlify data-netlify-honeypot="bot-field">
 						<input type="text" name="name" placeholder="Your name" />
 						<input type="email" name="email" placeholder="Your email" />
 						<textarea name="message" placeholder="Your message" rows="4"></textarea>
