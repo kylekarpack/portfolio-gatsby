@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `
 const ListWrapper = styled.div`
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	grid-column-gap: 2vw;
 	grid-row-gap: 2vw;
 	width: 100%;
