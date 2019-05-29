@@ -15,11 +15,15 @@ const Content = styled(Container)`
 
 const Columns = styled(Container)`
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	max-width: 100%;
+	grid-template-columns: 1fr 1fr;
 	grid-column-gap: 2vw;
 	padding: 0;
 	img {
 		max-width: 100%;
+	}
+	@media (max-width: ${props => props.theme.breakpoints.m}) {
+		display: block;
 	}
 `
 
@@ -38,7 +42,7 @@ const AboutPage = ({ location }) => (
 				</div>
 				<div>
 					<br />
-					<img src="rockies.jpg" alt="Kyle and Kristin in the Rockies" />
+					<img src="/rockies.jpg" alt="Kyle and Kristin in the Rockies" />
 				</div>
 			</Columns>
 			<h2>Recently Read</h2>

@@ -1,17 +1,16 @@
 /* eslint react/display-name: 0 */
-import React from 'react'
-import { Img, graphql } from 'gatsby'
-import PropTypes from 'prop-types'
-import { useTrail } from 'react-spring'
-import styled from 'styled-components'
-import { Layout, ProjectItem } from '../components'
+import { graphql } from 'gatsby';
 import { darken } from "polished";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useTrail } from 'react-spring';
+import styled from 'styled-components';
+import { Layout, ProjectItem } from '../components';
 
 const Wrapper = styled.div`
 	padding: 2vw;
 	color: #555;
 `
-
 const MoreWrapper = styled.div`
 	text-align: center;
 	a {
@@ -106,7 +105,7 @@ const Index = ({
 				<br />
 				<br />
 				<br />
-				<a class="btn" href="/portfolio">View More</a>
+				<a className="btn" href="/portfolio">View More</a>
 			</MoreWrapper>
 		</Wrapper>
     </Layout>

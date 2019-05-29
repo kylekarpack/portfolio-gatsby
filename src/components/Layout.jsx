@@ -27,25 +27,25 @@ const GlobalStyle = createGlobalStyle`
 // as the SEO component there passes in some additional things. Otherwise things would be inserted two times
 
 const Layout = ({ children, pathname, customSEO }) => (
-  <ThemeProvider theme={theme}>
-    <>
-      {!customSEO && <SEO pathname={pathname} />}
-      <GlobalStyle />
-      <Navigation />
-      {children}
-      <Footer />
-    </>
-  </ThemeProvider>
+	<ThemeProvider theme={theme}>
+		<>
+			{!customSEO && <SEO pathname={pathname} />}
+			<GlobalStyle />
+			<Navigation />
+			{children}
+			<Footer />
+		</>
+	</ThemeProvider>
 )
 
 export default Layout
 
 Layout.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
-  pathname: PropTypes.string.isRequired,
-  customSEO: PropTypes.bool,
+	children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
+	pathname: PropTypes.string.isRequired,
+	customSEO: PropTypes.bool,
 }
 
 Layout.defaultProps = {
-  customSEO: false,
+	customSEO: false,
 }
