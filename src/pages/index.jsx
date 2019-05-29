@@ -80,7 +80,7 @@ const Index = ({
 		<Wrapper>
 			<Profile>
 				<ImageContainer>
-					<img src="headshot.jpeg" alt="Kyle headshot" />
+					<img src="headshot.jpg" alt="Kyle headshot" />
 				</ImageContainer>
 				<div>
 					<h1>Kyle Karpack</h1>
