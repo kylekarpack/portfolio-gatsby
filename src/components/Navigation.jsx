@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaBars } from 'react-icons/fa'
 import styled from 'styled-components'
 
 const Wrapper = styled.header`
@@ -17,13 +17,36 @@ const Wrapper = styled.header`
 		transition: all 0.3s ease-in-out;
 		z-index: 100;
 		&:hover {
-		color: ${props => props.theme.brand.primary};
+			color: ${props => props.theme.brand.primary};
+		}
+	}
+	.navbar-toggle {
+		display: none;
+		padding: 0.5rem;
+		cursor: pointer;
+		svg {
+			fill: #fff;
+		}
+		&:hover {
+			svg {
+				fill: #ddd;
+			}
 		}
 	}
 	@media (max-width: ${props => props.theme.breakpoints.s}) {
 		padding: 0;
 		display: block;
 		position: static;
+		.navbar-toggle {
+			display: inline-block;
+		}
+		.navbar {
+			display: block;
+			&.collapsed {
+				display: none;
+			}
+		}
+
 	}
 `
 
@@ -34,6 +57,11 @@ const Nav = styled.nav`
 	padding: 0;
 	a {
 		padding: 1rem 1.5rem;
+	}
+	@media (max-width: ${props => props.theme.breakpoints.m}) {
+		a {
+			padding: 1rem;
+		}
 	}
 	@media (max-width: ${props => props.theme.breakpoints.s}) {
 		padding: 0 1rem;
@@ -54,6 +82,7 @@ const Nav = styled.nav`
 		max-width: 10em;
 		min-width: 5em;
 		padding: 1rem 1vw;
+		margin-right: 1vw;
 		img {
 			max-width: 100%;
 		}
@@ -73,7 +102,8 @@ const SocialMedia = styled.div`
 		margin-left: 1rem;
 	}
 	@media (max-width: ${props => props.theme.breakpoints.s}) {
-		display: none;
+		float: right;
+		padding: .5rem 1rem;
 	}
 	@media (max-width: ${props => props.theme.breakpoints.xs}) {
 		order: 3;
@@ -82,59 +112,78 @@ const SocialMedia = styled.div`
 
 // Grabs all MDX files from src/pages and puts them into the navigation
 
-const Navigation = () => (
-	<StaticQuery
-		query={query}
-		render={data => (
-			<Wrapper data-testid="navigation">
+class Navigation extends React.Component {
 
-				<Nav>
-					<Link to="/" className="logo">
-						<img src="/logo.png" alt="Site Logo" />
-					</Link>
-					<Link to="/" data-testid="home-title-link" activeClassName="nav-active">
-						Home
-          			</Link>
-					<Link to="/about" data-testid="about-title-link" activeClassName="nav-active">
-						About
-          			</Link>
-					{data.nav.edges.map((nav, index) => (
-						<Link
-							key={nav.node.fields.slug}
-							to={nav.node.fields.slug}
-							data-testid={`navItem-${index}`}
-							activeClassName="nav-active"
-						>
-							{nav.node.frontmatter.title}
-						</Link>
-					))}
-					<Link to="/portfolio" data-testid="portfolio-title-link" activeClassName="nav-active">
-						Portfolio
-          			</Link>
-					<Link to="/contact" data-testid="contact-title-link" activeClassName="nav-active">
-						Contact
-          			</Link>
-				</Nav>
-				<SocialMedia>
-					<a
-						href="https://github.com/kylekarpack"
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label="Github">
-						<FaGithub />
-					</a>
-					<a
-						href="https://www.linkedin.com/in/kylekarpack"
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label="LinkedIn">
-						<FaLinkedin />
-					</a>
-				</SocialMedia>
-			</Wrapper>
-		)}
-	/>
-)
+	state = {
+		collapsed: true
+	}
+
+	toggleSideNav = () => {
+		this.setState({
+			collapsed: !this.state.collapsed
+		});
+	}
+
+	render() {
+		return (
+			<StaticQuery
+				query={query}
+				render={data => (
+					<Wrapper data-testid="navigation">
+
+						<a className="navbar-toggle" onClick={this.toggleSideNav}>
+							<FaBars />
+						</a>
+
+						<Nav className={this.state.collapsed ? "navbar collapsed" : "navbar"}>
+							<Link to="/" className="logo">
+								<img src="/logo.png" alt="Site Logo" />
+							</Link>
+							<Link to="/" data-testid="home-title-link" activeClassName="nav-active">
+								Home
+							</Link>
+							<Link to="/about" data-testid="about-title-link" activeClassName="nav-active">
+								About
+							</Link>
+							{data.nav.edges.map((nav, index) => (
+								<Link
+									key={nav.node.fields.slug}
+									to={nav.node.fields.slug}
+									data-testid={`navItem-${index}`}
+									activeClassName="nav-active"
+								>
+									{nav.node.frontmatter.title}
+								</Link>
+							))}
+							<Link to="/portfolio" data-testid="portfolio-title-link" activeClassName="nav-active">
+								Portfolio
+							</Link>
+							<Link to="/contact" data-testid="contact-title-link" activeClassName="nav-active">
+								Contact
+							</Link>
+						</Nav>
+						<SocialMedia>
+							<a
+								href="https://github.com/kylekarpack"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Github">
+								<FaGithub />
+							</a>
+							<a
+								href="https://www.linkedin.com/in/kylekarpack"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="LinkedIn">
+								<FaLinkedin />
+							</a>
+						</SocialMedia>
+					</Wrapper>
+				)}
+			/>
+		)
+	}
+}
 
 export default Navigation
 

@@ -105,8 +105,8 @@ class ContactPage extends React.Component {
 						</p>
 
 						<input type="text" name="name" placeholder="Your name" onChange={this.handleChange} />
-						<input type="email" name="email" placeholder="Your email" onChange={this.handleChange} />
-						<textarea name="message" placeholder="Your message" rows="4" onChange={this.handleChange}></textarea>
+						<input type="email" name="email" placeholder="Your email" required onChange={this.handleChange} />
+						<textarea name="message" placeholder="Your message" rows="4" required onChange={this.handleChange}></textarea>
 						<button type="submit">Send</button>
 					</form>
 
