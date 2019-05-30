@@ -2,7 +2,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import { useTrail } from 'react-spring'
+import { useTrail, config } from 'react-spring'
 import styled from 'styled-components'
 import { Layout, ProjectItem } from '../components'
 
@@ -18,44 +18,45 @@ const ListWrapper = styled.div`
 `
 
 const Portfolio = ({
-  data: {
-    allMdx: { edges: projectEdges },
-  },
-  location,
+	data: {
+		allMdx: { edges: projectEdges }
+	},
+	location
 }) => {
-  const trail = useTrail(projectEdges.length, {
-    from: { height: '0%' },
-    to: { height: '100%' },
-  })
+	const trail = useTrail(projectEdges.length, {
+		config: config.stiff,
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+	});
 
-  return (
-    <Layout pathname={location.pathname}>
-		<Wrapper>
-			<h1>Recent Work</h1>
-			<ListWrapper>
-				{trail.map((style, index) => (
-				<ProjectItem
-					testid={`projectItem-${index}`}
-					style={style}
-					key={projectEdges[index].node.fields.slug}
-					node={projectEdges[index].node}
-				/>
-				))}
-			</ListWrapper>
-		</Wrapper>
-    </Layout>
-  )
+	return (
+		<Layout pathname={location.pathname}>
+			<Wrapper>
+				<h1>Recent Work</h1>
+				<ListWrapper>
+					{trail.map((style, index) => (
+						<ProjectItem
+							testid={`projectItem-${index}`}
+							style={style}
+							key={projectEdges[index].node.fields.slug}
+							node={projectEdges[index].node}
+						/>
+					))}
+				</ListWrapper>
+			</Wrapper>
+		</Layout>
+	)
 }
 
 export default Portfolio
 
 Portfolio.propTypes = {
-  data: PropTypes.shape({
-    allMdx: PropTypes.shape({
-      edges: PropTypes.array.isRequired,
-    }),
-  }).isRequired,
-  location: PropTypes.object.isRequired,
+	data: PropTypes.shape({
+		allMdx: PropTypes.shape({
+			edges: PropTypes.array.isRequired,
+		}),
+	}).isRequired,
+	location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

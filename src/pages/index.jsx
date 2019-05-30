@@ -3,13 +3,16 @@ import { graphql } from 'gatsby';
 import { darken } from "polished";
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useTrail } from 'react-spring';
+import { useTrail, useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import { Layout, ProjectItem } from '../components';
 
 const Wrapper = styled.div`
 	padding: 2vw;
 	color: #555;
+	hr {
+		border-top: 1px solid #eee;
+	}
 `
 const MoreWrapper = styled.div`
 	text-align: center;
@@ -32,7 +35,7 @@ const ImageContainer = styled.div`
 	text-align: center;
 `
 
-const Profile = styled.div`
+const Profile = styled(animated.div)`
 	h1 {
 		color: ${props => props.theme.brand.primary};
 	}
@@ -50,9 +53,8 @@ const Profile = styled.div`
 	display: grid;
 	grid-template-columns 1fr 6fr;
 	grid-column-gap: 2vw;
-	margin-bottom: 2vw;
-	padding-bottom: 2vw;
-	border-bottom: 1px solid #eee;
+	margin-bottom: 2vh;
+	padding-bottom: 2vh;
 `
 
 const ListWrapper = styled.div`
@@ -64,63 +66,72 @@ const ListWrapper = styled.div`
 `
 
 const Index = ({
-  data: {
-    allMdx: { edges: projectEdges },
-  },
-  location,
+	data: {
+		allMdx: { edges: projectEdges },
+	},
+	location,
 }) => {
-  const trail = useTrail(projectEdges.length, {
-    from: { height: '0%' },
-    to: { height: '100%' },
-  })
 
-  return (
-    <Layout pathname={location.pathname}>
-		<Wrapper>
-			<Profile>
-				<ImageContainer>
-					<img src="headshot.jpg" alt="Kyle headshot" />
-				</ImageContainer>
-				<div>
-					<h1>Kyle Karpack</h1>
-					<h2>Software Engineer in Seattle</h2>
-					<p>Specializing in user-centered design for large web applications</p>
-				</div>
-			</Profile>
+	const titleProps = useSpring({
+		from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
+		to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+	})
 
-			<h2>Recent Work</h2>
-			<ListWrapper>
-				{trail.map((style, index) => (
-				<ProjectItem
-					testid={`projectItem-${index}`}
-					style={style}
-					key={projectEdges[index].node.fields.slug}
-					node={projectEdges[index].node}
-				/>
-				))}
-			</ListWrapper>
 
-			<MoreWrapper>
-				<br />
-				<br />
-				<br />
-				<br />
-				<a className="btn" href="/portfolio">View More</a>
-			</MoreWrapper>
-		</Wrapper>
-    </Layout>
-  )
+	const trail = useTrail(projectEdges.length, {
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+	});
+
+	return (
+		<Layout pathname={location.pathname}>
+			<Wrapper>
+				<Profile style={titleProps}>
+					<ImageContainer>
+						<img src="headshot.jpg" alt="Kyle headshot" />
+					</ImageContainer>
+					<div>
+						<h1>Kyle Karpack</h1>
+						<h2>Software Engineer in Seattle</h2>
+						<p>Specializing in user-centered design for large web applications</p>
+					</div>
+				</Profile>
+
+				<hr />
+
+				<h2>Recent Work</h2>
+				<ListWrapper>
+					{trail.map((style, index) => (
+						<ProjectItem
+							testid={`projectItem-${index}`}
+							style={style}
+							key={projectEdges[index].node.fields.slug}
+							node={projectEdges[index].node}
+						/>
+					))}
+				</ListWrapper>
+
+				<MoreWrapper>
+					<br />
+					<br />
+					<br />
+					<br />
+					<a className="btn" href="/portfolio">View More</a>
+				</MoreWrapper>
+			</Wrapper>
+		</Layout>
+	)
 }
 
 export default Index
 
 Index.propTypes = {
-  data: PropTypes.shape({
-    allMdx: PropTypes.shape({
-      edges: PropTypes.array.isRequired,
-    }),
-  }).isRequired,
-  location: PropTypes.object.isRequired,
+	data: PropTypes.shape({
+		allMdx: PropTypes.shape({
+			edges: PropTypes.array.isRequired,
+		}),
+	}).isRequired,
+	location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

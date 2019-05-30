@@ -19,41 +19,41 @@ const Title = styled(animated.h1)`
 `
 
 const Single = ({ data: { mdx }, location }) => {
-  const single = mdx.frontmatter
+	const single = mdx.frontmatter
 
-  const titleProps = useSpring({
-    config: config.slow,
-    from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
-    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-  })
-  const contentProps = useSpring({ config: config.slow, delay: 500, from: { opacity: 0 }, to: { opacity: 1 } })
+	const titleProps = useSpring({
+		config: config.slow,
+		from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
+		to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+	})
+	const contentProps = useSpring({ config: config.slow, delay: 500, from: { opacity: 0 }, to: { opacity: 1 } })
 
-  return (
-    <Layout pathname={location.pathname} customSEO>
-      <SEO pathname={location.pathname} postNode={mdx} single />
-      <Hero single>
-        <Content type="text">
-          <Title data-testid="single-title" style={titleProps}>
-            {single.title}
-          </Title>
-        </Content>
-      </Hero>
-      <Container type="text">
-        <animated.div style={contentProps}>
-          <MDXRenderer>{mdx.code.body}</MDXRenderer>
-        </animated.div>
-      </Container>
-    </Layout>
-  )
+	return (
+		<Layout pathname={location.pathname} customSEO>
+			<SEO pathname={location.pathname} postNode={mdx} single />
+			<Hero single>
+				<Content type="text">
+					<Title data-testid="single-title" style={titleProps}>
+						{single.title}
+					</Title>
+				</Content>
+			</Hero>
+			<Container type="text">
+				<animated.div style={contentProps}>
+					<MDXRenderer>{mdx.code.body}</MDXRenderer>
+				</animated.div>
+			</Container>
+		</Layout>
+	)
 }
 
 export default Single
 
 Single.propTypes = {
-  data: PropTypes.shape({
-    mdx: PropTypes.object.isRequired,
-  }).isRequired,
-  location: PropTypes.object.isRequired,
+	data: PropTypes.shape({
+		mdx: PropTypes.object.isRequired,
+	}).isRequired,
+	location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`
