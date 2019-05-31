@@ -18,6 +18,9 @@ const Content = styled(Container)`
 	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	grid-auto-rows: 1fr;
 	color: #777;
+	@media (max-width: ${props => props.theme.breakpoints.m}) {
+		display: block;
+	}
 `
 
 const InformationWrapper = styled(animated.div)`

@@ -22,9 +22,10 @@ const Wrapper = styled.header`
 	}
 	.navbar-toggle {
 		display: none;
-		padding: 0.5rem;
+		padding: 0.75rem;
 		cursor: pointer;
 		svg {
+			font-size: 1.25rem;
 			fill: #fff;
 		}
 		&:hover {
