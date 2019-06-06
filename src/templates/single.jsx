@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { animated, useSpring, config } from 'react-spring'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { graphql } from 'gatsby'
-import { SEO, Container, Layout, Hero, BGImage } from '../components'
+import { SEO, Container, Layout } from '../components'
 
 const Content = styled(Container)`
   left: 0;
@@ -31,13 +31,11 @@ const Single = ({ data: { mdx }, location }) => {
 	return (
 		<Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={mdx} single />
-			<Hero single>
-				<Content type="text">
-					<Title data-testid="single-title" style={titleProps}>
-						{single.title}
-					</Title>
-				</Content>
-			</Hero>
+			<Content type="text">
+				<Title data-testid="single-title" style={titleProps}>
+					{single.title}
+				</Title>
+			</Content>
 			<Container type="text">
 				<animated.div style={contentProps}>
 					<MDXRenderer>{mdx.code.body}</MDXRenderer>
