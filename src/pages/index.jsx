@@ -52,7 +52,7 @@ const Profile = styled(animated.div)`
 		border-radius: 100%;
 	}
 	display: grid;
-	grid-template-columns 1fr 6fr;
+	grid-template-columns: 1fr 6fr;
 	grid-column-gap: 2vw;
 	margin-bottom: 2vh;
 	padding-bottom: 2vh;
@@ -74,8 +74,6 @@ const Index = ({
 	location
 }) => {
 
-	console.warn(headshot.childImageSharp.fluid);
-
 	const titleProps = useSpring({
 		from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
 		to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
@@ -91,7 +89,7 @@ const Index = ({
 			<Wrapper>
 				<Profile style={titleProps}>
 					<ImageContainer>
-						<Img fluid={headshot.childImageSharp.fluid} />
+						<Img fluid={headshot.childImageSharp.fluid} alt="Kyle headshot" />
 					</ImageContainer>
 					<div>
 						<h1>Kyle Karpack</h1>
