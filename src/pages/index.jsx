@@ -35,6 +35,8 @@ const MoreWrapper = styled.div`
 const ImageContainer = styled.div`
 	align-self: center;
 	text-align: center;
+	max-width: 10em;
+	max-height: 10em;
 `
 
 const Profile = styled(animated.div)`
@@ -50,9 +52,10 @@ const Profile = styled(animated.div)`
 	}
 	img {
 		border-radius: 100%;
+		max-width: 100%;
 	}
 	display: grid;
-	grid-template-columns: 1fr 6fr;
+	grid-template-columns: minmax(6em, 1fr) 12fr;
 	grid-column-gap: 2vw;
 	margin-bottom: 2vh;
 	padding-bottom: 2vh;
