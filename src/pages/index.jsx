@@ -1,5 +1,6 @@
 /* eslint react/display-name: 0 */
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import { darken } from "polished";
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -16,6 +17,7 @@ const Wrapper = styled.div`
 `
 const MoreWrapper = styled.div`
 	text-align: center;
+	margin-top: 4em;
 	a {
 		background: ${props => props.theme.brand.primary};
 		border: 1px solid ${props => darken(0.05, props.theme.brand.primary)};
@@ -48,7 +50,6 @@ const Profile = styled(animated.div)`
 	}
 	img {
 		border-radius: 100%;
-		max-height: 150px;
 	}
 	display: grid;
 	grid-template-columns 1fr 6fr;
@@ -68,15 +69,17 @@ const ListWrapper = styled.div`
 const Index = ({
 	data: {
 		allMdx: { edges: projectEdges },
+		headshot
 	},
-	location,
+	location
 }) => {
+
+	console.warn(headshot.childImageSharp.fluid);
 
 	const titleProps = useSpring({
 		from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
 		to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-	})
-
+	});
 
 	const trail = useTrail(projectEdges.length, {
 		from: { opacity: 0 },
@@ -88,7 +91,7 @@ const Index = ({
 			<Wrapper>
 				<Profile style={titleProps}>
 					<ImageContainer>
-						<img src="headshot.jpg" alt="Kyle headshot" />
+						<Img fluid={headshot.childImageSharp.fluid} />
 					</ImageContainer>
 					<div>
 						<h1>Kyle Karpack</h1>
@@ -112,10 +115,6 @@ const Index = ({
 				</ListWrapper>
 
 				<MoreWrapper>
-					<br />
-					<br />
-					<br />
-					<br />
 					<a className="btn" href="/portfolio">View More</a>
 				</MoreWrapper>
 			</Wrapper>
@@ -136,6 +135,13 @@ Index.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
+	headshot: file(relativePath: { eq: "headshot.jpg" }) {
+		childImageSharp {
+			fluid(maxWidth: 400) {
+				...GatsbyImageSharpFluid
+			}
+		}
+	}  
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fields: { sourceInstanceName: { eq: "projects" } } },
@@ -163,5 +169,6 @@ export const pageQuery = graphql`
         }
       }
     }
+	
   }
 `

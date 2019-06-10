@@ -23,7 +23,14 @@ module.exports = {
         name: 'pages',
         path: `${__dirname}/src/pages`,
       },
-    },
+	},
+	{
+		resolve: 'gatsby-source-filesystem',
+		options: {
+		  name: 'static',
+		  path: `${__dirname}/static`,
+		},
+	  },
     {
       resolve: 'gatsby-mdx',
       options: {
