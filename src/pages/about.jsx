@@ -1,7 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Container, Layout } from '../components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Container, Layout } from '../components';
+import Img from "gatsby-image";
 
 const Content = styled(Container)`
 	.gr_grid_container {
@@ -27,7 +28,8 @@ const Columns = styled(Container)`
 	}
 `
 
-const AboutPage = ({ location }) => (
+const AboutPage = ({ location, data: { profile } }) => (
+
 	<Layout pathname={location.pathname}>
 		<Content type="text">
 			<Columns>
@@ -42,7 +44,7 @@ const AboutPage = ({ location }) => (
 				</div>
 				<div>
 					<br />
-					<img src="/rockies.jpg" alt="Kyle and Kristin in the Rockies" />
+					<Img fluid={profile.childImageSharp.fluid} alt="Kyle and Kristin in the Rockies" />
 				</div>
 			</Columns>
 			<h2>Recently Read</h2>
@@ -106,4 +108,18 @@ export default AboutPage
 		
 AboutPage.propTypes = {
 	location: PropTypes.object.isRequired,
+	data: PropTypes.shape({
+		profile: PropTypes.object.isRequired,
+	}).isRequired,
 }
+
+export const pageQuery = graphql`
+	query AboutQuery {
+		profile: file(relativePath: { eq: "rockies.jpg" }) {
+			childImageSharp {
+				fluid(maxWidth: 1200) {
+					...GatsbyImageSharpFluid
+				}
+			}
+		} 
+	}`;
