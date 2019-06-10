@@ -28,6 +28,17 @@ const Columns = styled(Container)`
 	}
 `
 
+const contributions = fetch("https://cors-anywhere.herokuapp.com/https://github.com/users/kylekarpack/contributions", { mode: "cors" });
+
+contributions.then(d => {
+	return d.text()
+}).then((html) => {
+	const parser = new DOMParser(),
+		doc = parser.parseFromString(html, "text/html");
+
+	console.log(doc);
+})
+
 const AboutPage = ({ location, data: { profile } }) => (
 
 	<Layout pathname={location.pathname}>
@@ -47,6 +58,7 @@ const AboutPage = ({ location, data: { profile } }) => (
 					<Img fluid={profile.childImageSharp.fluid} alt="Kyle and Kristin in the Rockies" />
 				</div>
 			</Columns>
+
 			<h2>Recently Read</h2>
 
 			<div id="gr_grid_widget_1558937354">
@@ -102,7 +114,7 @@ const AboutPage = ({ location, data: { profile } }) => (
 				type="text/javascript"></script>
 	</Content>
   </Layout>
-		)
+)
 		
 export default AboutPage
 		
