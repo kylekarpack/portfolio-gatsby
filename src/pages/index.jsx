@@ -147,7 +147,7 @@ export const pageQuery = graphql`
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fields: { sourceInstanceName: { eq: "projects" } } },
-	  limit: 4
+	  limit: 5
     ) {
       edges {
 		node {
