@@ -59,6 +59,7 @@ const Profile = styled(animated.div)`
 	grid-column-gap: 2vw;
 	margin-bottom: 2vh;
 	padding-bottom: 2vh;
+	width: 100%;
 `
 
 const ListWrapper = styled.div`
