@@ -8,9 +8,35 @@ class Github extends React.Component {
 		this.state = { 
 			loaded: false,
 			chart: "",
-			header: ""
+			header: "",
+			tooltip: {
+				position: null
+			}
 		};
 		this.init();
+	}
+
+	componentDidMount() {
+		window.addEventListener("scroll", this.handleMouseOut);
+	}
+
+	handleMouseOver = (e) => {
+		if (e.target && e.target.matches && e.target.matches("rect")) {
+			const rect = e.target.getBoundingClientRect()
+			this.setState({
+				tooltip: {
+					data: e.target.dataset,
+					position: {
+						left: rect.x + rect.width / 2,
+						top: rect.y - 4
+					}
+				}
+			})
+		}
+	}
+
+	handleMouseOut = (e) => {
+		this.setState({ tooltip: null });
 	}
 
 	async init() {
@@ -45,7 +71,18 @@ class Github extends React.Component {
 		return this.state.loaded ? (
 			<div className="contributions">
 				<h2 className="contributions-header">{this.state.header}</h2>
-				<div className="contributions-chart" dangerouslySetInnerHTML={{ __html: this.state.chart }}></div>
+				<div className="contributions-chart" 
+					onMouseOver={this.handleMouseOver}
+					onMouseOut={this.handleMouseOut}
+					dangerouslySetInnerHTML={{ __html: this.state.chart }}></div>
+				{
+					this.state.tooltip && this.state.tooltip.data ?
+						<div className="tooltip" style={this.state.tooltip.position}>
+							<strong>Date:</strong> {this.state.tooltip.data.date} <br />
+							<strong>Contributions:</strong> {this.state.tooltip.data.count}
+						</div>
+					: ""
+				}
 			</div>
 		) : "";
 	}
