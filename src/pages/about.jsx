@@ -2,7 +2,8 @@ import React from 'react';
 import Script from 'react-load-script'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Container, Layout, Github } from '../components';
+import { Container, Layout } from '../components';
+import { Github } from "react-github-graph"
 import Img from "gatsby-image";
 
 const Content = styled(Container)`

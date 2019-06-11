@@ -5,6 +5,5 @@ import Layout from './Layout';
 import Navigation from './Navigation';
 import ProjectItem from './ProjectItem';
 import SEO from './SEO';
-import Github from "./github/Github";
 
-export { BGImage, Container, Footer, Layout, Navigation, ProjectItem, SEO, Github }
+export { BGImage, Container, Footer, Layout, Navigation, ProjectItem, SEO }
