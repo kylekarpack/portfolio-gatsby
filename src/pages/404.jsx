@@ -1,16 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Layout } from '../components'
+import { Layout, Container } from '../components'
+import styled from 'styled-components'
+
+const Content = styled(Container)`
+`
+
 
 const NotFoundPage = ({ location }) => (
-  <Layout pathname={location.pathname}>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+	<Layout pathname={location.pathname}>
+		<Content type="text">
+			<h1>NOT FOUND</h1>
+			<p>You've hit a route that doesn&#39;t exist</p>
+		</Content>
+	</Layout>
 )
 
-export default NotFoundPage
+export default NotFoundPage;
 
 NotFoundPage.propTypes = {
-  location: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
 }
