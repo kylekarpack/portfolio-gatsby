@@ -43,9 +43,9 @@ class Github extends React.Component {
 
 	render() {
 		return this.state.loaded ? (
-			<div>
+			<div className="contributions">
 				<h2 className="contributions-header">{this.state.header}</h2>
-				<div dangerouslySetInnerHTML={{ __html: this.state.chart }}></div>
+				<div className="contributions-chart" dangerouslySetInnerHTML={{ __html: this.state.chart }}></div>
 			</div>
 		) : "";
 	}
