@@ -10,6 +10,7 @@ type: "us_portfolio"
 link: "https://www.kylekarpack.com/portfolio/wp-to-md"
 title: "wp-to-md"
 cover: "./wp-to-md.png"
+color: "#c7c7c7"
 ---
 ### Case Study
 
