@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Container, Layout } from '../components';
+import { Container, Layout, Github } from '../components';
 import Img from "gatsby-image";
 
 const Content = styled(Container)`
@@ -28,17 +28,6 @@ const Columns = styled(Container)`
 	}
 `
 
-const contributions = fetch("https://cors-anywhere.herokuapp.com/https://github.com/users/kylekarpack/contributions", { mode: "cors" });
-
-contributions.then(d => {
-	return d.text()
-}).then((html) => {
-	const parser = new DOMParser(),
-		doc = parser.parseFromString(html, "text/html");
-
-	console.log(doc);
-})
-
 const AboutPage = ({ location, data: { profile } }) => (
 
 	<Layout pathname={location.pathname}>
@@ -58,6 +47,8 @@ const AboutPage = ({ location, data: { profile } }) => (
 					<Img fluid={profile.childImageSharp.fluid} alt="Kyle and Kristin in the Rockies" />
 				</div>
 			</Columns>
+
+			<Github username="kylekarpack"></Github>
 
 			<h2>Recently Read</h2>
 
