@@ -4,7 +4,7 @@ import Script from 'react-load-script'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Container, Layout } from '../components';
-import { Github } from "react-github-graph"
+import { GithubContributions } from "react-github-graph"
 import Img from "gatsby-image";
 
 const Content = styled(Container)`
@@ -62,7 +62,7 @@ const AboutPage = ({ location, data: { profile } }) => (
 				</div>
 			</Columns>
 
-			<Github username="kylekarpack"></Github>
+			<GithubContributions username="kylekarpack"></GithubContributions>
 
 			<div className="recently-read">
 				<h2>Recently Read</h2>
