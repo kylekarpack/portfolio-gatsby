@@ -1064,6 +1064,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.4.5":
+  version "7.4.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
+  integrity sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.1.0", "@babel/template@^7.1.2", "@babel/template@^7.2.2":
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.2.2.tgz#005b3fdf0ed96e88041330379e0da9a708eb2907"
@@ -10877,10 +10884,19 @@ react-fast-compare@^2.0.2:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-react-github-graph@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-github-graph/-/react-github-graph-1.0.5.tgz#3bfa9210234b6b1cc2f39545db069753a104e419"
-  integrity sha512-hAajSTQl0Equ1pzaJBJy7UQTKEW4iLiQYCI9JNGGr7rcY5lMTX8iM0nLolUEfkGhm3peOtk0iGlyhBZxSfuS3Q==
+react-github-graph@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-github-graph/-/react-github-graph-1.1.0.tgz#1912e2f6c8cc1b7af4494450dd1f19fb2c895e15"
+  integrity sha512-2vRBeRC0GJefaZn+nf6CgAg5pb+o6iS4U+BPsOceU97SHgHy0gIs3a46kz/ago6BmMOP7Ijw0lH1B1bUPwWqyg==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+
+react-goodreads-shelf@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-goodreads-shelf/-/react-goodreads-shelf-1.0.1.tgz#d3f3e90dde886fec8ee92156e53994f3a32fa1ef"
+  integrity sha512-1lU/5Zxl82Vuj/zVeqkz3r88uepU6fXAw2JdVqO8eLmiSougXHl+mGbngVin8gWBHS/uHyEXA8DZ9vYhkpCgyA==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
 
 react-helmet@^5.2.1:
   version "5.2.1"
@@ -10932,11 +10948,6 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
-
-react-load-script@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
-  integrity sha512-aRGxDGP9VoLxcsaYvKWIW+LRrMOzz2eEcubTS4NvQPPugjk2VvMhow0wWTkSl7RxookomD1MwcP4l5UStg5ShQ==
 
 react-map-gl@^4.1.2:
   version "4.1.2"
@@ -13037,29 +13048,10 @@ typeface-cabin@^0.0.72:
   resolved "https://registry.yarnpkg.com/typeface-cabin/-/typeface-cabin-0.0.72.tgz#33667852f30d574b5136f6cd08d162384b19a0d2"
   integrity sha512-YN3MG1CaqyGygSekamQ8HnuZEv6hvn4XHITPf1N/v9sp0sCQ3VHM+e9xDjiIVPjsTyScC8s/TZ79xZvcOZYJ+g==
 
-typeface-merriweather@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-merriweather/-/typeface-merriweather-0.0.72.tgz#2b990f5293252052d51d170c82d3892319ff0555"
-  integrity sha512-gO0+fcZ1fTyKUsYY1ltYOOTI6FmBGeEdyIfeQg9NL8aInndk0feiJJVJsKHm/DiyYrnQEezraAQhz/KQoqMGtw==
-
-typeface-noto-sans@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-noto-sans/-/typeface-noto-sans-0.0.72.tgz#44f1022fe094595240c89f1e362517b1fe35be6c"
-  integrity sha512-a5wI6LUIQ/6XRRf9x/ZXjO4NwfTfcPmkMVe0SoUKVWw/s7GGWERAK73PKFLEmKKGaN59OkwFsotPgYtea0d34A==
-
 typeface-palanquin@^0.0.72:
   version "0.0.72"
   resolved "https://registry.yarnpkg.com/typeface-palanquin/-/typeface-palanquin-0.0.72.tgz#223c3bf1b8bdc370839ab557f644a7681fa52d95"
   integrity sha512-72dPHcHw8G/iR9ko2BBPRVdJFc+gxGIwQZjUYBir74REUPgUb2byNlpzy5nG7tohVJqUjOiCKw54VRKyFlHFcw==
-
-typeface-roboto-condensed@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-roboto-condensed/-/typeface-roboto-condensed-0.0.54.tgz#4e0d5d24ed95e1e2efa7fcf55b8a9ceaa5bd2be7"
-  integrity sha512-1o6p2h4VGqGKQmhjNUli1jY6EHpUobRCYZilhJJ50WtANOy2jKnhIDudDYSj2TcY2VRGFXVm8xRjct3iUkhS7A==
-
-typeface-roboto@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"
 
 ua-parser-js@^0.7.18:
   version "0.7.19"

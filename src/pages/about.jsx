@@ -1,32 +1,11 @@
 import React from 'react';
 import { graphql } from "gatsby";
-import Script from 'react-load-script'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Container, Layout } from '../components';
 import { GithubContributions } from "react-github-graph"
+import { GoodreadsBookshelf } from "react-goodreads-shelf"
 import Img from "gatsby-image";
-
-const Content = styled(Container)`
-	.recently-read {
-		animation: fadein .5s ease-in-out;
-		#gr_grid_widget_1558937354 {
-			h2 {
-				display: none;
-			}
-		}
-	}
-	.gr_grid_container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-		> br, > a {
-			display: none;
-		}
-		img {
-			max-width: 100%;
-		}
-	}
-`
 
 const Columns = styled(Container)`
 	display: grid;
@@ -45,7 +24,7 @@ const Columns = styled(Container)`
 const AboutPage = ({ location, data: { profile } }) => (
 
 	<Layout pathname={location.pathname}>
-		<Content type="text">
+		<Container type="text">
 			<Columns>
 				<div>
 					<h1>About</h1>
@@ -66,17 +45,14 @@ const AboutPage = ({ location, data: { profile } }) => (
 
 			<div className="recently-read">
 				<h2>Recently Read</h2>
-				<div id="gr_grid_widget_1558937354"></div>
-				<Script
-					url="https://www.goodreads.com/review/grid_widget/63515611.Kyle's%20bookshelf:%20read?cover_size=medium&hide_link=true&hide_title=true&num_books=10&order=d&shelf=read&sort=date_read&widget_id=1558937354"
-					type="text/javascript"></Script>
+				<GoodreadsBookshelf userId="63515611" apiKey="PsmXJodsWJgBPgTosjdEkQ" />
 			</div>
-	</Content>
-  </Layout>
+		</Container>
+	</Layout>
 )
-		
+
 export default AboutPage
-		
+
 AboutPage.propTypes = {
 	location: PropTypes.object.isRequired,
 	data: PropTypes.shape({
