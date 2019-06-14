@@ -38,21 +38,27 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 
 		let color = config.themeColor;
 
-		if (node.frontmatter.cover) {
-			try {
-				const colors = await getColors(path.join(node.fileAbsolutePath, "../", node.frontmatter.cover));
-				color = colors[0].hex();
-				for (let c of colors) {
-					if (c.get("lab.l") < 90) {
-						color = c.hex();
-						break; 
-					}
-				}
-			} catch (e) {
-				console.error("could not get color", e);
-			}
+		// If no color is specified, get one from the image
+		if (node.frontmatter.color) {
+			color = node.frontmatter.color;
+		} else {
 
-		} 
+			if (node.frontmatter.cover) {
+				try {
+					const colors = await getColors(path.join(node.fileAbsolutePath, "../", node.frontmatter.cover));
+					color = colors[0].hex();
+					for (let c of colors) {
+						if (c.get("lab.l") < 90) {
+							color = c.hex();
+							break; 
+						}
+					}
+				} catch (e) {
+					console.error("could not get color", e);
+				}
+
+			}
+		}
 		node.frontmatter.color = color;
 		createNodeField({ node, name: 'frontmatter.color', value: color })
 		createNodeField({ node, name: 'color', value: color })
