@@ -7,6 +7,7 @@ slug: "react-github-graph"
 status: "publish"
 title: "react-github-graph"
 cover: "./cover.png"
+color: "#9bc377"
 ---
 ### Case Study
 

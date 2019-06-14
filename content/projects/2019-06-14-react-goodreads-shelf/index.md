@@ -1,0 +1,29 @@
+---
+date: "2019-06-14T08:38:37"
+date_gmt: "2019-06-14T08:38:37"
+modified: "2019-05-14T08:41:47"
+modified_gmt: "2019-06-14T16:41:47"
+slug: "react-goodreads-shelf"
+status: "publish"
+title: "react-goodreads-shelf"
+cover: "./cover.png"
+---
+### Case Study
+
+This React component allows you to display a public Goodreads shelf in a React application. It's a lot like the Goodreads JavaScript widget, but allows for more customization, better async loading, and React-like usage.
+
+```jsx
+<GoodreadsBookshelf userId="USER_ID_HERE" apiKey="API_KEY_HERE" />
+```
+
+### Skills Used
+
+- React
+- ES6
+- XML/JSON
+- npm
+
+### Links
+
+- [https://github.com/kylekarpack/react-goodreads-shelf](https://github.com/kylekarpack/react-goodreads-shelf)
+- [https://www.npmjs.com/package/react-goodreads-shelf](https://www.npmjs.com/package/react-goodreads-shelf)
