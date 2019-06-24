@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import 'typeface-cabin'
-import 'typeface-palanquin'
-import SEO from './SEO'
-import Navigation from './Navigation'
-import Footer from './Footer'
-import theme from '../../config/theme'
-import reset from '../styles/reset'
+import React from "react";
+import PropTypes from "prop-types";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
+import "typeface-cabin";
+import "typeface-palanquin";
+import SEO from "./SEO";
+import Navigation from "./Navigation";
+import Footer from "./Footer";
+import theme from "../../config/theme";
+import reset from "../styles/reset";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   .nav-active {
     color: ${theme.brand.primary} !important;
   }
-`
+`;
 
 // We can pass customSEO here to not include the <SEO> component twice. This prop is 'true' on the project template
 // as the SEO component there passes in some additional things. Otherwise things would be inserted two times
@@ -36,16 +36,16 @@ const Layout = ({ children, pathname, customSEO }) => (
 			<Footer />
 		</>
 	</ThemeProvider>
-)
+);
 
-export default Layout
+export default Layout;
 
 Layout.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
 	pathname: PropTypes.string.isRequired,
 	customSEO: PropTypes.bool,
-}
+};
 
 Layout.defaultProps = {
 	customSEO: false,
-}
+};

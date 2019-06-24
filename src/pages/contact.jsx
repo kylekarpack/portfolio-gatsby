@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Container, Layout } from '../components'
-import ReactMapGL from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Container, Layout } from "../components";
+import ReactMapGL from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const Content = styled(Container)`
   margin: 0 auto;
@@ -29,7 +29,7 @@ const Content = styled(Container)`
 	border: none;
 
   }
-`
+`;
 
 class ContactPage extends React.Component {
 
@@ -115,13 +115,13 @@ class ContactPage extends React.Component {
 					</p>
 				</Content>
 			</Layout>
-		)
+		);
 	}
 
 }
 
-export default ContactPage
+export default ContactPage;
 
 ContactPage.propTypes = {
 	location: PropTypes.object.isRequired,
-}
+};

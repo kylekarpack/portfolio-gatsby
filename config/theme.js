@@ -1,37 +1,37 @@
-import { darken } from 'polished'
+import { darken } from "polished";
 
 const brand = {
-  primary: '#43a9d1',
-  secondary: '#2c3e50',
-}
+	primary: "#43a9d1",
+	secondary: "#2c3e50",
+};
 
 const colors = {
-  grey: '#6b6b6b',
-  black: '#000',
-  white: '#fff',
-  bg_color: '#fff',
-  body_color: '#444',
-  link_color: brand.primary,
-  link_color_hover: `${darken(0.15, brand.primary)}`,
-}
+	grey: "#6b6b6b",
+	black: "#000",
+	white: "#fff",
+	bg_color: "#fff",
+	body_color: "#444",
+	link_color: brand.primary,
+	link_color_hover: `${darken(0.15, brand.primary)}`,
+};
 
 const theme = {
-  brand,
-  colors,
-  breakpoints: {
-    xs: '400px',
-    s: '600px',
-    m: '900px',
-    l: '1200px',
-  },
-  container: {
-    base: '100rem',
-    text: '55rem',
-  },
-  spacer: {
-    horizontal: '2rem',
-    vertical: '3rem',
-  },
-}
+	brand,
+	colors,
+	breakpoints: {
+		xs: "400px",
+		s: "600px",
+		m: "900px",
+		l: "1200px",
+	},
+	container: {
+		base: "100rem",
+		text: "55rem",
+	},
+	spacer: {
+		horizontal: "2rem",
+		vertical: "3rem",
+	},
+};
 
-export default theme
+export default theme;

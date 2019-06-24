@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
-import { rgba } from 'polished'
+import styled, { css } from "styled-components";
+import { rgba } from "polished";
 
-const shade = `rgba(255, 255, 255, 0.4)`
+const shade = "rgba(255, 255, 255, 0.4)";
 
 // position: static on the image wrapper resets the absolute positioning and allows for some custom styling
 // the single/project templates have different headers
@@ -11,14 +11,14 @@ const BGImage = styled.div`
   .gatsby-image-wrapper {
     position: static !important;
     > div {
-      padding-bottom: ${props => (props.single ? '30vh' : '50vh')} !important;
+      padding-bottom: ${props => (props.single ? "30vh" : "50vh")} !important;
       @media (max-width: ${props => props.theme.breakpoints.m}),
         (max-device-width: ${props => props.theme.breakpoints.m}) {
-        padding-bottom: ${props => (props.single ? '40vh' : '60vh')};!important;
+        padding-bottom: ${props => (props.single ? "40vh" : "60vh")};!important;
       }
       @media (max-width: ${props => props.theme.breakpoints.s}),
         (max-device-width: ${props => props.theme.breakpoints.s}) {
-        padding-bottom: ${props => (props.single ? '300px' : '400px')} !important;
+        padding-bottom: ${props => (props.single ? "300px" : "400px")} !important;
       }
       @media (max-width: ${props => props.theme.breakpoints.xs}),
         (max-device-width: ${props => props.theme.breakpoints.xs}) {
@@ -27,7 +27,7 @@ const BGImage = styled.div`
     }
   }
   ${props =>
-    props.customcolor &&
+		props.customcolor &&
     css`
       &:before {
         content: '';
@@ -52,6 +52,6 @@ const BGImage = styled.div`
     top: 0;
     width: 100%;
   }
-`
+`;
 
-export default BGImage
+export default BGImage;

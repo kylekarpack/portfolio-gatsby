@@ -1,40 +1,40 @@
-const _ = require('lodash');
-const getColors = require('get-image-colors');
+const _ = require("lodash");
+const getColors = require("get-image-colors");
 const path = require("path");
-const config = require('./config/website')
+const config = require("./config/website");
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
 const wrapper = promise =>
 	promise.then(result => {
 		if (result.errors) {
-			throw result.errors
+			throw result.errors;
 		}
-		return result
-	})
+		return result;
+	});
 
 exports.onCreateNode = async ({ node, actions, getNode }) => {
-	const { createNodeField } = actions
-	let slug
+	const { createNodeField } = actions;
+	let slug;
 	// Only use MDX nodes
-	if (node.internal.type === 'Mdx') {
-		const fileNode = getNode(node.parent)
+	if (node.internal.type === "Mdx") {
+		const fileNode = getNode(node.parent);
 		// If the frontmatter contains a "slug", use it
 		if (
-			Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-			Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
+			Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+			Object.prototype.hasOwnProperty.call(node.frontmatter, "slug")
 		) {
-			slug = `/${_.kebabCase(node.frontmatter.slug)}`
+			slug = `/${_.kebabCase(node.frontmatter.slug)}`;
 		}
 		// Otherwise use the title for the slug
 		if (
-			Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-			Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
+			Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+			Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
 		) {
-			slug = `/${_.kebabCase(node.frontmatter.title)}`
+			slug = `/${_.kebabCase(node.frontmatter.title)}`;
 		}
-		createNodeField({ node, name: 'slug', value: slug })
+		createNodeField({ node, name: "slug", value: slug });
 		// Adds the name of "gatsby-source-filesystem" as field (in this case "projects" or "pages")
-		createNodeField({ node, name: 'sourceInstanceName', value: fileNode.sourceInstanceName })
+		createNodeField({ node, name: "sourceInstanceName", value: fileNode.sourceInstanceName });
 
 		let color = config.themeColor;
 
@@ -54,24 +54,25 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 						}
 					}
 				} catch (e) {
+					// eslint-disable-next-line no-console
 					console.error("could not get color", e);
 				}
 
 			}
 		}
 		node.frontmatter.color = color;
-		createNodeField({ node, name: 'frontmatter.color', value: color })
-		createNodeField({ node, name: 'color', value: color })
+		createNodeField({ node, name: "frontmatter.color", value: color });
+		createNodeField({ node, name: "color", value: color });
 
 	}
-}
+};
 
 exports.createPages = async ({ graphql, actions }) => {
-	const { createPage } = actions
+	const { createPage } = actions;
 
 	// Our templates for projects and files inside /pages/*.mdx
-	const projectPage = require.resolve('./src/templates/project.jsx')
-	const singlePage = require.resolve('./src/templates/single.jsx')
+	const projectPage = require.resolve("./src/templates/project.jsx");
+	const singlePage = require.resolve("./src/templates/single.jsx");
 
 	const result = await wrapper(
 		graphql(`
@@ -96,7 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     `)
-	)
+	);
 
 	result.data.projects.edges.forEach(edge => {
 		createPage({
@@ -106,8 +107,8 @@ exports.createPages = async ({ graphql, actions }) => {
 				// Pass "slug" through context so we can reference it in our query like "$slug: String!"
 				slug: edge.node.fields.slug
 			},
-		})
-	})
+		});
+	});
 	result.data.single.edges.forEach(edge => {
 		createPage({
 			path: edge.node.fields.slug,
@@ -115,13 +116,13 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: {
 				slug: edge.node.fields.slug,
 			},
-		})
-	})
-}
+		});
+	});
+};
 
 // Necessary changes to get gatsby-mdx and Cypress working
-exports.onCreateWebpackConfig = ({ stage, actions, loaders, getConfig }) => {
-	const config = getConfig()
+exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
+	const config = getConfig();
 
 	config.module.rules = [
 		...config.module.rules.filter(rule => String(rule.test) !== String(/\.jsx?$/)),
@@ -130,7 +131,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, loaders, getConfig }) => {
 			test: /\.jsx?$/,
 			exclude: modulePath => /node_modules/.test(modulePath) && !/node_modules\/gatsby-mdx/.test(modulePath),
 		},
-	]
+	];
 
-	actions.replaceWebpackConfig(config)
-}
+	actions.replaceWebpackConfig(config);
+};

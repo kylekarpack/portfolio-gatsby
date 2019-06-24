@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.footer`
   margin: 6rem 0 1rem 0;
@@ -10,12 +10,12 @@ const Wrapper = styled.footer`
     text-decoration: none;
     color: ${props => props.theme.brand.primary};
   }
-`
+`;
 const year = new Date().getFullYear();
 const Footer = () => (
-  <Wrapper data-testid="footer">
+	<Wrapper data-testid="footer">
     Copyright &copy; {year} Kyle Karpack
-  </Wrapper>
-)
+	</Wrapper>
+);
 
-export default Footer
+export default Footer;

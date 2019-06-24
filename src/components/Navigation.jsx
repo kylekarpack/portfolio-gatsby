@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
-import { FaGithub, FaLinkedin, FaBars } from 'react-icons/fa'
-import styled from 'styled-components'
+import React from "react";
+import { Link, StaticQuery, graphql } from "gatsby";
+import { FaGithub, FaLinkedin, FaBars } from "react-icons/fa";
+import styled from "styled-components";
 
 const Wrapper = styled.header`
 	position: sticky;
@@ -49,7 +49,7 @@ const Wrapper = styled.header`
 		}
 
 	}
-`
+`;
 
 const Nav = styled.nav`
 	display: flex;
@@ -88,7 +88,7 @@ const Nav = styled.nav`
 			max-width: 100%;
 		}
 	}
-`
+`;
 
 const SocialMedia = styled.div`
 	display: flex;
@@ -109,7 +109,7 @@ const SocialMedia = styled.div`
 	@media (max-width: ${props => props.theme.breakpoints.xs}) {
 		order: 3;
 	}
-`
+`;
 
 // Grabs all MDX files from src/pages and puts them into the navigation
 
@@ -129,7 +129,7 @@ class Navigation extends React.Component {
 		return (
 			<StaticQuery
 				query={query}
-				render={data => (
+				render={() => (
 					<Wrapper data-testid="navigation">
 
 						<a className="navbar-toggle" onClick={this.toggleSideNav}>
@@ -175,11 +175,11 @@ class Navigation extends React.Component {
 					</Wrapper>
 				)}
 			/>
-		)
+		);
 	}
 }
 
-export default Navigation
+export default Navigation;
 
 const query = graphql`
   query NavLinks {
@@ -196,4 +196,4 @@ const query = graphql`
       }
     }
   }
-`
+`;

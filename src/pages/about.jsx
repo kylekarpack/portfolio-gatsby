@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import { graphql } from "gatsby";
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Container, Layout } from '../components';
-import { GithubContributions } from "react-github-graph"
-import { GoodreadsBookshelf } from "react-goodreads-shelf"
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Container, Layout } from "../components";
+import { GithubContributions } from "react-github-graph";
+import { GoodreadsBookshelf } from "react-goodreads-shelf";
 import Img from "gatsby-image";
 
 const Columns = styled(Container)`
@@ -19,7 +19,7 @@ const Columns = styled(Container)`
 	@media (max-width: ${props => props.theme.breakpoints.m}) {
 		display: block;
 	}
-`
+`;
 
 const AboutPage = ({ location, data: { profile } }) => (
 
@@ -30,7 +30,7 @@ const AboutPage = ({ location, data: { profile } }) => (
 					<h1>About</h1>
 					<p>
 						Thanks for checking out my site.
-						I'm a software engineer based in Seattle.
+						I&#39;m a software engineer based in Seattle.
 						If you are looking to hire an experienced front-end developer, please check out my <a href="/resume">resume</a> and feel free to <a href="/contact">contact me</a> any time.
 						Outside work, I enjoy hiking, soccer, cooking, reading, and spending time with family.
 					</p>
@@ -49,16 +49,16 @@ const AboutPage = ({ location, data: { profile } }) => (
 			</div>
 		</Container>
 	</Layout>
-)
+);
 
-export default AboutPage
+export default AboutPage;
 
 AboutPage.propTypes = {
 	location: PropTypes.object.isRequired,
 	data: PropTypes.shape({
 		profile: PropTypes.object.isRequired,
 	}).isRequired,
-}
+};
 
 export const pageQuery = graphql`
 	query AboutQuery {

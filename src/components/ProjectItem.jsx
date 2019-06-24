@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import { animated } from 'react-spring'
-import styled from 'styled-components'
-import Img from 'gatsby-image'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "gatsby";
+import { animated } from "react-spring";
+import styled from "styled-components";
+import Img from "gatsby-image";
 
 const Item = styled(animated.div)`
 	box-shadow: 0 0 2px rgba(0, 0, 0, .1);
-`
+`;
 
 const TextContent = styled.div`
 	background: ${props => (props.customcolor ? props.customcolor : props.theme.colors.grey)};
@@ -21,7 +21,7 @@ const TextContent = styled.div`
 		overflow: hidden;
 		max-width: 100%;
 	}
-`
+`;
 
 const ImageContent = styled(animated.div)`
 	position: relative;
@@ -30,7 +30,7 @@ const ImageContent = styled(animated.div)`
 		display: block;
 		padding-top: 100%;
 	}
-`
+`;
 
 const Content = styled.div`
   height: 100%;
@@ -70,7 +70,7 @@ const Content = styled.div`
 	font-size: 1.2rem;
 	line-height: 1;
   }
-`
+`;
 
 const ImageWrapper = styled.div`
   > div {
@@ -84,7 +84,7 @@ const ImageWrapper = styled.div`
       position: static !important;
     }
   }
-`
+`;
 
 const Overlay = styled.div`
   background-color: ${props => props.theme.brand.primary};
@@ -94,7 +94,7 @@ const Overlay = styled.div`
   top: 0;
   width: 100%;
   z-index: -2;
-`
+`;
 
 const TracedGlow = styled.img`
   position: absolute;
@@ -108,35 +108,35 @@ const TracedGlow = styled.img`
   opacity: 0.08;
   filter: invert(100%);
   z-index: -1;
-`
+`;
 
 const ProjectItem = ({ node, style, testid }) => (
-  <Item key={node.fields.slug} style={style} data-testid={testid}>
-    <ImageContent>
-		<Content>
-		<ImageWrapper>
-			<Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
-		</ImageWrapper>
+	<Item key={node.fields.slug} style={style} data-testid={testid}>
+		<ImageContent>
+			<Content>
+				<ImageWrapper>
+					<Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
+				</ImageWrapper>
+				<Link to={node.fields.slug}>
+					<TracedGlow src={node.frontmatter.cover.childImageSharp.fluid.tracedSVG} alt="" />
+					<Overlay style={{ backgroundColor: node.fields.color }} />
+					<h2>{node.frontmatter.title}</h2>
+					<p>{node.excerpt.replace("Case Study", "").replace("Project Description", "").split("Skills Used")[0]}</p>
+				</Link>
+			</Content>
+		</ImageContent>
 		<Link to={node.fields.slug}>
-			<TracedGlow src={node.frontmatter.cover.childImageSharp.fluid.tracedSVG} alt="" />
-			<Overlay style={{ backgroundColor: node.fields.color }} />
-			<h2>{node.frontmatter.title}</h2>
-			<p>{node.excerpt.replace("Case Study", "").replace("Project Description", "").split("Skills Used")[0]}</p>
+			<TextContent customcolor={node.fields.color}>
+				<h2>{node.frontmatter.title}</h2>
+			</TextContent>
 		</Link>
-		</Content>
-	</ImageContent>
-	<Link to={node.fields.slug}>
-		<TextContent customcolor={node.fields.color}>
-			<h2>{node.frontmatter.title}</h2>
-		</TextContent>
-	</Link>
-  </Item>
-)
+	</Item>
+);
 
-export default ProjectItem
+export default ProjectItem;
 
 ProjectItem.propTypes = {
-  node: PropTypes.object.isRequired,
-  style: PropTypes.object.isRequired,
-  testid: PropTypes.string.isRequired,
-}
+	node: PropTypes.object.isRequired,
+	style: PropTypes.object.isRequired,
+	testid: PropTypes.string.isRequired,
+};

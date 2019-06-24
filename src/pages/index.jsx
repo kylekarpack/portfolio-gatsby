@@ -1,12 +1,12 @@
 /* eslint react/display-name: 0 */
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import { darken } from "polished";
-import PropTypes from 'prop-types';
-import React from 'react';
-import { useTrail, useSpring, animated } from 'react-spring';
-import styled from 'styled-components';
-import { Layout, ProjectItem } from '../components';
+import PropTypes from "prop-types";
+import React from "react";
+import { useTrail, useSpring, animated } from "react-spring";
+import styled from "styled-components";
+import { Layout, ProjectItem } from "../components";
 
 const Wrapper = styled.div`
 	padding: 2vw;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 	hr {
 		border-top: 1px solid #eee;
 	}
-`
+`;
 const MoreWrapper = styled.div`
 	text-align: center;
 	margin-top: 4em;
@@ -30,14 +30,14 @@ const MoreWrapper = styled.div`
 			background: ${props => darken(0.1, props.theme.brand.primary)}
 		}
 	}
-`
+`;
 
 const ImageContainer = styled.div`
 	align-self: center;
 	text-align: center;
 	max-width: 10em;
 	max-height: 10em;
-`
+`;
 
 const Profile = styled(animated.div)`
 	h1 {
@@ -60,7 +60,7 @@ const Profile = styled(animated.div)`
 	margin-bottom: 2vh;
 	padding-bottom: 2vh;
 	width: 100%;
-`
+`;
 
 const ListWrapper = styled.div`
 	display: grid;
@@ -68,7 +68,7 @@ const ListWrapper = styled.div`
 	grid-column-gap: 2vw;
 	grid-row-gap: 2vw;
 	width: 100%;
-`
+`;
 
 const Index = ({
 	data: {
@@ -79,8 +79,8 @@ const Index = ({
 }) => {
 
 	const titleProps = useSpring({
-		from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
-		to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+		from: { opacity: 0, transform: "translate3d(0, -30px, 0)" },
+		to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
 	});
 
 	const trail = useTrail(projectEdges.length, {
@@ -121,10 +121,10 @@ const Index = ({
 				</MoreWrapper>
 			</Wrapper>
 		</Layout>
-	)
-}
+	);
+};
 
-export default Index
+export default Index;
 
 Index.propTypes = {
 	data: PropTypes.shape({
@@ -133,7 +133,7 @@ Index.propTypes = {
 		}),
 	}).isRequired,
 	location: PropTypes.object.isRequired,
-}
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -173,4 +173,4 @@ export const pageQuery = graphql`
     }
 	
   }
-`
+`;

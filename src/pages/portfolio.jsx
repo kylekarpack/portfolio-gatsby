@@ -1,21 +1,21 @@
 /* eslint react/display-name: 0 */
-import React from 'react'
-import { graphql } from 'gatsby'
-import PropTypes from 'prop-types'
-import { useTrail, config } from 'react-spring'
-import styled from 'styled-components'
-import { Layout, ProjectItem } from '../components'
+import React from "react";
+import { graphql } from "gatsby";
+import PropTypes from "prop-types";
+import { useTrail, config } from "react-spring";
+import styled from "styled-components";
+import { Layout, ProjectItem } from "../components";
 
 const Wrapper = styled.div`
 	padding: 2vw;
-`
+`;
 const ListWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	grid-column-gap: 2vw;
 	grid-row-gap: 2vw;
 	width: 100%;
-`
+`;
 
 const Portfolio = ({
 	data: {
@@ -45,10 +45,10 @@ const Portfolio = ({
 				</ListWrapper>
 			</Wrapper>
 		</Layout>
-	)
-}
+	);
+};
 
-export default Portfolio
+export default Portfolio;
 
 Portfolio.propTypes = {
 	data: PropTypes.shape({
@@ -57,7 +57,7 @@ Portfolio.propTypes = {
 		}),
 	}).isRequired,
 	location: PropTypes.object.isRequired,
-}
+};
 
 export const pageQuery = graphql`
   query PortfolioQuery {
@@ -88,4 +88,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
