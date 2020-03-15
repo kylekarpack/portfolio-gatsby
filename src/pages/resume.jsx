@@ -46,13 +46,22 @@ class Resume extends React.Component {
 					<ul className="small">
 						<li><b>Languages</b>: JavaScript, Typescript, CSS, SCSS, HTML, SQL, C#</li>
 						<li><b>Platforms</b>: Angular, AngularJS, React, NodeJS, .NET, Azure, AWS, WordPress, Ionic, GraphQL, ElasticSearch</li>
-						<li><b>Tooling</b>: Webpack, NPM/Yarn, Karma, Jasmine, Protractor, Git, Gulp, Jira, TeamCity, Adobe Photoshop</li>
+						<li><b>Tooling</b>: Webpack, NPM/Yarn, Karma, Jasmine, Protractor, Git, Gulp, Jira, TeamCity, Jenkins, Adobe Photoshop</li>
 					</ul>
 					<h1>PROFESSIONAL EXPERIENCE</h1>
+					<h2>Adobe, Seattle, WA</h2>
+					<h3><i>Senior Front-End Engineer </i>October 2019 - Present</h3>
+					<p>Building out the front end for Adobe's Bizible product in the Digital Experience division. Accomplishments include:</p>
+					<ul className="small">
+						<li>Reducing front-end build times by up to 80% as a part of the product quality team</li>
+						<li>Refreshing Bizible's business intelligence platform</li>
+						<li>Managing releases on a regular basis and ensuring product stability</li>
+						<li>Implementing Adobe's Spectrum UI to revamp the Bizible user interface</li>
+					</ul>
 					<h2>Net-Inspect LLC, Kirkland, WA</h2>
-					<h3><i>Lead Front-End Engineer </i>August 2018 - Present</h3>
+					<h3><i>Lead Front-End Engineer </i>August 2018 - August 2019</h3>
 					<p>Leading a team of developers building the top SaaS application for manufacturing quality management. In addition to
-						previous duties, this role includes:</p>
+						previous duties, this role included:</p>
 					<ul className="small">
 						<li>Completion and launch of a full rewrite of the application in AngularJS and Angular</li>
 						<li>Responsibility for architectural decisions, sprint planning, mentoring junior developers, and interviewing
