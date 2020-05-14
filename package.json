@@ -7,7 +7,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "dev": "gatsby develop -o",
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "build": "gatsby build --log-pages",
     "serve": "gatsby serve",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
