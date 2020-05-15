@@ -115,10 +115,10 @@ const ProjectItem = ({ node, style, testid }) => (
 		<ImageContent>
 			<Content>
 				<ImageWrapper>
-					<Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
+					<Img fluid={node.frontmatter.cover?.childImageSharp?.fluid} />
 				</ImageWrapper>
 				<Link to={node.fields.slug}>
-					<TracedGlow src={node.frontmatter.cover.childImageSharp.fluid.tracedSVG} alt="" />
+					<TracedGlow src={node.frontmatter.cover?.childImageSharp?.fluid?.tracedSVG} alt="" />
 					<Overlay style={{ backgroundColor: node.fields.color }} />
 					<h2>{node.frontmatter.title}</h2>
 					<p>{node.excerpt.replace("Case Study", "").replace("Project Description", "").split("Skills Used")[0]}</p>
