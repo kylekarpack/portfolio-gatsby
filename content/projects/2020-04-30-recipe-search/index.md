@@ -5,6 +5,7 @@ slug: "recipe-search"
 status: "publish"
 title: "Recipe Search"
 cover: "./cover.png"
+color: "#c14367"
 ---
 ### Case Study
 
