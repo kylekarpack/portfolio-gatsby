@@ -4,7 +4,7 @@ import Img from "gatsby-image";
 import { darken } from "polished";
 import PropTypes from "prop-types";
 import React from "react";
-import { useTrail, useSpring, animated } from "react-spring";
+import { animated, useSpring, useTrail } from "react-spring";
 import styled from "styled-components";
 import { Layout, ProjectItem } from "../components";
 
@@ -19,15 +19,15 @@ const MoreWrapper = styled.div`
 	text-align: center;
 	margin-top: 4em;
 	a {
-		background: ${props => props.theme.brand.primary};
-		border: 1px solid ${props => darken(0.05, props.theme.brand.primary)};
-		transition: all .25s ease-in-out;
+		background: ${(props) => props.theme.brand.primary};
+		border: 1px solid ${(props) => darken(0.05, props.theme.brand.primary)};
+		transition: all 0.25s ease-in-out;
 		color: #fff;
 		font-size: 1.3rem;
 		padding: 0.75rem 2rem;
 		&:hover {
-			box-shadow: 0 0 4px ${props => props.theme.brand.primary};
-			background: ${props => darken(0.1, props.theme.brand.primary)}
+			box-shadow: 0 0 4px ${(props) => props.theme.brand.primary};
+			background: ${(props) => darken(0.1, props.theme.brand.primary)};
 		}
 	}
 `;
@@ -41,9 +41,11 @@ const ImageContainer = styled.div`
 
 const Profile = styled(animated.div)`
 	h1 {
-		color: ${props => props.theme.brand.primary};
+		color: ${(props) => props.theme.brand.primary};
 	}
-	h1, h2, p { 
+	h1,
+	h2,
+	p {
 		margin: 0;
 		line-height: 1.5;
 	}
@@ -73,11 +75,10 @@ const ListWrapper = styled.div`
 const Index = ({
 	data: {
 		allMdx: { edges: projectEdges },
-		headshot
+		headshot,
 	},
-	location
+	location,
 }) => {
-
 	const titleProps = useSpring({
 		from: { opacity: 0, transform: "translate3d(0, -30px, 0)" },
 		to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
@@ -98,7 +99,9 @@ const Index = ({
 					<div>
 						<h1>Kyle Karpack</h1>
 						<h2>Software Engineer in Seattle</h2>
-						<p>Specializing in user-centered design for large web applications</p>
+						<p>
+							Specializing in user-centered design for large web applications
+						</p>
 					</div>
 				</Profile>
 
@@ -117,7 +120,9 @@ const Index = ({
 				</ListWrapper>
 
 				<MoreWrapper>
-					<a className="btn" href="/portfolio">View More</a>
+					<a className="btn" href="/portfolio">
+						View More
+					</a>
 				</MoreWrapper>
 			</Wrapper>
 		</Layout>
@@ -136,41 +141,44 @@ Index.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query IndexQuery {
-	headshot: file(relativePath: { eq: "headshot.jpg" }) {
-		childImageSharp {
-			fluid(maxWidth: 400) {
-				...GatsbyImageSharpFluid
+	query IndexQuery {
+		headshot: file(relativePath: { eq: "headshot.jpg" }) {
+			childImageSharp {
+				fluid(maxWidth: 400) {
+					...GatsbyImageSharpFluid
+				}
 			}
 		}
-	}  
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "projects" } } },
-	  limit: 5
-    ) {
-      edges {
-		node {
-			excerpt(pruneLength: 140)
+		allMdx(
+			sort: { fields: [frontmatter___date], order: DESC }
+			filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+			limit: 5
+		) {
+			edges {
+				node {
+					excerpt(pruneLength: 140)
+				}
+				node {
+					fields {
+						slug
+						color
+					}
+					frontmatter {
+						title
+						cover {
+							childImageSharp {
+								fluid(
+									maxWidth: 250
+									quality: 50
+									traceSVG: { color: "#f3f3f3" }
+								) {
+									...GatsbyImageSharpFluid_withWebp_tracedSVG
+								}
+							}
+						}
+					}
+				}
+			}
 		}
-        node {
-          fields {
-            slug
-			color
-          }
-          frontmatter {
-			title
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 850, quality: 90, traceSVG: { color: "#f3f3f3" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-	
-  }
+	}
 `;

@@ -1,8 +1,8 @@
 /* eslint react/display-name: 0 */
-import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
-import { useTrail, config } from "react-spring";
+import React from "react";
+import { config, useTrail } from "react-spring";
 import styled from "styled-components";
 import { Layout, ProjectItem } from "../components";
 
@@ -19,9 +19,9 @@ const ListWrapper = styled.div`
 
 const Portfolio = ({
 	data: {
-		allMdx: { edges: projectEdges }
+		allMdx: { edges: projectEdges },
 	},
-	location
+	location,
 }) => {
 	const trail = useTrail(projectEdges.length, {
 		config: config.stiff,
@@ -60,32 +60,36 @@ Portfolio.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query PortfolioQuery {
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "projects" } } }
-    ) {
-      edges {
-		node {
-			excerpt(pruneLength: 140)
+	query PortfolioQuery {
+		allMdx(
+			sort: { fields: [frontmatter___date], order: DESC }
+			filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+		) {
+			edges {
+				node {
+					excerpt(pruneLength: 140)
+				}
+				node {
+					fields {
+						slug
+						color
+					}
+					frontmatter {
+						title
+						cover {
+							childImageSharp {
+								fluid(
+									maxWidth: 250
+									quality: 50
+									traceSVG: { color: "#f3f3f3" }
+								) {
+									...GatsbyImageSharpFluid_withWebp_tracedSVG
+								}
+							}
+						}
+					}
+				}
+			}
 		}
-        node {
-          fields {
-            slug
-			color
-          }
-          frontmatter {
-			title
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 850, quality: 90, traceSVG: { color: "#f3f3f3" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+	}
 `;

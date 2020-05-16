@@ -68,3 +68,6 @@ cypress/videos
 cypress/screenshots
 
 .DS_Store
+
+# Google Docs API token
+.google/token.json
