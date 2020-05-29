@@ -46,7 +46,7 @@ class Resume extends React.Component {
 					<ul className="small">
 						<li><b>Languages</b>: JavaScript, Typescript, CSS, SCSS, HTML, SQL, C#</li>
 						<li><b>Platforms</b>: Angular, AngularJS, React, NodeJS, .NET, Azure, AWS, WordPress, Ionic, GraphQL, ElasticSearch</li>
-						<li><b>Tooling</b>: Webpack, NPM/Yarn, Karma, Jasmine, Protractor, Git, Gulp, Jira, TeamCity, Jenkins, Adobe Photoshop</li>
+						<li><b>Tooling</b>: Webpack, NPM/Yarn, Jest, Enzyme, Karma, Jasmine, Git, Gulp, Jira, TeamCity, Jenkins, Adobe Photoshop</li>
 					</ul>
 					<h1>PROFESSIONAL EXPERIENCE</h1>
 					<h2>Adobe, Seattle, WA</h2>
