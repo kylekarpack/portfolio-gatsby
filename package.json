@@ -49,8 +49,8 @@
     "mapbox-gl": "^1.10.0",
     "polished": "^3.6.3",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-github-graph": "1.1.5",
     "react-goodreads-shelf": "1.0.2",
     "react-helmet": "^5.2.1",
@@ -61,7 +61,7 @@
     "styled-theming": "^2.2.0",
     "typeface-cabin": "^0.0.72",
     "typeface-palanquin": "^0.0.72",
-    "snyk": "^1.335.0"
+    "snyk": "^1.336.0"
   },
   "keywords": [
     "gatsby",
