@@ -8091,10 +8091,10 @@ get-caller-file@^2.0.1:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
-get-image-colors@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/get-image-colors/-/get-image-colors-2.0.0.tgz#7a0c6735500c8953bdcff3edcbf23c5c80c1eb51"
-  integrity sha512-DeoowgAo53GDnRMWOgpyLH6UKK3MMRc6WcmucHfZaeXbTk/rDVsdwUqodR6qMuCBE5DNYgxah63vqcBXBKnmNw==
+get-image-colors@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/get-image-colors/-/get-image-colors-2.0.1.tgz#6e425c0b99c31aa31900373658595b6169adfdca"
+  integrity sha512-kMnO4woLB5iDwwmA0RIDAK1X1m/pBLFmd7g4NvBIZDhMgvQIdcg7nB5yK2sG33axUTUGe6oB2/EUKTsuFNIa7Q==
   dependencies:
     chroma-js "^1.1.1"
     get-pixels "^3.3.0"
