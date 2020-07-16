@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { animated, useSpring, config } from "react-spring";
-import MDXRenderer from "gatsby-mdx/mdx-renderer";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { SEO, Container, Layout } from "../components";
@@ -84,7 +84,7 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 					</InformationWrapper>
 					<ContentBlock customcolor={project.color}>
 						<animated.div style={contentProps}>
-							<MDXRenderer>{postNode.code.body}</MDXRenderer>
+							<MDXRenderer>{postNode.body}</MDXRenderer>
 						</animated.div>
 					</ContentBlock>
 				</Container>
@@ -109,9 +109,7 @@ Project.propTypes = {
 export const pageQuery = graphql`
   query($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
-      code {
-        body
-      }
+      body
       excerpt
       fields {
         slug
