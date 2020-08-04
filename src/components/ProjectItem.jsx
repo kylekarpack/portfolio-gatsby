@@ -7,6 +7,7 @@ import Img from "gatsby-image";
 
 const Item = styled(animated.div)`
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+	background: #fff;
 `;
 
 const TextContent = styled.div`

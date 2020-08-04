@@ -160,6 +160,7 @@ const Head = props => {
 			<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
 			<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 			<link rel="shortcut icon" href="favicon.ico" />
+			<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700" rel="stylesheet"></link>
 			<meta name="msapplication-TileColor" content="#e3c05d" />
 			<meta name="msapplication-config" content="browserconfig.xml" />
 			<meta property="og:locale" content={config.ogLanguage} />

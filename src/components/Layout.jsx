@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import "typeface-cabin";
-import "typeface-palanquin";
 import SEO from "./SEO";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
@@ -13,13 +12,18 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   html, input, textarea, button {
     font-family: "Cabin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
+	}
+	body {
+		background: rgb(245,247,250);
+	}
   h1, h2, h3, h4, h5, h6, nav a {
-	font-family: "Palanquin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	font-weight: 700;
+		font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 700;
+	}
   .nav-active {
-    color: ${theme.brand.primary} !important;
+    box-shadow: inset 0 -5px 0 ${theme.brand.primary} !important;
   }
 `;
 
