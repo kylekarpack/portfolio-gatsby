@@ -17438,11 +17438,6 @@ typeface-cabin@^0.0.72:
   resolved "https://registry.yarnpkg.com/typeface-cabin/-/typeface-cabin-0.0.72.tgz#33667852f30d574b5136f6cd08d162384b19a0d2"
   integrity sha512-YN3MG1CaqyGygSekamQ8HnuZEv6hvn4XHITPf1N/v9sp0sCQ3VHM+e9xDjiIVPjsTyScC8s/TZ79xZvcOZYJ+g==
 
-typeface-palanquin@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-palanquin/-/typeface-palanquin-0.0.72.tgz#223c3bf1b8bdc370839ab557f644a7681fa52d95"
-  integrity sha512-72dPHcHw8G/iR9ko2BBPRVdJFc+gxGIwQZjUYBir74REUPgUb2byNlpzy5nG7tohVJqUjOiCKw54VRKyFlHFcw==
-
 ua-parser-js@^0.7.18:
   version "0.7.19"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"

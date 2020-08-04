@@ -59,8 +59,7 @@
     "snyk": "^1.361.3",
     "styled-components": "^4.4.1",
     "styled-theming": "^2.2.0",
-    "typeface-cabin": "^0.0.72",
-    "typeface-palanquin": "^0.0.72"
+    "typeface-cabin": "^0.0.72"
   },
   "keywords": [
     "gatsby",
