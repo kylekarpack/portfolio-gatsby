@@ -19,7 +19,8 @@
     "test:e2e:dev": "cross-env CYPRESS_SUPPORT=y start-server-and-test dev http://localhost:8000 cy:open",
     "test:e2e:run": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run",
     "test:e2e:ci": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run:ci",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.7",
@@ -45,7 +46,7 @@
     "gatsby-transformer-sharp": "^2.5.6",
     "get-image-colors": "^2.0.1",
     "lodash": "^4.17.19",
-    "mapbox-gl": "^1.11.0",
+    "mapbox-gl": "^1.10.0",
     "polished": "^3.6.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -56,7 +57,7 @@
     "react-icons": "^3.10.0",
     "react-map-gl": "^5.2.7",
     "react-spring": "^8.0.27",
-    "snyk": "^1.362.0",
+    "snyk": "^1.374.0",
     "styled-components": "^4.4.1",
     "styled-theming": "^2.2.0",
     "typeface-cabin": "^0.0.72"
