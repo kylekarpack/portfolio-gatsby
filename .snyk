@@ -2160,3 +2160,21 @@ patch:
         patched: '2020-07-15T02:41:01.885Z'
     - gatsby-plugin-lodash > babel-plugin-lodash > @babel/helper-module-imports > @babel/types > lodash:
         patched: '2020-07-15T02:41:01.885Z'
+    - gatsby-plugin-mdx > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
+    - gatsby-plugin-mdx > @babel/core > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
+    - gatsby-plugin-mdx > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
+    - gatsby-plugin-mdx > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
+    - gatsby-plugin-mdx > @babel/preset-env > @babel/plugin-transform-unicode-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
+    - gatsby-plugin-mdx > @babel/preset-env > @babel/preset-modules > @babel/plugin-transform-dotall-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
+    - gatsby-plugin-mdx > @babel/preset-env > @babel/preset-modules > @babel/plugin-transform-dotall-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-annotate-as-pure > @babel/types > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
+    - gatsby-plugin-mdx > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
+    - gatsby-plugin-mdx > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-07-16T15:26:51.670Z'
