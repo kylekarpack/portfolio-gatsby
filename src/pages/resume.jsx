@@ -2,7 +2,6 @@ import React from "react";
 import { Layout, Container } from "../components";
 import styled from "styled-components";
 
-
 const Content = styled(Container)`
 	line-height: 1.42;
 	ul li {

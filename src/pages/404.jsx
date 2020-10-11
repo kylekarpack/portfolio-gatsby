@@ -6,7 +6,6 @@ import styled from "styled-components";
 const Content = styled(Container)`
 `;
 
-
 const NotFoundPage = ({ location }) => (
 	<Layout pathname={location.pathname}>
 		<Content type="text">

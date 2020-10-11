@@ -122,10 +122,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
 // Necessary changes to get gatsby-mdx and Cypress working
 exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
-	const config = getConfig();
+	const cfg = getConfig();
 
-	config.module.rules = [
-		...config.module.rules.filter(rule => String(rule.test) !== String(/\.jsx?$/)),
+	cfg.module.rules = [
+		...cfg.module.rules.filter(rule => String(rule.test) !== String(/\.jsx?$/)),
 		{
 			...loaders.js(),
 			test: /\.jsx?$/,
@@ -133,5 +133,5 @@ exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
 		},
 	];
 
-	actions.replaceWebpackConfig(config);
+	actions.replaceWebpackConfig(cfg);
 };
