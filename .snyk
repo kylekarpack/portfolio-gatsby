@@ -3520,3 +3520,64 @@ patch:
         patched: '2021-02-10T03:39:11.757Z'
     - gatsby > gatsby-cli > gatsby-recipes > remark-mdxjs > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
         patched: '2021-02-10T03:39:11.757Z'
+  SNYK-JS-LODASH-450202:
+    - babel-plugin-styled-components > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > babel-plugin-lodash > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby-plugin-lodash > babel-plugin-lodash > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > css-loader > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > devcert > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby-plugin-offline > cheerio > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby-remark-images > cheerio > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby-remark-responsive-iframe > cheerio > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/traverse > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > babel-plugin-styled-components > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - babel-plugin-styled-components > @babel/helper-annotate-as-pure > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - babel-plugin-styled-components > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/traverse > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > babel-plugin-lodash > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby-plugin-lodash > babel-plugin-lodash > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > eslint > table > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > optimize-css-assets-webpack-plugin > last-call-webpack-plugin > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > react-dev-utils > inquirer > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > webpack-dev-server > http-proxy-middleware > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/traverse > @babel/generator > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > babel-plugin-styled-components > @babel/helper-annotate-as-pure > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby > babel-plugin-lodash > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - gatsby-plugin-lodash > babel-plugin-lodash > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > babel-plugin-styled-components > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/traverse > @babel/generator > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/traverse > @babel/helper-function-name > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
+    - styled-components > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2021-02-10T03:55:15.744Z'
