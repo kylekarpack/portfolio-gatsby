@@ -151,7 +151,10 @@ export const pageQuery = graphql`
 		}
 		allMdx(
 			sort: { fields: [frontmatter___date], order: DESC }
-			filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+			filter: {
+				frontmatter: { status: { eq: "publish" } }
+				fields: { sourceInstanceName: { eq: "projects" } }
+			}
 			limit: 5
 		) {
 			edges {
@@ -168,11 +171,10 @@ export const pageQuery = graphql`
 						cover {
 							childImageSharp {
 								fluid(
-									maxWidth: 250
-									quality: 50
-									traceSVG: { color: "#f3f3f3" }
+									maxWidth: 350
+									quality: 60
 								) {
-									...GatsbyImageSharpFluid_withWebp_tracedSVG
+									...GatsbyImageSharpFluid_withWebp
 								}
 							}
 						}

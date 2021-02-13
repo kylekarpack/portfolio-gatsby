@@ -2,7 +2,7 @@
 date: "2020-05-05T08:38:37"
 modified: "2020-05-05T08:41:47"
 slug: "observability"
-status: "publish"
+status: "draft"
 title: "BI Observability"
 cover: "./cover.png"
 ---
