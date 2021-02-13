@@ -15099,10 +15099,10 @@ react-focus-lock@^2.3.1:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
-react-github-graph@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/react-github-graph/-/react-github-graph-1.2.2.tgz#4fae6ec3fcae7b3f308c4eb075b0e0ec065af3be"
-  integrity sha512-8k6pbMsFAzgU7pT6k5a47ym18qQ6uekAzj1FahN1zRkmACP59kq0P/i93V2Dxsk7HHRXP4ndc416EG0RSoe3Bg==
+react-github-graph@1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-github-graph/-/react-github-graph-1.2.3.tgz#549cb3109b16324827763f859bade40e5d428675"
+  integrity sha512-EWVQmyUNVQOoltUrL13n/8SsD7873Zr7HbHh5InUHrlAxMH/eqLlUb1AnYdLhHrWWYepTZY7+wTNPMHKZFNQ2Q==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
