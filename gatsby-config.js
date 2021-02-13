@@ -7,6 +7,9 @@ module.exports = {
 	siteMetadata: {
 		siteUrl: config.siteUrl + pathPrefix,
 	},
+	flags: {
+		DEV_SSR: false,
+	},
 	plugins: [
 		"gatsby-plugin-react-helmet",
 		"gatsby-plugin-styled-components",

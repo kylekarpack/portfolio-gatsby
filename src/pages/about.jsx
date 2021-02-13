@@ -45,7 +45,7 @@ const AboutPage = ({ location, data: { profile } }) => (
 
 			<div className="recently-read">
 				<h2>Recently Read</h2>
-				<GoodreadsBookshelf userId="63515611" apiKey="PsmXJodsWJgBPgTosjdEkQ" />
+				<GoodreadsBookshelf userId="63515611" limit={18} width="10%" />
 			</div>
 		</Container>
 	</Layout>
