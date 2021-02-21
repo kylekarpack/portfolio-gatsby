@@ -23,6 +23,7 @@
     "snyk-protect": "snyk protect"
   },
   "dependencies": {
+    "@fs/gatsby-plugin-drive": "^0.2.1",
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.7",
     "babel-plugin-styled-components": "^1.11.1",
@@ -42,7 +43,10 @@
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^3.8.1",
     "gatsby-remark-responsive-iframe": "^2.8.0",
+    "gatsby-source-drive": "^0.0.2",
     "gatsby-source-filesystem": "^2.8.1",
+    "gatsby-source-google-docs": "^2.0.0-beta.44",
+    "gatsby-transformer-remark": "^2.16.0",
     "gatsby-transformer-sharp": "^2.9.0",
     "get-image-colors": "^2.0.1",
     "lodash": "^4.17.20",

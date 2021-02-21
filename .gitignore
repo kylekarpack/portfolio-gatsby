@@ -71,3 +71,5 @@ cypress/screenshots
 
 # Google Docs API token
 .google/token.json
+.env
+.env.*
