@@ -76,7 +76,6 @@ exports.createPages = async ({ graphql, actions }) => {
 	// Our templates for projects and files inside /pages/*.mdx
 	const projectPage = require.resolve("./src/templates/project.jsx");
 	const singlePage = require.resolve("./src/templates/single.jsx");
-	const resumePage = require.resolve("./src/templates/resume.jsx");
 
 	const result = await wrapper(
 		graphql(`
@@ -103,13 +102,6 @@ exports.createPages = async ({ graphql, actions }) => {
 						}
 					}
 				}
-				allGoogleDocs {
-					nodes {
-						slug
-						template
-						markdown
-					}
-				}
 			}
 		`)
 	);
@@ -133,18 +125,6 @@ exports.createPages = async ({ graphql, actions }) => {
 			component: singlePage,
 			context: {
 				slug: edge.node.fields.slug,
-			},
-		});
-	});
-
-	// Create resume page
-	result.data.allGoogleDocs.forEach((edge) => {
-		createPage({
-			path: edge.node.slug,
-			component: resumePage,
-			context: {
-				markdown: edge.node.markdown,
-				slug: edge.node.slug,
 			},
 		});
 	});
