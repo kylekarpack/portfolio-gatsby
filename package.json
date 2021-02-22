@@ -20,7 +20,8 @@
     "test:e2e:dev": "cross-env CYPRESS_SUPPORT=y start-server-and-test dev http://localhost:8000 cy:open",
     "test:e2e:run": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run",
     "test:e2e:ci": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run:ci",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "@fs/gatsby-plugin-drive": "^0.2.1",
@@ -61,7 +62,7 @@
     "react-icons": "^3.10.0",
     "react-map-gl": "^5.2.10",
     "react-spring": "^8.0.27",
-    "snyk": "^1.448.0",
+    "snyk": "^1.458.0",
     "styled-components": "^4.4.1",
     "styled-theming": "^2.2.0"
   },

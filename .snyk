@@ -3520,6 +3520,8 @@ patch:
         patched: '2021-02-10T03:39:11.757Z'
     - gatsby > gatsby-cli > gatsby-recipes > remark-mdxjs > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
         patched: '2021-02-10T03:39:11.757Z'
+    - gatsby-transformer-remark > sanitize-html > lodash:
+        patched: '2021-02-22T01:27:11.531Z'
   SNYK-JS-LODASH-450202:
     - babel-plugin-styled-components > lodash:
         patched: '2021-02-10T03:55:15.744Z'
