@@ -4,8 +4,8 @@ const path = require("path");
 const config = require("./config/website");
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
-const wrapper = promise =>
-	promise.then(result => {
+const wrapper = (promise) =>
+	promise.then((result) => {
 		if (result.errors) {
 			throw result.errors;
 		}
@@ -34,7 +34,11 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 		}
 		createNodeField({ node, name: "slug", value: slug });
 		// Adds the name of "gatsby-source-filesystem" as field (in this case "projects" or "pages")
-		createNodeField({ node, name: "sourceInstanceName", value: fileNode.sourceInstanceName });
+		createNodeField({
+			node,
+			name: "sourceInstanceName",
+			value: fileNode.sourceInstanceName,
+		});
 
 		let color = config.themeColor;
 
@@ -42,28 +46,27 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 		if (node.frontmatter.color) {
 			color = node.frontmatter.color;
 		} else {
-
 			if (node.frontmatter.cover) {
 				try {
-					const colors = await getColors(path.join(node.fileAbsolutePath, "../", node.frontmatter.cover));
+					const colors = await getColors(
+						path.join(node.fileAbsolutePath, "../", node.frontmatter.cover)
+					);
 					color = colors[0].hex();
 					for (let c of colors) {
 						if (c.get("lab.l") < 90) {
 							color = c.hex();
-							break; 
+							break;
 						}
 					}
 				} catch (e) {
 					// eslint-disable-next-line no-console
 					console.error("could not get color", e);
 				}
-
 			}
 		}
 		node.frontmatter.color = color;
 		createNodeField({ node, name: "frontmatter.color", value: color });
 		createNodeField({ node, name: "color", value: color });
-
 	}
 };
 
@@ -76,40 +79,47 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	const result = await wrapper(
 		graphql(`
-      {
-        projects: allMdx(filter: { fields: { sourceInstanceName: { eq: "projects" } } }) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-            }
-          }
-        }
-        single: allMdx(filter: { fields: { sourceInstanceName: { eq: "pages" } } }) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `)
+			{
+				projects: allMdx(
+					filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+				) {
+					edges {
+						node {
+							fields {
+								slug
+							}
+						}
+					}
+				}
+				single: allMdx(
+					filter: { fields: { sourceInstanceName: { eq: "pages" } } }
+				) {
+					edges {
+						node {
+							fields {
+								slug
+							}
+						}
+					}
+				}
+			}
+		`)
 	);
 
-	result.data.projects.edges.forEach(edge => {
+	// Create all portfolio pages
+	result.data.projects.edges.forEach((edge) => {
 		createPage({
 			path: edge.node.fields.slug,
 			component: projectPage,
 			context: {
 				// Pass "slug" through context so we can reference it in our query like "$slug: String!"
-				slug: edge.node.fields.slug
+				slug: edge.node.fields.slug,
 			},
 		});
 	});
-	result.data.single.edges.forEach(edge => {
+
+	// Create all single pages
+	result.data.single.edges.forEach((edge) => {
 		createPage({
 			path: edge.node.fields.slug,
 			component: singlePage,
@@ -125,11 +135,15 @@ exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
 	const cfg = getConfig();
 
 	cfg.module.rules = [
-		...cfg.module.rules.filter(rule => String(rule.test) !== String(/\.jsx?$/)),
+		...cfg.module.rules.filter(
+			(rule) => String(rule.test) !== String(/\.jsx?$/)
+		),
 		{
 			...loaders.js(),
 			test: /\.jsx?$/,
-			exclude: modulePath => /node_modules/.test(modulePath) && !/node_modules\/gatsby-mdx/.test(modulePath),
+			exclude: (modulePath) =>
+				/node_modules/.test(modulePath) &&
+				!/node_modules\/gatsby-mdx/.test(modulePath),
 		},
 	];
 
