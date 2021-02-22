@@ -19,6 +19,8 @@ module.exports = {
 				// https://drive.google.com/drive/folders/FOLDER_ID
 				folder: "1tj9nGujJ0TAGWcegD5XjRFgUDYJrcQRS",
 				createPages: false,
+				demoteHeadings: false,
+				debug: true,
 			},
 		},
 		"gatsby-transformer-remark",

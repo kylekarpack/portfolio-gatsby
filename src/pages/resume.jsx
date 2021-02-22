@@ -2,36 +2,56 @@ import React from "react";
 import { Layout, Container } from "../components";
 import { graphql } from "gatsby";
 import styled from "styled-components";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const Content = styled(Container)`
-	line-height: 1.42;
+	line-height: 1.2;
 	ul li {
-		line-height: 1.42;
+		line-height: 1.5;
+		font-size: 0.9rem;
 	}
-	h1.title {
-		font-size: 2.4rem;
+	p > span, p > a > span {
+		font-size: 1em !important;
+	}
+	h1:first-of-type {
+		font-size: 2rem;
 	}
 	h1 {
 		font-size: 1.4rem;
-		margin-top: 2rem;
+		margin-top: 2.5rem;
+		color: #43a9d1;
 	}
 	h2 {
+		margin-top: 1.5rem;
+		font-weight: 400;
 		font-size: 1.2rem;
+		span:first-child {
+			font-weight: 700;
+		}
 	}
 	h3 {
 		font-size: 1rem;
+		font-weight: 400;
 		display: flex;
 		justify-content: space-between;
+		flex-wrap: wrap;
+		margin-bottom: 1rem;
+		em {
+			font-weight: 400;
+		}
+	}
+	h1,
+	h2,
+	h3 {
+		> span {
+			font-size: 1em !important;
+		}
 	}
 `;
 
 const Resume = ({ data: { doc }, location }) => {
-	console.log(doc);
 	return (
 		<Layout pathname={location.pathname}>
 			<Content type="text">
-				{/* <MDXRenderer>{doc.childMdx.body}</MDXRenderer> */}
 				<div
 					dangerouslySetInnerHTML={{ __html: doc.childMarkdownRemark.html }}
 				/>
@@ -43,14 +63,11 @@ const Resume = ({ data: { doc }, location }) => {
 export default Resume;
 
 export const pageQuery = graphql`
-	query($slug: String) {
-		doc: googleDocs(slug: { eq: $slug }) {
+	query {
+		doc: googleDocs(slug: { eq: "/resume" }) {
 			path
 			childMarkdownRemark {
 				html
-			}
-			childMdx {
-				body
 			}
 		}
 	}
