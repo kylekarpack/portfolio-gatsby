@@ -1,6 +1,6 @@
 {
-  "name": "karpack-k-portfolio",
-  "description": "The portfolio webiste of Kyle Karpack",
+  "name": "kyle-karpack-portfolio",
+  "description": "The portfolio website of Kyle Karpack",
   "version": "1.0.0",
   "private": true,
   "author": "Kyle Karpack",
@@ -66,9 +66,9 @@
     "styled-theming": "^2.2.0"
   },
   "keywords": [
-    "gatsby",
-    "gatsby-starter",
-    "gatsby-starter-portfolio"
+    "karpack",
+    "portfolio",
+    "gatsby"
   ],
   "repository": {
     "url": "https://github.com/kylekarpack/gatsby-portfolio",
