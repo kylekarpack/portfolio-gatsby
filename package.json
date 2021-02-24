@@ -5,9 +5,9 @@
   "private": true,
   "author": "Kyle Karpack",
   "scripts": {
-    "start": "gatsby develop",
-    "develop": "gatsby develop",
-    "dev": "gatsby develop -o",
+    "start": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop",
+    "develop": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop",
+    "dev": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop -o",
     "build": "gatsby build --log-pages",
     "serve": "gatsby serve",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
