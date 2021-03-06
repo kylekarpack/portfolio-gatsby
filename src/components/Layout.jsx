@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import "typeface-cabin";
 import SEO from "./SEO";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
@@ -11,13 +10,13 @@ import reset from "../styles/reset";
 const GlobalStyle = createGlobalStyle`
   ${reset}
   html, input, textarea, button {
-    font-family: "Cabin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 	}
 	body {
 		background: rgb(245,247,250);
 	}
   h1, h2, h3, h4, h5, h6, nav a {
-		font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+		font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 700;
@@ -33,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
 const Layout = ({ children, pathname, customSEO }) => (
 	<ThemeProvider theme={theme}>
 		<>
+			<link rel="stylesheet" href="https://use.typekit.net/kia0axj.css" />
 			{!customSEO && <SEO pathname={pathname} />}
 			<GlobalStyle />
 			<Navigation />
