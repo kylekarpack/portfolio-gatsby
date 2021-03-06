@@ -3,7 +3,7 @@ date: "2021-02-14T08:38:37"
 modified: "2021-02-14T08:41:47"
 slug: "gatsby-starter-tailwind-graphcms"
 status: "publish"
-title: "Gatby Starter Tailwind CSS & GraphCMS"
+title: "Gatsby Starter Tailwind CSS & GraphCMS"
 cover: "./cover.jpg"
 ---
 ### Case Study
