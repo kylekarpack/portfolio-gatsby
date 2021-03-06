@@ -1,7 +1,8 @@
-import React from "react";
-import { Layout, Container } from "../components";
 import { graphql } from "gatsby";
+import React from "react";
 import styled from "styled-components";
+import { parse } from "node-html-parser";
+import { Container, Layout } from "../components";
 
 const Content = styled(Container)`
 	line-height: 1.2;
@@ -9,7 +10,8 @@ const Content = styled(Container)`
 		line-height: 1.5;
 		font-size: 0.9rem;
 	}
-	p > span, p > a > span {
+	p > span,
+	p > a > span {
 		font-size: 1em !important;
 	}
 	h1:first-of-type {
@@ -18,7 +20,7 @@ const Content = styled(Container)`
 	h1 {
 		font-size: 1.4rem;
 		margin-top: 2.5rem;
-		color: #43a9d1;
+		color: ${(props) => props.theme.brand.primary};
 	}
 	h2 {
 		margin-top: 1.5rem;
@@ -48,13 +50,21 @@ const Content = styled(Container)`
 	}
 `;
 
+// Remove address from resume
+const processResume = (str) => {
+	const doc = parse(str);
+	doc
+		.querySelectorAll("a[href*='@'], a[href*='@'] + span")
+		.forEach((el) => el.remove());
+	return doc.toString();
+};
+
 const Resume = ({ data: { doc }, location }) => {
+	const html = processResume(doc.childMarkdownRemark.html);
 	return (
 		<Layout pathname={location.pathname}>
 			<Content type="text">
-				<div
-					dangerouslySetInnerHTML={{ __html: doc.childMarkdownRemark.html }}
-				/>
+				<div dangerouslySetInnerHTML={{ __html: html }} />
 			</Content>
 		</Layout>
 	);
