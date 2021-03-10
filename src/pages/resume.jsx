@@ -14,15 +14,15 @@ const Content = styled(Container)`
 	p > a > span {
 		font-size: 1em !important;
 	}
-	h1:first-of-type {
+	h2:first-of-type {
 		font-size: 2rem;
 	}
-	h1 {
+	h2 {
 		font-size: 1.4rem;
 		margin-top: 2.5rem;
 		color: ${(props) => props.theme.brand.primary};
 	}
-	h2 {
+	h3 {
 		margin-top: 1.5rem;
 		font-weight: 400;
 		font-size: 1.2rem;
@@ -30,7 +30,7 @@ const Content = styled(Container)`
 			font-weight: 700;
 		}
 	}
-	h3 {
+	h4 {
 		font-size: 1rem;
 		font-weight: 400;
 		display: flex;
@@ -43,7 +43,8 @@ const Content = styled(Container)`
 	}
 	h1,
 	h2,
-	h3 {
+	h3,
+	h4 {
 		> span {
 			font-size: 1em !important;
 		}

@@ -9,6 +9,10 @@ module.exports = {
 	},
 	flags: {
 		DEV_SSR: false,
+		PRESERVE_WEBPACK_CACHE: true,
+		PRESERVE_FILE_DOWNLOAD_CACHE: true,
+		PARALLEL_SOURCING: true,
+		FAST_DEV: true
 	},
 	plugins: [
 		"gatsby-plugin-react-helmet",
@@ -19,7 +23,7 @@ module.exports = {
 				// https://drive.google.com/drive/folders/FOLDER_ID
 				folder: "1tj9nGujJ0TAGWcegD5XjRFgUDYJrcQRS",
 				createPages: false,
-				demoteHeadings: false,
+				demoteHeadings: true,
 				debug: true,
 			},
 		},
