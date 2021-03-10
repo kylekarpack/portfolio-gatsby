@@ -160,8 +160,6 @@ export const pageQuery = graphql`
 			edges {
 				node {
 					excerpt(pruneLength: 140)
-				}
-				node {
 					fields {
 						slug
 						color
