@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { animated, useSpring, config } from "react-spring";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { graphql } from "gatsby";
-import { SEO, Container, Layout } from "../components";
+import PropTypes from "prop-types";
+import React from "react";
+import { animated, config, useSpring } from "react-spring";
+import styled from "styled-components";
+import { Container, Layout, SEO } from "../components";
 
 const Content = styled(Container)`
   left: 0;
@@ -53,28 +52,3 @@ Single.propTypes = {
 	}).isRequired,
 	location: PropTypes.object.isRequired,
 };
-
-export const pageQuery = graphql`
-  query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      fields {
-        slug
-      }
-			body
-      excerpt
-      frontmatter {
-        title
-        cover {
-          childImageSharp {
-            fluid(maxWidth: 1920, quality: 90) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-            resize(width: 800) {
-              src
-            }
-          }
-        }
-      }
-    }
-  }
-`;

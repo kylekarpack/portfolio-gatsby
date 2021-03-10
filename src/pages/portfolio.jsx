@@ -70,7 +70,7 @@ export const pageQuery = graphql`
 		) {
 			edges {
 				node {
-					excerpt(pruneLength: 140)
+					excerpt(pruneLength: 100)
 				}
 				node {
 					fields {
