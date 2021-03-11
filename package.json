@@ -45,7 +45,7 @@
     "gatsby-remark-responsive-iframe": "^3.0.0",
     "gatsby-source-drive": "^0.0.2",
     "gatsby-source-filesystem": "^3.0.0",
-    "gatsby-source-google-docs": "^2.0.0",
+    "gatsby-source-google-docs": "^2.0.1",
     "gatsby-transformer-remark": "^3.0.0",
     "gatsby-transformer-sharp": "^3.0.0",
     "get-image-colors": "^4.0.0",
