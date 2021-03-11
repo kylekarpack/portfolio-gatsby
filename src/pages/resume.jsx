@@ -10,6 +10,9 @@ const Content = styled(Container)`
 		line-height: 1.5;
 		font-size: 0.9rem;
 	}
+	p {
+		font-size: 1rem;
+	}
 	p > span,
 	p > a > span {
 		font-size: 1em !important;
@@ -19,11 +22,11 @@ const Content = styled(Container)`
 	}
 	h1 {
 		font-size: 1.4rem;
-		margin-top: 2.5rem;
+		margin-top: 3rem;
 		color: ${(props) => props.theme.brand.primary};
 	}
 	h2 {
-		margin-top: 1.5rem;
+		margin-top: 2rem;
 		font-weight: 400;
 		font-size: 1.2rem;
 		span:first-child {
@@ -32,13 +35,13 @@ const Content = styled(Container)`
 	}
 	h3 {
 		font-size: 1rem;
-		font-weight: 400;
+		font-weight: 500;
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		margin-bottom: 1rem;
+		margin: 1.5rem 0 0;
 		em {
-			font-weight: 400;
+			font-weight: 500;
 		}
 	}
 	h1,
