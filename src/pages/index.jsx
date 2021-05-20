@@ -160,8 +160,6 @@ export const pageQuery = graphql`
 			edges {
 				node {
 					excerpt(pruneLength: 140)
-				}
-				node {
 					fields {
 						slug
 						color
@@ -171,7 +169,7 @@ export const pageQuery = graphql`
 						cover {
 							childImageSharp {
 								fluid(
-									maxWidth: 350
+									maxWidth: 600
 									quality: 60
 								) {
 									...GatsbyImageSharpFluid_withWebp

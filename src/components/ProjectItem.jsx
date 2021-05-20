@@ -128,10 +128,10 @@ const ProjectItem = ({ node, style, testid }) => (
 					<h2>{node.frontmatter.title}</h2>
 					<p>
 						{
-							node.excerpt
-								.replace("Case Study", "")
-								.replace("Project Description", "")
-								.split("Skills Used")[0]
+							node?.excerpt
+								?.replace("Case Study", "")
+								?.replace("Project Description", "")
+								?.split("Skills Used")[0]
 						}
 					</p>
 				</Link>

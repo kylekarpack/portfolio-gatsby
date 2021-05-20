@@ -55,6 +55,7 @@ const Nav = styled.nav`
 	display: flex;
 	flex: 1;
 	justify-content: flex-start;
+	align-items: center;
 	padding: 0;
 	a {
 		padding: 1rem 1.5rem;
@@ -79,14 +80,21 @@ const Nav = styled.nav`
 		@media (max-width: ${props => props.theme.breakpoints.s}) {
 			display: none;
 		}
-		width: 15%;
-		max-width: 10em;
-		min-width: 5em;
-		padding: 1rem 1vw;
-		margin-right: 1vw;
+		
 		img {
-			max-width: 100%;
+			display: inline-block;
+			max-width: 150px;
+			max-height: 25px;
+			margin: 0 2rem 0 1rem;
 		}
+
+		@media (min-width: ${props => props.theme.breakpoints.l}) {
+			padding: 0.5rem 1.5rem;
+			img {
+				max-height: 35px;
+			}
+		}
+
 	}
 `;
 
