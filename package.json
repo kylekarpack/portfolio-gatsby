@@ -20,10 +20,10 @@
     "cy:run:ci": "cypress run --browser chrome --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
     "test:e2e:dev": "cross-env CYPRESS_SUPPORT=y start-server-and-test dev http://localhost:8000 cy:open",
     "test:e2e:run": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run",
-    "test:e2e:ci": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run:ci"
+    "test:e2e:ci": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run:ci",
+    "docstoken": "node ./node_modules/gatsby-source-google-docs/utils/generate-token.js"
   },
   "dependencies": {
-    "@fs/gatsby-plugin-drive": "^0.2.1",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^1.12.0",
@@ -39,7 +39,7 @@
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sharp": "^3.0.0",
     "gatsby-plugin-sitemap": "^3.0.0",
-    "gatsby-plugin-styled-components": "3.10.0",
+    "gatsby-plugin-styled-components": "^4.5.0",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^4.0.0",
     "gatsby-remark-responsive-iframe": "^3.0.0",

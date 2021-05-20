@@ -117,7 +117,6 @@ export const pageQuery = graphql`
       parent {
         ... on File {
           mtime
-          birthtime
         }
       }
       frontmatter {
