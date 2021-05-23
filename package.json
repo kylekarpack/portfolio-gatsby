@@ -19,9 +19,7 @@
     "cy:run:ci": "cypress run --browser chrome --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
     "test:e2e:dev": "cross-env CYPRESS_SUPPORT=y start-server-and-test dev http://localhost:8000 cy:open",
     "test:e2e:run": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run",
-    "test:e2e:ci": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run:ci",
-    "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect"
+    "test:e2e:ci": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run:ci"
   },
   "dependencies": {
     "@fs/gatsby-plugin-drive": "^0.2.1",
@@ -37,6 +35,7 @@
     "gatsby-plugin-mdx": "^1.9.0",
     "gatsby-plugin-netlify": "^2.8.0",
     "gatsby-plugin-offline": "^3.7.1",
+    "gatsby-plugin-postcss": "^4.0.0",
     "gatsby-plugin-react-helmet": "^3.7.0",
     "gatsby-plugin-sharp": "^2.11.2",
     "gatsby-plugin-sitemap": "^2.9.0",
@@ -52,8 +51,9 @@
     "get-image-colors": "^2.0.1",
     "lodash": "^4.17.21",
     "mapbox-gl": "^1.13.0",
-		"node-html-parser": "^3.0.4",
+    "node-html-parser": "^3.0.4",
     "polished": "^3.6.7",
+    "postcss": "^8.2.7",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -93,7 +93,8 @@
     "eslint-plugin-react": "^7.13.0",
     "gatsby-cypress": "^0.1.9",
     "prettier": "^1.17.0",
-    "start-server-and-test": "^1.9.0"
+    "start-server-and-test": "^1.9.0",
+    "tailwindcss": "^2.0.3"
   },
   "snyk": true
 }
