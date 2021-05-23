@@ -11,39 +11,46 @@ const BGImage = styled.div`
   .gatsby-image-wrapper {
     position: static !important;
     > div {
-      padding-bottom: ${props => (props.single ? "30vh" : "50vh")} !important;
-      @media (max-width: ${props => props.theme.breakpoints.m}),
-        (max-device-width: ${props => props.theme.breakpoints.m}) {
-        padding-bottom: ${props => (props.single ? "40vh" : "60vh")};!important;
+      padding-bottom: ${(props) => (props.single ? "30vh" : "50vh")} !important;
+      @media (max-width: ${(props) => props.theme.breakpoints.m}),
+        (max-device-width: ${(props) => props.theme.breakpoints.m}) {
+        padding-bottom: ${(props) =>
+					props.single ? "40vh" : "60vh"};!important;
       }
-      @media (max-width: ${props => props.theme.breakpoints.s}),
-        (max-device-width: ${props => props.theme.breakpoints.s}) {
-        padding-bottom: ${props => (props.single ? "300px" : "400px")} !important;
+      @media (max-width: ${(props) => props.theme.breakpoints.s}),
+        (max-device-width: ${(props) => props.theme.breakpoints.s}) {
+        padding-bottom: ${(props) =>
+					props.single ? "300px" : "400px"} !important;
       }
-      @media (max-width: ${props => props.theme.breakpoints.xs}),
-        (max-device-width: ${props => props.theme.breakpoints.xs}) {
+      @media (max-width: ${(props) => props.theme.breakpoints.xs}),
+        (max-device-width: ${(props) => props.theme.breakpoints.xs}) {
         padding-bottom: 400px !important;
       }
     }
   }
-  ${props =>
+  ${(props) =>
 		props.customcolor &&
-    css`
-      &:before {
-        content: '';
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        background: ${`linear-gradient(to top, rgba(0, 0, 0, 0) 0%, ${rgba(props.customcolor, 1)} 100%)`};
-        mix-blend-mode: overlay;
-        z-index: 2;
-      }
-    `}
+		css`
+			&:before {
+				content: "";
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				background: ${`linear-gradient(to top, rgba(0, 0, 0, 0) 0%, ${rgba(
+					props.customcolor,
+					1
+				)} 100%)`};
+				mix-blend-mode: overlay;
+				z-index: 2;
+			}
+		`}
   &:after {
     backface-visibility: hidden;
-    background: ${({ theme }) => `linear-gradient(to bottom, ${shade} 0%, ${theme.colors.bg_color} 100%),
+    background: ${({
+			theme,
+		}) => `linear-gradient(to bottom, ${shade} 0%, ${theme.colors.bg_color} 100%),
       linear-gradient(to right, ${shade} 50%, ${theme.colors.bg_color} 100%)`};
     content: '';
     height: 100%;
