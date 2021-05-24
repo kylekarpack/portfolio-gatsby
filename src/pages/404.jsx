@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { Layout, Container } from "../components";
 import styled from "styled-components";
 
-const Content = styled(Container)`
-`;
+const Content = styled(Container)``;
 
 const NotFoundPage = ({ location }) => (
 	<Layout pathname={location.pathname}>

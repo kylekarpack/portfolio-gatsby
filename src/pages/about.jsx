@@ -16,28 +16,32 @@ const Columns = styled(Container)`
 	img {
 		max-width: 100%;
 	}
-	@media (max-width: ${props => props.theme.breakpoints.m}) {
+	@media (max-width: ${(props) => props.theme.breakpoints.m}) {
 		display: block;
 	}
 `;
 
 const AboutPage = ({ location, data: { profile } }) => (
-
 	<Layout pathname={location.pathname}>
 		<Container type="text">
 			<Columns>
 				<div>
 					<h1>About</h1>
 					<p>
-						Thanks for checking out my site.
-						I&#39;m a software engineer based in Seattle.
-						If you are looking to hire an experienced front-end developer, please check out my <a href="/resume">resume</a> and feel free to <a href="/contact">contact me</a> any time.
-						Outside work, I enjoy hiking, soccer, cooking, reading, and spending time with family.
+						Thanks for checking out my site. I&#39;m a software engineer based
+						in Seattle. If you are looking to hire an experienced front-end
+						developer, please check out my <a href="/resume">resume</a> and feel
+						free to <a href="/contact">contact me</a> any time. Outside work, I
+						enjoy hiking, soccer, cooking, reading, and spending time with
+						family.
 					</p>
 				</div>
 				<div>
 					<br />
-					<Img fluid={profile.childImageSharp.fluid} alt="Kyle and Kristin in the Rockies" />
+					<Img
+						fluid={profile.childImageSharp.fluid}
+						alt="Kyle and Kristin in the Rockies"
+					/>
 				</div>
 			</Columns>
 
@@ -68,5 +72,6 @@ export const pageQuery = graphql`
 					...GatsbyImageSharpFluid
 				}
 			}
-		} 
-	}`;
+		}
+	}
+`;

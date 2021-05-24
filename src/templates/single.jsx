@@ -6,15 +6,15 @@ import styled from "styled-components";
 import { Container, Layout, SEO } from "../components";
 
 const Content = styled(Container)`
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 `;
 
 const Title = styled(animated.h1)`
-  margin-top: 0;
+	margin-top: 0;
 `;
 
 const Single = ({ data: { mdx }, location }) => {
@@ -25,7 +25,12 @@ const Single = ({ data: { mdx }, location }) => {
 		from: { opacity: 0, transform: "translate3d(0, -30px, 0)" },
 		to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
 	});
-	const contentProps = useSpring({ config: config.slow, delay: 500, from: { opacity: 0 }, to: { opacity: 1 } });
+	const contentProps = useSpring({
+		config: config.slow,
+		delay: 500,
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+	});
 
 	return (
 		<Layout pathname={location.pathname} customSEO>
@@ -39,7 +44,7 @@ const Single = ({ data: { mdx }, location }) => {
 				<animated.div style={contentProps}>
 					<MDXRenderer>{mdx.body}</MDXRenderer>
 				</animated.div>
-			</Container> 
+			</Container>
 		</Layout>
 	);
 };

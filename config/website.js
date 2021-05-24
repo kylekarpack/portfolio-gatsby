@@ -15,8 +15,8 @@ module.exports = {
 	ogLanguage: "en_US",
 	googleAnalyticsID: "UA-41473428-2",
 	googleSiteVerification: "vJm4-vQ2BCuGaTw3XkSQ29hWAUyxGwh2y1_EBEGtvCE",
- 
+
 	// Manifest and Progress color
 	themeColor: "#3498DB",
-	backgroundColor: "#2b2e3c"
+	backgroundColor: "#2b2e3c",
 };

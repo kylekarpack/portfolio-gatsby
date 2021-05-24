@@ -10,14 +10,14 @@ const Wrapper = styled.header`
 	display: flex;
 	padding: 0;
 	z-index: 1000;
-	background: ${props => props.theme.brand.secondary};
+	background: ${(props) => props.theme.brand.secondary};
 	a {
-		color: ${props => props.theme.colors.white};
+		color: ${(props) => props.theme.colors.white};
 		text-decoration: none;
 		transition: all 0.3s ease-in-out;
 		z-index: 100;
 		&:hover {
-			color: ${props => props.theme.brand.primary};
+			color: ${(props) => props.theme.brand.primary};
 		}
 	}
 	.navbar-toggle {
@@ -34,7 +34,7 @@ const Wrapper = styled.header`
 			}
 		}
 	}
-	@media (max-width: ${props => props.theme.breakpoints.s}) {
+	@media (max-width: ${(props) => props.theme.breakpoints.s}) {
 		padding: 0;
 		display: block;
 		position: static;
@@ -47,7 +47,6 @@ const Wrapper = styled.header`
 				display: none;
 			}
 		}
-
 	}
 `;
 
@@ -60,27 +59,27 @@ const Nav = styled.nav`
 	a {
 		padding: 1rem 1.5rem;
 	}
-	@media (max-width: ${props => props.theme.breakpoints.m}) {
+	@media (max-width: ${(props) => props.theme.breakpoints.m}) {
 		a {
 			padding: 1rem;
 		}
 	}
-	@media (max-width: ${props => props.theme.breakpoints.s}) {
+	@media (max-width: ${(props) => props.theme.breakpoints.s}) {
 		padding: 0 1rem;
 		display: block;
 		a {
-			display: block;	
+			display: block;
 			text-align: center;
 		}
 	}
-	@media (max-width: ${props => props.theme.breakpoints.xs}) {
+	@media (max-width: ${(props) => props.theme.breakpoints.xs}) {
 		order: 2;
 	}
 	.logo {
-		@media (max-width: ${props => props.theme.breakpoints.s}) {
+		@media (max-width: ${(props) => props.theme.breakpoints.s}) {
 			display: none;
 		}
-		
+
 		img {
 			display: inline-block;
 			max-width: 150px;
@@ -88,13 +87,12 @@ const Nav = styled.nav`
 			margin: 0 2rem 0 1rem;
 		}
 
-		@media (min-width: ${props => props.theme.breakpoints.l}) {
+		@media (min-width: ${(props) => props.theme.breakpoints.l}) {
 			padding: 0.5rem 1.5rem;
 			img {
 				max-height: 35px;
 			}
 		}
-
 	}
 `;
 
@@ -102,7 +100,7 @@ const SocialMedia = styled.div`
 	display: flex;
 	flex: 1;
 	justify-content: flex-end;
-	padding: 0 ${props => props.theme.spacer.horizontal};
+	padding: 0 ${(props) => props.theme.spacer.horizontal};
 	a {
 		font-size: 1.25rem;
 		line-height: 20px;
@@ -110,11 +108,11 @@ const SocialMedia = styled.div`
 	a:not(:first-child) {
 		margin-left: 1rem;
 	}
-	@media (max-width: ${props => props.theme.breakpoints.s}) {
+	@media (max-width: ${(props) => props.theme.breakpoints.s}) {
 		float: right;
-		padding: .5rem 1rem;
+		padding: 0.5rem 1rem;
 	}
-	@media (max-width: ${props => props.theme.breakpoints.xs}) {
+	@media (max-width: ${(props) => props.theme.breakpoints.xs}) {
 		order: 3;
 	}
 `;
@@ -122,16 +120,15 @@ const SocialMedia = styled.div`
 // Grabs all MDX files from src/pages and puts them into the navigation
 
 class Navigation extends React.Component {
-
 	state = {
-		collapsed: true
-	}
+		collapsed: true,
+	};
 
 	toggleSideNav = () => {
 		this.setState({
-			collapsed: !this.state.collapsed
+			collapsed: !this.state.collapsed,
 		});
-	}
+	};
 
 	render() {
 		return (
@@ -139,28 +136,43 @@ class Navigation extends React.Component {
 				query={query}
 				render={() => (
 					<Wrapper data-testid="navigation">
-
 						<a className="navbar-toggle" onClick={this.toggleSideNav}>
 							<FaBars />
 						</a>
 
-						<Nav className={this.state.collapsed ? "navbar collapsed" : "navbar"}>
+						<Nav
+							className={this.state.collapsed ? "navbar collapsed" : "navbar"}>
 							<Link to="/" className="logo">
 								<img src="/logo.png" alt="Site Logo" />
 							</Link>
-							<Link to="/" data-testid="home-title-link" activeClassName="nav-active">
+							<Link
+								to="/"
+								data-testid="home-title-link"
+								activeClassName="nav-active">
 								Home
 							</Link>
-							<Link to="/about" data-testid="about-title-link" activeClassName="nav-active">
+							<Link
+								to="/about"
+								data-testid="about-title-link"
+								activeClassName="nav-active">
 								About
 							</Link>
-							<Link to="/resume" data-testid="resume-title-link" activeClassName="nav-active">
+							<Link
+								to="/resume"
+								data-testid="resume-title-link"
+								activeClassName="nav-active">
 								Resume
 							</Link>
-							<Link to="/portfolio" data-testid="portfolio-title-link" activeClassName="nav-active">
+							<Link
+								to="/portfolio"
+								data-testid="portfolio-title-link"
+								activeClassName="nav-active">
 								Portfolio
 							</Link>
-							<Link to="/contact" data-testid="contact-title-link" activeClassName="nav-active">
+							<Link
+								to="/contact"
+								data-testid="contact-title-link"
+								activeClassName="nav-active">
 								Contact
 							</Link>
 						</Nav>
@@ -190,18 +202,18 @@ class Navigation extends React.Component {
 export default Navigation;
 
 const query = graphql`
-  query NavLinks {
-    nav: allMdx(filter: { fields: { sourceInstanceName: { eq: "pages" } } }) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-  }
+	query NavLinks {
+		nav: allMdx(filter: { fields: { sourceInstanceName: { eq: "pages" } } }) {
+			edges {
+				node {
+					fields {
+						slug
+					}
+					frontmatter {
+						title
+					}
+				}
+			}
+		}
+	}
 `;

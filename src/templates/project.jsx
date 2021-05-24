@@ -18,32 +18,34 @@ const Content = styled(Container)`
 	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	grid-auto-rows: 1fr;
 	color: #777;
-	@media (max-width: ${props => props.theme.breakpoints.m}) {
+	@media (max-width: ${(props) => props.theme.breakpoints.m}) {
 		display: block;
 	}
 `;
 
 const InformationWrapper = styled(animated.div)`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 `;
 
 const Title = styled(animated.h1)`
-  margin-top: 0;
-  border-bottom: 4px solid;
-  display: inline-block;
+	margin-top: 0;
+	border-bottom: 4px solid;
+	display: inline-block;
 `;
 
 const ContentBlock = styled.div`
-  h2, h3 {
-	  color: ${props => (props.customcolor ? props.customcolor : props.theme.colors.grey)};
-	  text-transform: uppercase;
-	  font-size: 1.1rem;
-	  font-weight: 600;
-	  margin: 2em 0 0;
-  }
+	h2,
+	h3 {
+		color: ${(props) =>
+			props.customcolor ? props.customcolor : props.theme.colors.grey};
+		text-transform: uppercase;
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin: 2em 0 0;
+	}
 `;
 
 const Project = ({ data: { mdx: postNode }, location }) => {
@@ -56,16 +58,26 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 			to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
 		}),
 		...{
-			borderBottomColor: project.color
-		}
+			borderBottomColor: project.color,
+		},
 	};
-	const infoProps = useSpring({ config: config.slow, delay: 500, from: { opacity: 0 }, to: { opacity: 1 } });
-	const contentProps = useSpring({ config: config.slow, delay: 1000, from: { opacity: 0 }, to: { opacity: 1 } });
+	const infoProps = useSpring({
+		config: config.slow,
+		delay: 500,
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+	});
+	const contentProps = useSpring({
+		config: config.slow,
+		delay: 1000,
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+	});
 	const imageProps = useSpring({
 		config: config.slow,
 		delay: 500,
 		from: { opacity: 0, transform: "translate3d(0, -10%, 0)" },
-		to: { opacity: 1, transform: "translate3d(0, 0, 0)" }
+		to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
 	});
 
 	return (
@@ -91,7 +103,6 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 				<ImageContainer style={imageProps}>
 					<Img fluid={project.cover.childImageSharp.fluid} alt="" />
 				</ImageContainer>
-
 			</Content>
 		</Layout>
 	);
@@ -107,33 +118,33 @@ Project.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      body
-      excerpt
-      fields {
-        slug
-      }
-      parent {
-        ... on File {
-          mtime
-        }
-      }
-      frontmatter {
-		title
-        date(formatString: "MMMM YYYY")
-		color
-        cover {
-          childImageSharp {
-            fluid(maxWidth: 1920, quality: 90) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-            resize(width: 800) {
-              src
-            }
-          }
-        }
-      }
-    }
-  }
+	query ($slug: String!) {
+		mdx(fields: { slug: { eq: $slug } }) {
+			body
+			excerpt
+			fields {
+				slug
+			}
+			parent {
+				... on File {
+					mtime
+				}
+			}
+			frontmatter {
+				title
+				date(formatString: "MMMM YYYY")
+				color
+				cover {
+					childImageSharp {
+						fluid(maxWidth: 1920, quality: 90) {
+							...GatsbyImageSharpFluid_withWebp
+						}
+						resize(width: 800) {
+							src
+						}
+					}
+				}
+			}
+		}
+	}
 `;
