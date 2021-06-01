@@ -12,7 +12,7 @@ This is utility for adding back missing metadata from Facebook photo downloads. 
 This is the first substantial project that I have written in Go. Coming from a JavaScript background, I was thrilled with the speed and ease of compilation that Go provided.
 
 ### Links
-- [GitHub](https://github.com/kylekarpack/gatsby-starter-tailwind-graphcms)
+- [GitHub](https://github.com/kylekarpack/fix-fb-meta)
 - Downloads: 
    - [Windows x86](https://github.com/kylekarpack/fix-fb-meta/blob/main/bin/win-x86/fix-fb-meta.exe)
    - [Windows x64](https://github.com/kylekarpack/fix-fb-meta/blob/main/bin/win-x64/fix-fb-meta.exe)
