@@ -25,6 +25,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@testing-library/cypress": "^7.0.6",
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^3.0.4",
     "gatsby-image": "^3.0.0",
@@ -69,7 +70,6 @@
     "babel-eslint": "^10.1.0",
     "cross-env": "^5.2.0",
     "cypress": "^3.2.0",
-    "cypress-testing-library": "^2.6.0",
     "eslint": "^7.21.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.1.0",
