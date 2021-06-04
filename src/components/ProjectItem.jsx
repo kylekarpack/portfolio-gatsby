@@ -11,9 +11,7 @@ const Item = styled(animated.div)`
 `;
 
 const TextContent = styled.div`
-	border-bottom: 5px solid
-		${(props) =>
-			props.customcolor ? props.customcolor : props.theme.colors.grey};
+	border-bottom: 5px solid ${(props) => props.customcolor ? props.customcolor : props.theme.colors.grey};
 	padding: 0.1em 1em;
 	h2 {
 		color: #444;
@@ -52,7 +50,7 @@ const Content = styled.div`
 		height: 100%;
 		left: 0;
 		opacity: 0;
-		padding: 2vw;
+		padding: 2rem;
 		position: absolute;
 		top: 0;
 		width: 100%;
@@ -99,33 +97,19 @@ const Overlay = styled.div`
 	z-index: -2;
 `;
 
-const TracedGlow = styled.img`
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	opacity: 0.08;
-	filter: invert(100%);
-	z-index: -1;
-`;
-
 const ProjectItem = ({ node, style, testid }) => (
 	<Item key={node.fields.slug} style={style} data-testid={testid}>
 		<ImageContent>
 			<Content>
 				<ImageWrapper>
-					<GatsbyImage image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData} />
+					<GatsbyImage
+						image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData}
+					/>
 				</ImageWrapper>
 				<Link to={node.fields.slug}>
-					<TracedGlow
-						src={node.frontmatter.cover?.childImageSharp?.gatsbyImageData?.tracedSVG}
-						alt=""
+					<Overlay
+						style={{ backgroundColor: node.fields.color, opacity: 0.95 }}
 					/>
-					<Overlay style={{ backgroundColor: node.fields.color }} />
 					<h2>{node.frontmatter.title}</h2>
 					<p>
 						{

@@ -1,6 +1,6 @@
 /* eslint react/display-name: 0 */
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 import { darken } from "polished";
 import PropTypes from "prop-types";
 import React from "react";
@@ -53,7 +53,6 @@ const Profile = styled(animated.div)`
 		font-size: 1.2rem;
 	}
 	img {
-		border-radius: 100%;
 		max-width: 100%;
 	}
 	display: grid;
@@ -75,7 +74,6 @@ const ListWrapper = styled.div`
 const Index = ({
 	data: {
 		allMdx: { edges: projectEdges },
-		headshot,
 	},
 	location,
 }) => {
@@ -94,8 +92,12 @@ const Index = ({
 			<Wrapper>
 				<Profile style={titleProps}>
 					<ImageContainer>
-						<GatsbyImage
-							image={headshot.childImageSharp.gatsbyImageData}
+						<StaticImage
+							src="../../static/headshot.jpg"
+							width={400}
+							layout="constrained"
+							placeholder="blurred"
+							style={{borderRadius: "100%"}}
 							alt="Kyle headshot"
 						/>
 					</ImageContainer>
@@ -103,7 +105,7 @@ const Index = ({
 						<h1>Kyle Karpack</h1>
 						<h2>Software Engineer in Seattle</h2>
 						<p>
-							Specializing in user-centered design for large web applications
+							Specializing in user-centered engineering for large web applications
 						</p>
 					</div>
 				</Profile>
@@ -145,11 +147,6 @@ Index.propTypes = {
 
 export const pageQuery = graphql`
 	query IndexQuery {
-		headshot: file(relativePath: { eq: "headshot.jpg" }) {
-			childImageSharp {
-				gatsbyImageData(width: 400, layout: CONSTRAINED)
-			}
-		}
 		allMdx(
 			sort: { fields: [frontmatter___date], order: DESC }
 			filter: {
@@ -169,7 +166,7 @@ export const pageQuery = graphql`
 						title
 						cover {
 							childImageSharp {
-								gatsbyImageData(width: 600, quality: 60, layout: CONSTRAINED)
+								gatsbyImageData(width: 600, quality: 60, layout: CONSTRAINED, placeholder: BLURRED)
 							}
 						}
 					}

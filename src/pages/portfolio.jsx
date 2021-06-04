@@ -77,7 +77,7 @@ export const pageQuery = graphql`query PortfolioQuery {
           title
           cover {
             childImageSharp {
-              gatsbyImageData(width: 350, quality: 50, layout: CONSTRAINED)
+              gatsbyImageData(width: 350, quality: 50, layout: CONSTRAINED, placeholder: BLURRED)
             }
           }
         }
