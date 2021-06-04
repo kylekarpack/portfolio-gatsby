@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { animated, useSpring, config } from "react-spring";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { SEO, Container, Layout } from "../components";
 
 const ImageContainer = styled(animated.div)`
@@ -81,7 +81,7 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 	});
 
 	return (
-		<Layout pathname={location.pathname} customSEO>
+        <Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={postNode} article />
 			<Content>
 				<Container type="text">
@@ -101,11 +101,11 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 					</ContentBlock>
 				</Container>
 				<ImageContainer style={imageProps}>
-					<Img fluid={project.cover.childImageSharp.fluid} alt="" />
+					<GatsbyImage image={project.cover.childImageSharp.gatsbyImageData} alt="" />
 				</ImageContainer>
 			</Content>
 		</Layout>
-	);
+    );
 };
 
 export default Project;
@@ -117,34 +117,31 @@ Project.propTypes = {
 	location: PropTypes.object.isRequired,
 };
 
-export const pageQuery = graphql`
-	query ($slug: String!) {
-		mdx(fields: { slug: { eq: $slug } }) {
-			body
-			excerpt
-			fields {
-				slug
-			}
-			parent {
-				... on File {
-					mtime
-				}
-			}
-			frontmatter {
-				title
-				date(formatString: "MMMM YYYY")
-				color
-				cover {
-					childImageSharp {
-						fluid(maxWidth: 1920, quality: 90) {
-							...GatsbyImageSharpFluid_withWebp
-						}
-						resize(width: 800) {
-							src
-						}
-					}
-				}
-			}
-		}
-	}
+export const pageQuery = graphql`query ($slug: String!) {
+  mdx(fields: {slug: {eq: $slug}}) {
+    body
+    excerpt
+    fields {
+      slug
+    }
+    parent {
+      ... on File {
+        mtime
+      }
+    }
+    frontmatter {
+      title
+      date(formatString: "MMMM YYYY")
+      color
+      cover {
+        childImageSharp {
+          gatsbyImageData(quality: 90, layout: FULL_WIDTH)
+          resize(width: 800) {
+            src
+          }
+        }
+      }
+    }
+  }
+}
 `;

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Container, Layout } from "../components";
 import { GithubContributions } from "react-github-graph";
 import { GoodreadsBookshelf } from "react-goodreads-shelf";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const Columns = styled(Container)`
 	display: grid;
@@ -38,10 +38,9 @@ const AboutPage = ({ location, data: { profile } }) => (
 				</div>
 				<div>
 					<br />
-					<Img
-						fluid={profile.childImageSharp.fluid}
-						alt="Kyle and Kristin in the Rockies"
-					/>
+					<GatsbyImage
+                        image={profile.childImageSharp.gatsbyImageData}
+                        alt="Kyle and Kristin in the Rockies" />
 				</div>
 			</Columns>
 
@@ -64,14 +63,11 @@ AboutPage.propTypes = {
 	}).isRequired,
 };
 
-export const pageQuery = graphql`
-	query AboutQuery {
-		profile: file(relativePath: { eq: "rockies.jpg" }) {
-			childImageSharp {
-				fluid(maxWidth: 1200) {
-					...GatsbyImageSharpFluid
-				}
-			}
-		}
-	}
+export const pageQuery = graphql`query AboutQuery {
+  profile: file(relativePath: {eq: "rockies.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+}
 `;

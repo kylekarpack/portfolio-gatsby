@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { animated } from "react-spring";
 import styled from "styled-components";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const Item = styled(animated.div)`
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -118,11 +118,11 @@ const ProjectItem = ({ node, style, testid }) => (
 		<ImageContent>
 			<Content>
 				<ImageWrapper>
-					<Img fluid={node.frontmatter.cover?.childImageSharp?.fluid} />
+					<GatsbyImage image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData} />
 				</ImageWrapper>
 				<Link to={node.fields.slug}>
 					<TracedGlow
-						src={node.frontmatter.cover?.childImageSharp?.fluid?.tracedSVG}
+						src={node.frontmatter.cover?.childImageSharp?.gatsbyImageData?.tracedSVG}
 						alt=""
 					/>
 					<Overlay style={{ backgroundColor: node.fields.color }} />

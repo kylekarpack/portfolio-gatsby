@@ -1,6 +1,6 @@
 /* eslint react/display-name: 0 */
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { darken } from "polished";
 import PropTypes from "prop-types";
 import React from "react";
@@ -94,7 +94,10 @@ const Index = ({
 			<Wrapper>
 				<Profile style={titleProps}>
 					<ImageContainer>
-						<Img fluid={headshot.childImageSharp.fluid} alt="Kyle headshot" />
+						<GatsbyImage
+							image={headshot.childImageSharp.gatsbyImageData}
+							alt="Kyle headshot"
+						/>
 					</ImageContainer>
 					<div>
 						<h1>Kyle Karpack</h1>
@@ -144,9 +147,7 @@ export const pageQuery = graphql`
 	query IndexQuery {
 		headshot: file(relativePath: { eq: "headshot.jpg" }) {
 			childImageSharp {
-				fluid(maxWidth: 400) {
-					...GatsbyImageSharpFluid
-				}
+				gatsbyImageData(width: 400, layout: CONSTRAINED)
 			}
 		}
 		allMdx(
@@ -168,9 +169,7 @@ export const pageQuery = graphql`
 						title
 						cover {
 							childImageSharp {
-								fluid(maxWidth: 600, quality: 60) {
-									...GatsbyImageSharpFluid_withWebp
-								}
+								gatsbyImageData(width: 600, quality: 60, layout: CONSTRAINED)
 							}
 						}
 					}

@@ -59,36 +59,30 @@ Portfolio.propTypes = {
 	location: PropTypes.object.isRequired,
 };
 
-export const pageQuery = graphql`
-	query PortfolioQuery {
-		allMdx(
-			sort: { fields: [frontmatter___date], order: DESC }
-			filter: {
-				frontmatter: { status: { eq: "publish" } }
-				fields: { sourceInstanceName: { eq: "projects" } }
-			}
-		) {
-			edges {
-				node {
-					excerpt(pruneLength: 100)
-				}
-				node {
-					fields {
-						slug
-						color
-					}
-					frontmatter {
-						title
-						cover {
-							childImageSharp {
-								fluid(maxWidth: 350, quality: 50) {
-									...GatsbyImageSharpFluid_withWebp
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+export const pageQuery = graphql`query PortfolioQuery {
+  allMdx(
+    sort: {fields: [frontmatter___date], order: DESC}
+    filter: {frontmatter: {status: {eq: "publish"}}, fields: {sourceInstanceName: {eq: "projects"}}}
+  ) {
+    edges {
+      node {
+        excerpt(pruneLength: 100)
+      }
+      node {
+        fields {
+          slug
+          color
+        }
+        frontmatter {
+          title
+          cover {
+            childImageSharp {
+              gatsbyImageData(width: 350, quality: 50, layout: CONSTRAINED)
+            }
+          }
+        }
+      }
+    }
+  }
+}
 `;
