@@ -82,6 +82,7 @@ module.exports = {
 				trackingId: config.googleAnalyticsID,
 			},
 		},
+		"gatsby-plugin-image",
 		"gatsby-plugin-sharp",
 		"gatsby-transformer-sharp",
 		"gatsby-plugin-lodash",
