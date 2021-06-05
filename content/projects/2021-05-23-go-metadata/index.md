@@ -7,7 +7,7 @@ title: "Go Fix Facebook Meta"
 cover: "./cover.png"
 ---
 ### Case Study
-This is utility for adding back missing metadata from Facebook photo downloads. It works by retrieving metadata from the JSON files Facebook provides and writing it back to the photos from which it was stripped.
+This is a utility for adding back missing metadata from Facebook photo downloads. It works by retrieving metadata from the JSON files Facebook provides and writing it back to the photos from which it was stripped.
 
 This is the first substantial project that I have written in Go. Coming from a JavaScript background, I was thrilled with the speed and ease of compilation that Go provided.
 
