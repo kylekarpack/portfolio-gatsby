@@ -2,6 +2,7 @@ import React from "react";
 import { Link, StaticQuery, graphql } from "gatsby";
 import { FaGithub, FaLinkedin, FaBars } from "react-icons/fa";
 import styled from "styled-components";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Wrapper = styled.header`
 	position: sticky;
@@ -76,15 +77,12 @@ const Nav = styled.nav`
 		order: 2;
 	}
 	.logo {
+		min-width: 15vw;
+		margin-right: 1rem;
+		text-align: center;
+
 		@media (max-width: ${(props) => props.theme.breakpoints.s}) {
 			display: none;
-		}
-
-		img {
-			display: inline-block;
-			max-width: 150px;
-			max-height: 25px;
-			margin: 0 2rem 0 1rem;
 		}
 
 		@media (min-width: ${(props) => props.theme.breakpoints.l}) {
@@ -143,7 +141,13 @@ class Navigation extends React.Component {
 						<Nav
 							className={this.state.collapsed ? "navbar collapsed" : "navbar"}>
 							<Link to="/" className="logo">
-								<img src="/logo.png" alt="Site Logo" />
+								<StaticImage
+									placeholder="blurred"
+									layout="constrained"
+									height={25}
+									src="../../static/logo.png"
+									alt="Site logo"
+								/>
 							</Link>
 							<Link
 								to="/"
