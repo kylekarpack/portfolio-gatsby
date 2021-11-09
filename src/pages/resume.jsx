@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import React from "react";
 import styled from "styled-components";
-import { parse } from "node-html-parser";
 import { Container, Layout } from "../components";
 
 const Content = styled(Container)`
@@ -53,21 +53,11 @@ const Content = styled(Container)`
 	}
 `;
 
-// Remove address from resume
-const processResume = (str) => {
-	const doc = parse(str);
-	doc
-		.querySelectorAll("a[href*='@'], a[href*='@'] + span")
-		.forEach((el) => el.remove());
-	return doc.toString();
-};
-
-const Resume = ({ data: { doc }, location }) => {
-	const html = processResume(doc.childMarkdownRemark.html);
+const Resume = ({ data: { mdx: postNode }, location }) => {
 	return (
 		<Layout pathname={location.pathname}>
 			<Content type="text">
-				<div dangerouslySetInnerHTML={{ __html: html }} />
+				<MDXRenderer>{postNode.body}</MDXRenderer>
 			</Content>
 		</Layout>
 	);
@@ -76,11 +66,11 @@ const Resume = ({ data: { doc }, location }) => {
 export default Resume;
 
 export const pageQuery = graphql`
-	query {
-		doc: googleDocs(slug: { eq: "/resume" }) {
-			path
-			childMarkdownRemark {
-				html
+	query ResumeQuery {
+		mdx(slug: { eq: "resume" }) {
+			body
+			fields {
+				slug
 			}
 		}
 	}

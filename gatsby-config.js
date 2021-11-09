@@ -17,22 +17,19 @@ module.exports = {
 	plugins: [
 		"gatsby-plugin-react-helmet",
 		"gatsby-plugin-styled-components",
-		{
-			resolve: "gatsby-source-google-docs",
-			options: {
-				// https://drive.google.com/drive/folders/FOLDER_ID
-				folder: "1tj9nGujJ0TAGWcegD5XjRFgUDYJrcQRS",
-				createPages: false,
-				demoteHeadings: false,
-				debug: true,
-			},
-		},
 		"gatsby-transformer-remark",
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
 				name: "projects",
 				path: `${__dirname}/content/projects`,
+			},
+		},
+		{
+			resolve: "gatsby-source-filesystem",
+			options: {
+				name: "pages",
+				path: `${__dirname}/content/pages`,
 			},
 		},
 		{
@@ -68,10 +65,6 @@ module.exports = {
 							target: "_blank",
 							rel: "nofollow noopener noreferrer",
 						},
-					},
-					{
-						resolve: "gatsby-remark-responsive-iframe",
-						options: {},
 					},
 				],
 			},

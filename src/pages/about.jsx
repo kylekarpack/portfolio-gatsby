@@ -39,8 +39,9 @@ const AboutPage = ({ location, data: { profile } }) => (
 				<div>
 					<br />
 					<GatsbyImage
-                        image={profile.childImageSharp.gatsbyImageData}
-                        alt="Kyle and Kristin in the Rockies" />
+						image={profile.childImageSharp.gatsbyImageData}
+						alt="Kyle and Kristin in the Rockies"
+					/>
 				</div>
 			</Columns>
 
@@ -63,11 +64,12 @@ AboutPage.propTypes = {
 	}).isRequired,
 };
 
-export const pageQuery = graphql`query AboutQuery {
-  profile: file(relativePath: {eq: "rockies.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(layout: FULL_WIDTH)
-    }
-  }
-}
+export const pageQuery = graphql`
+	query AboutQuery {
+		profile: file(relativePath: { eq: "rockies.jpg" }) {
+			childImageSharp {
+				gatsbyImageData(layout: FULL_WIDTH)
+			}
+		}
+	}
 `;
