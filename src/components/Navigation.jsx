@@ -80,6 +80,7 @@ const Nav = styled.nav`
 		min-width: 15vw;
 		margin-right: 1rem;
 		text-align: center;
+		padding: 0;
 
 		@media (max-width: ${(props) => props.theme.breakpoints.s}) {
 			display: none;
@@ -144,7 +145,7 @@ class Navigation extends React.Component {
 								<StaticImage
 									placeholder="blurred"
 									layout="constrained"
-									height={25}
+									height={32}
 									src="../../static/logo.png"
 									alt="Site logo"
 								/>
