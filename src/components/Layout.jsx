@@ -32,7 +32,6 @@ const GlobalStyle = createGlobalStyle`
 const Layout = ({ children, pathname, customSEO }) => (
 	<ThemeProvider theme={theme}>
 		<>
-			<link rel="stylesheet" href="https://use.typekit.net/kia0axj.css" />
 			{!customSEO && <SEO pathname={pathname} />}
 			<GlobalStyle />
 			<Navigation />
