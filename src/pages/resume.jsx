@@ -67,7 +67,7 @@ export default Resume;
 
 export const pageQuery = graphql`
 	query ResumeQuery {
-		mdx(slug: { eq: "resume" }) {
+		mdx(fileAbsolutePath: { glob: "**/pages/resume.md" }) {
 			body
 			fields {
 				slug

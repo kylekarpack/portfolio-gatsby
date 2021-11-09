@@ -1,7 +1,3 @@
----
-slug: "resume"
----
-
 # Kyle Karpack
 
 ### Seattle, WA
