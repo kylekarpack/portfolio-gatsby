@@ -40,7 +40,7 @@ const ContentBlock = styled.div`
 	h2,
 	h3 {
 		color: ${(props) =>
-			props.customcolor ? props.customcolor : props.theme.colors.grey};
+		props.customcolor ? props.customcolor : props.theme.colors.grey};
 		text-transform: uppercase;
 		font-size: 1.1rem;
 		font-weight: 600;
