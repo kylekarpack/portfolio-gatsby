@@ -9,7 +9,6 @@ module.exports = {
 	},
 	flags: {
 		DEV_SSR: false,
-		PRESERVE_WEBPACK_CACHE: true,
 		PRESERVE_FILE_DOWNLOAD_CACHE: true,
 		PARALLEL_SOURCING: true,
 		FAST_DEV: true,
