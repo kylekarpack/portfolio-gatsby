@@ -140,7 +140,8 @@ class Navigation extends React.Component {
 						</a>
 
 						<Nav
-							className={this.state.collapsed ? "navbar collapsed" : "navbar"}>
+							className={this.state.collapsed ? "navbar collapsed" : "navbar"}
+						>
 							<Link to="/" className="logo">
 								<StaticImage
 									placeholder="blurred"
@@ -153,31 +154,36 @@ class Navigation extends React.Component {
 							<Link
 								to="/"
 								data-testid="home-title-link"
-								activeClassName="nav-active">
+								activeClassName="nav-active"
+							>
 								Home
 							</Link>
 							<Link
 								to="/about"
 								data-testid="about-title-link"
-								activeClassName="nav-active">
+								activeClassName="nav-active"
+							>
 								About
 							</Link>
 							<Link
 								to="/resume"
 								data-testid="resume-title-link"
-								activeClassName="nav-active">
+								activeClassName="nav-active"
+							>
 								Resume
 							</Link>
 							<Link
 								to="/portfolio"
 								data-testid="portfolio-title-link"
-								activeClassName="nav-active">
+								activeClassName="nav-active"
+							>
 								Portfolio
 							</Link>
 							<Link
 								to="/contact"
 								data-testid="contact-title-link"
-								activeClassName="nav-active">
+								activeClassName="nav-active"
+							>
 								Contact
 							</Link>
 						</Nav>
@@ -186,14 +192,16 @@ class Navigation extends React.Component {
 								href="https://github.com/kylekarpack"
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label="Github">
+								aria-label="Github"
+							>
 								<FaGithub />
 							</a>
 							<a
 								href="https://www.linkedin.com/in/kylekarpack"
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label="LinkedIn">
+								aria-label="LinkedIn"
+							>
 								<FaLinkedin />
 							</a>
 						</SocialMedia>

@@ -103,7 +103,8 @@ class ContactPage extends React.Component {
 						data-netlify
 						data-netlify-honeypot="bot-field"
 						onSubmit={this.handleSubmit}
-						hidden={this.state.submitted}>
+						hidden={this.state.submitted}
+					>
 						<input type="hidden" name="form-name" value="contact" />
 
 						<p hidden>
@@ -131,7 +132,8 @@ class ContactPage extends React.Component {
 							placeholder="Your message"
 							rows="4"
 							required
-							onChange={this.handleChange}></textarea>
+							onChange={this.handleChange}
+						></textarea>
 						<button type="submit">Send</button>
 					</form>
 

@@ -97,7 +97,7 @@ const Index = ({
 							width={400}
 							layout="constrained"
 							placeholder="blurred"
-							style={{borderRadius: "100%"}}
+							style={{ borderRadius: "100%" }}
 							alt="Kyle headshot"
 						/>
 					</ImageContainer>
@@ -105,7 +105,8 @@ const Index = ({
 						<h1>Kyle Karpack</h1>
 						<h2>Software Engineer in Seattle</h2>
 						<p>
-							Specializing in user-centered engineering for large web applications
+							Specializing in user-centered engineering for large web
+							applications
 						</p>
 					</div>
 				</Profile>
@@ -166,7 +167,12 @@ export const pageQuery = graphql`
 						title
 						cover {
 							childImageSharp {
-								gatsbyImageData(width: 600, quality: 60, layout: CONSTRAINED, placeholder: BLURRED)
+								gatsbyImageData(
+									width: 600
+									quality: 60
+									layout: CONSTRAINED
+									placeholder: BLURRED
+								)
 							}
 						}
 					}

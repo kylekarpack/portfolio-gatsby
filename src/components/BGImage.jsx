@@ -15,12 +15,12 @@ const BGImage = styled.div`
       @media (max-width: ${(props) => props.theme.breakpoints.m}),
         (max-device-width: ${(props) => props.theme.breakpoints.m}) {
         padding-bottom: ${(props) =>
-		props.single ? "40vh" : "60vh"};!important;
+					props.single ? "40vh" : "60vh"};!important;
       }
       @media (max-width: ${(props) => props.theme.breakpoints.s}),
         (max-device-width: ${(props) => props.theme.breakpoints.s}) {
         padding-bottom: ${(props) =>
-		props.single ? "300px" : "400px"} !important;
+					props.single ? "300px" : "400px"} !important;
       }
       @media (max-width: ${(props) => props.theme.breakpoints.xs}),
         (max-device-width: ${(props) => props.theme.breakpoints.xs}) {
@@ -39,9 +39,9 @@ const BGImage = styled.div`
 				top: 0;
 				width: 100%;
 				background: ${`linear-gradient(to top, rgba(0, 0, 0, 0) 0%, ${rgba(
-		props.customcolor,
-		1
-	)} 100%)`};
+					props.customcolor,
+					1
+				)} 100%)`};
 				mix-blend-mode: overlay;
 				z-index: 2;
 			}
@@ -49,8 +49,8 @@ const BGImage = styled.div`
   &:after {
     backface-visibility: hidden;
     background: ${({
-		theme,
-	}) => `linear-gradient(to bottom, ${shade} 0%, ${theme.colors.bg_color} 100%),
+			theme,
+		}) => `linear-gradient(to bottom, ${shade} 0%, ${theme.colors.bg_color} 100%),
       linear-gradient(to right, ${shade} 50%, ${theme.colors.bg_color} 100%)`};
     content: '';
     height: 100%;

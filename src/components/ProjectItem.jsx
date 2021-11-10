@@ -11,7 +11,9 @@ const Item = styled(animated.div)`
 `;
 
 const TextContent = styled.div`
-	border-bottom: 5px solid ${(props) => props.customcolor ? props.customcolor : props.theme.colors.grey};
+	border-bottom: 5px solid
+		${(props) =>
+			props.customcolor ? props.customcolor : props.theme.colors.grey};
 	padding: 0.1em 1em;
 	h2 {
 		color: #444;

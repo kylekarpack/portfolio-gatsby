@@ -6,7 +6,8 @@
     },
     "extends": [
 		"eslint:recommended",
-		"plugin:react/recommended"
+		"plugin:react/recommended",
+        "prettier"
 	],
     "globals": {
         "Atomics": "readonly",
@@ -27,10 +28,6 @@
 		}
     },
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-		],
 		"linebreak-style": "off",
         "quotes": [
             "error",
