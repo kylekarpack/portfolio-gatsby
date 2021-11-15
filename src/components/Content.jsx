@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { Container } from "../components";
 
 const Content = styled(Container)`
+	.small p {
+		font-size: 16px;
+	}
 	margin: 0 auto;
 	input,
 	textarea {
