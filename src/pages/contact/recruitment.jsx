@@ -27,14 +27,14 @@ export default function Recruitment(props) {
 							</li>
 							<li>Meaningful work that benefits real people</li>
 							<li>A modern tech stack and clean codebase</li>
-							<li>Low-meeting, remote-first culture</li>
+							<li>Thoughful, remote-first culture</li>
 						</ul>
 					</p>
 
 					<p>
 						Please note that I am not currently interested in the following:
 						<ul>
-							<li>Amazon, and e-commerce more generally</li>
+							<li>Amazon</li>
 							<li>
 								Products based on the collection or aggregation of user data
 							</li>
