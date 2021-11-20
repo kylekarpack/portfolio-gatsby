@@ -52,7 +52,7 @@ const Content = styled.div`
 		height: 100%;
 		left: 0;
 		opacity: 0;
-		padding: 2rem;
+		padding: 1.5rem;
 		position: absolute;
 		top: 0;
 		width: 100%;
@@ -67,12 +67,18 @@ const Content = styled.div`
 			text-decoration: none;
 		}
 	}
-	h2 {
-		margin-top: 0;
-		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-		font-size: 1.2rem;
-		line-height: 1;
-	}
+`;
+
+const ProjectTitle = styled.h2`
+	margin-top: 0;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font-size: 1.2rem;
+	line-height: 1;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 const ImageWrapper = styled.div`
@@ -112,7 +118,7 @@ const ProjectItem = ({ node, style, testid }) => (
 					<Overlay
 						style={{ backgroundColor: node.fields.color, opacity: 0.95 }}
 					/>
-					<h2>{node.frontmatter.title}</h2>
+					<ProjectTitle>{node.frontmatter.title}</ProjectTitle>
 					<p>
 						{
 							node?.excerpt
