@@ -52,7 +52,8 @@ export default function Recruitment(props) {
 					height="1658"
 					frameBorder="0"
 					marginHeight="0"
-					marginWidth="0">
+					marginWidth="0"
+				>
 					Loading…
 				</iframe>
 			</Content>
