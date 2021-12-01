@@ -15,12 +15,34 @@ module.exports = {
 	},
 	plugins: [
 		"gatsby-plugin-react-helmet",
+		// {
+		// 	resolve: "gatsby-plugin-web-font-loader",
+		// 	options: {
+		// 		typekit: {
+		// 			id: "kia0axj",
+		// 		},
+		// 	},
+		// },
 		{
-			resolve: "gatsby-plugin-web-font-loader",
+			/* Include plugin */
+			resolve: "gatsby-omni-font-loader",
+		
+			/* Plugin options */
 			options: {
-				typekit: {
-					id: "kia0axj",
-				},
+				/* Font loading mode */
+				mode: "render-blocking",
+				/* Enable font loading listener to handle FOUT */
+				enableListener: false,
+				/* Preconnect URL-s. This example is for Google Fonts */
+				preconnect: ["https://use.typekit.net"],
+				/* Web fonts. File link should point to font CSS file. */
+				web: [{
+						/* Exact name of the font as defied in @font-face CSS rule */
+						name: "proxima-nova",
+						/* URL to the font CSS file with @font-face definition */
+						file: "https://use.typekit.net/kia0axj.css",
+					},
+				],
 			},
 		},
 		"gatsby-plugin-styled-components",
