@@ -14,7 +14,7 @@ class ContactPage extends React.Component {
 			mapStyle: "mapbox://styles/mapbox/outdoors-v10",
 			viewport: {
 				width: "100%",
-				height: "35vh",
+				height: "33vh",
 				latitude: 47.6798,
 				longitude: -122.3258,
 				zoom: 11,
