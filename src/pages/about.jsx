@@ -45,7 +45,7 @@ const AboutPage = ({ location, data: { profile } }) => (
 				</div>
 			</Columns>
 
-			<GithubContributions username="kylekarpack"></GithubContributions>
+			<GithubContributions username="kylekarpack" />
 
 			<div className="recently-read">
 				<h2>Recently Read</h2>
