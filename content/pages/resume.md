@@ -18,10 +18,10 @@ I am an experienced software engineer specializing in front-end development for 
 
 ### _Senior Front-End Engineer_ 	October 2019 - Present
 
-Leading front-end efforts towards Adobe’s goal to bring its newly-acquired Bizible product onto the Adobe platform.
+Leading front-end efforts towards Adobe’s goal to bring its newly-acquired B2B product onto the Adobe platform.
 
-* Building out Adobe’s Prism visualization engine to present performant, intuitive dashboards for users
-* Migrating Bizible’s main business intelligence UI to a new framework and infrastructure while adding new features, improving build time by 80%, and exceeding Adobe’s targeted code quality and performance metrics
+* Managing the UI roadmap, including planning and implementing large-scale projects
+* Migrating our main business intelligence UI to a new framework and infrastructure while adding new features, improving build time by 80%, and exceeding Adobe’s targeted code quality and performance metrics
 * Leading a product-wide goal to move new development to React and leverage Adobe’s Unified Shell architecture
 
 
