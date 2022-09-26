@@ -10,6 +10,10 @@ const ImageContainer = styled(animated.div)`
 	padding: 1em;
 `;
 
+const TextContainer = styled(Container)`
+	max-width: 100%;
+`;
+
 const Content = styled(Container)`
 	padding-top: 2em;
 	width: 100%;
@@ -43,7 +47,10 @@ const ContentBlock = styled.div`
 		text-transform: uppercase;
 		font-size: 1.1rem;
 		font-weight: 600;
-		margin: 2em 0 0;
+		margin: 1.5em 0 0;
+	}
+	p {
+		margin: 1em 0 0;
 	}
 `;
 
@@ -83,7 +90,7 @@ const Project = ({ data: { mdx: postNode }, location, children }) => {
 		<Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={postNode} article />
 			<Content>
-				<Container type="text">
+				<TextContainer type="text">
 					<Title data-testid="project-title" style={titleProps}>
 						{project.title}
 					</Title>
@@ -98,7 +105,7 @@ const Project = ({ data: { mdx: postNode }, location, children }) => {
 							{children}
 						</animated.div>
 					</ContentBlock>
-				</Container>
+				</TextContainer>
 				<ImageContainer style={imageProps}>
 					{project.cover && <GatsbyImage
 						image={project.cover.childImageSharp.gatsbyImageData}

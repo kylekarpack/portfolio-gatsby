@@ -49,7 +49,7 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 			if (node.frontmatter.cover) {
 				try {
 					const colors = await getColors(
-						path.join(node.fileAbsolutePath, "../", node.frontmatter.cover)
+						path.join(node.internal.contentFilePath, "../", node.frontmatter.cover)
 					);
 					color = colors[0].hex();
 					for (let c of colors) {
