@@ -10,11 +10,12 @@ import { bookFilter } from "../util/bookFilter";
 
 const AboutPage = ({ location, data: { profile } }) => (
 	<Layout pathname={location.pathname}>
-		<Container gap={12}>
+		<Spacer />
+		<Container css={{ maxWidth: "55em" }}>
 			<Row>
 				<Col span={7}>
 					<Text h1>About</Text>
-					<Text>
+					<Text size="$lg">
 						Thanks for checking out my site. I&#39;m a software engineer based
 						in Seattle. If you are looking to hire an experienced front-end
 						developer, please check out my <a href="/resume">resume</a> and feel
@@ -24,21 +25,19 @@ const AboutPage = ({ location, data: { profile } }) => (
 					</Text>
 				</Col>
 				<Col span={4} offset={1}>
-					<div>
-						<br />
-						<GatsbyImage
-							image={profile.childImageSharp.gatsbyImageData}
-							alt="Kyle and Kristin in the Rockies"
-						/>
-					</div>
+					<Spacer />
+					<GatsbyImage
+						image={profile.childImageSharp.gatsbyImageData}
+						alt="Kyle and Kristin in the Rockies"
+					/>
 				</Col>
 			</Row>
 
-			<Spacer />
+			<Spacer y={3} />
 
 			<GithubContributions username="kylekarpack" />
 
-			<Spacer />
+			<Spacer y={3} />
 
 			<div className="recently-read">
 				<h2>Recently Read</h2>
