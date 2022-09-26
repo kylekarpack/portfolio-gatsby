@@ -111,6 +111,7 @@ const ProjectItem = ({ node, style, testid }) => (
 			<Content>
 				<ImageWrapper>
 					<GatsbyImage
+						alt={node.frontmatter.title}
 						image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData}
 					/>
 				</ImageWrapper>

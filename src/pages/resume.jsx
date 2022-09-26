@@ -1,5 +1,4 @@
 import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import React from "react";
 import styled from "styled-components";
 import { Container, Layout } from "../components";
@@ -53,11 +52,11 @@ const Content = styled(Container)`
 	}
 `;
 
-const Resume = ({ data: { mdx: postNode }, location }) => {
+const Resume = ({ data: { markdownRemark: { html } } }) => {
 	return (
 		<Layout pathname={location.pathname}>
 			<Content type="text">
-				<MDXRenderer>{postNode.body}</MDXRenderer>
+				<div dangerouslySetInnerHTML={{__html: html}} />
 			</Content>
 		</Layout>
 	);
@@ -66,12 +65,9 @@ const Resume = ({ data: { mdx: postNode }, location }) => {
 export default Resume;
 
 export const pageQuery = graphql`
-	query ResumeQuery {
-		mdx(fileAbsolutePath: { glob: "**/pages/resume.md" }) {
-			body
-			fields {
-				slug
-			}
-		}
+	query {
+		markdownRemark(fileAbsolutePath: { glob: "**/pages/resume.md" }) {
+      html
+    }
 	}
 `;

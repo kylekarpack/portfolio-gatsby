@@ -2,13 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { animated, useSpring, config } from "react-spring";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { SEO, Container, Layout } from "../components";
 
 const ImageContainer = styled(animated.div)`
 	padding: 1em;
+`;
+
+const TextContainer = styled(Container)`
+	max-width: 100%;
 `;
 
 const Content = styled(Container)`
@@ -44,11 +47,19 @@ const ContentBlock = styled.div`
 		text-transform: uppercase;
 		font-size: 1.1rem;
 		font-weight: 600;
-		margin: 2em 0 0;
+		margin: 1.5em 0 0;
+	}
+	p {
+		margin: 1em 0 0;
+	}
+	code {
+		margin 1em 0;
+		white-space: normal;
+		display: block;
 	}
 `;
 
-const Project = ({ data: { mdx: postNode }, location }) => {
+const Project = ({ data: { mdx: postNode }, location, children }) => {
 	const project = postNode.frontmatter;
 
 	const titleProps = {
@@ -84,7 +95,7 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 		<Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={postNode} article />
 			<Content>
-				<Container type="text">
+				<TextContainer type="text">
 					<Title data-testid="project-title" style={titleProps}>
 						{project.title}
 					</Title>
@@ -96,15 +107,15 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 					</InformationWrapper>
 					<ContentBlock customcolor={project.color}>
 						<animated.div style={contentProps}>
-							<MDXRenderer>{postNode.body}</MDXRenderer>
+							{children}
 						</animated.div>
 					</ContentBlock>
-				</Container>
+				</TextContainer>
 				<ImageContainer style={imageProps}>
-					<GatsbyImage
+					{project.cover && <GatsbyImage
 						image={project.cover.childImageSharp.gatsbyImageData}
 						alt=""
-					/>
+					/>}
 				</ImageContainer>
 			</Content>
 		</Layout>
@@ -123,7 +134,6 @@ Project.propTypes = {
 export const pageQuery = graphql`
 	query ($slug: String!) {
 		mdx(fields: { slug: { eq: $slug } }) {
-			body
 			excerpt
 			fields {
 				slug

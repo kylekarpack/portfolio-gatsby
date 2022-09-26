@@ -1,4 +1,3 @@
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import PropTypes from "prop-types";
 import React from "react";
 import { animated, config, useSpring } from "react-spring";
@@ -17,7 +16,7 @@ const Title = styled(animated.h1)`
 	margin-top: 0;
 `;
 
-const Single = ({ data: { mdx }, location }) => {
+const Single = ({ data: { mdx }, location, children }) => {
 	const single = mdx.frontmatter;
 
 	const titleProps = useSpring({
@@ -42,7 +41,7 @@ const Single = ({ data: { mdx }, location }) => {
 			</Content>
 			<Container type="text">
 				<animated.div style={contentProps}>
-					<MDXRenderer>{mdx.body}</MDXRenderer>
+					{children}
 				</animated.div>
 			</Container>
 		</Layout>

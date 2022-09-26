@@ -1,11 +1,12 @@
-import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { Container, Layout } from "../components";
+import React from "react";
 import { GithubContributions } from "react-github-graph";
 import { GoodreadsBookshelf } from "react-goodreads-shelf";
-import { GatsbyImage } from "gatsby-plugin-image";
+import styled from "styled-components";
+import { Container, Layout } from "../components";
+import { bookFilter } from "../util/bookFilter";
 
 const Columns = styled(Container)`
 	display: grid;
@@ -49,7 +50,15 @@ const AboutPage = ({ location, data: { profile } }) => (
 
 			<div className="recently-read">
 				<h2>Recently Read</h2>
-				<GoodreadsBookshelf userId="63515611" limit={18} width="10%" />
+				<GoodreadsBookshelf
+					userId="63515611"
+					limit={16}
+					width={100}
+					filter={bookFilter}
+					displayOptions={{ hideDetails: true }}
+				/>
+
+				<Link to="/about/reading">See more</Link>
 			</div>
 		</Container>
 	</Layout>

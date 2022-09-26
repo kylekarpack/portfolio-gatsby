@@ -15,14 +15,6 @@ module.exports = {
 	},
 	plugins: [
 		"gatsby-plugin-react-helmet",
-		// {
-		// 	resolve: "gatsby-plugin-web-font-loader",
-		// 	options: {
-		// 		typekit: {
-		// 			id: "kia0axj",
-		// 		},
-		// 	},
-		// },
 		{
 			/* Include plugin */
 			resolve: "gatsby-omni-font-loader",
