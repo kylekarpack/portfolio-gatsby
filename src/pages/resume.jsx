@@ -52,7 +52,7 @@ const Content = styled(Container)`
 	}
 `;
 
-const Resume = ({ data: { markdownRemark: { html } } }) => {
+const Resume = ({ data: { markdownRemark: { html } } }, location) => {
 	return (
 		<Layout pathname={location.pathname}>
 			<Content type="text">
@@ -67,7 +67,7 @@ export default Resume;
 export const pageQuery = graphql`
 	query {
 		markdownRemark(fileAbsolutePath: { glob: "**/pages/resume.md" }) {
-      html
-    }
+			html
+		}
 	}
 `;
