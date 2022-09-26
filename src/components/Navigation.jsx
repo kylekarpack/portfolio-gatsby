@@ -3,6 +3,7 @@ import { Link, StaticQuery, graphql } from "gatsby";
 import { FaGithub, FaLinkedin, FaBars } from "react-icons/fa";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
+import { Navbar, Button, Text, Card, Radio } from "@nextui-org/react";
 
 const Wrapper = styled.header`
 	position: sticky;
@@ -11,14 +12,14 @@ const Wrapper = styled.header`
 	display: flex;
 	padding: 0;
 	z-index: 1000;
-	background: ${(props) => props.theme.brand.secondary};
+	//background: ${(props) => props.theme.brand.secondary};
 	a {
-		color: ${(props) => props.theme.colors.white};
+		//color: ${(props) => props.theme.colors.white};
 		text-decoration: none;
 		transition: all 0.3s ease-in-out;
 		z-index: 100;
 		&:hover {
-			color: ${(props) => props.theme.brand.primary};
+			//color: ${(props) => props.theme.brand.primary};
 		}
 	}
 	.navbar-toggle {
@@ -35,7 +36,7 @@ const Wrapper = styled.header`
 			}
 		}
 	}
-	@media (max-width: ${(props) => props.theme.breakpoints.s}) {
+	/* @media (max-width: ${(props) => props.theme.breakpoints.s}) {
 		padding: 0;
 		display: block;
 		position: static;
@@ -48,7 +49,7 @@ const Wrapper = styled.header`
 				display: none;
 			}
 		}
-	}
+	} */
 `;
 
 const Nav = styled.nav`
@@ -60,7 +61,7 @@ const Nav = styled.nav`
 	a {
 		padding: 1rem 1.5rem;
 	}
-	@media (max-width: ${(props) => props.theme.breakpoints.m}) {
+	/* @media (max-width: ${(props) => props.theme.breakpoints.m}) {
 		a {
 			padding: 1rem;
 		}
@@ -75,14 +76,14 @@ const Nav = styled.nav`
 	}
 	@media (max-width: ${(props) => props.theme.breakpoints.xs}) {
 		order: 2;
-	}
+	} */
 	.logo {
 		min-width: 15vw;
 		margin-right: 1rem;
 		text-align: center;
 		padding: 0;
 
-		@media (max-width: ${(props) => props.theme.breakpoints.s}) {
+		/* @media (max-width: ${(props) => props.theme.breakpoints.s}) {
 			display: none;
 		}
 
@@ -91,7 +92,7 @@ const Nav = styled.nav`
 			img {
 				max-height: 35px;
 			}
-		}
+		} */
 	}
 `;
 
@@ -99,7 +100,7 @@ const SocialMedia = styled.div`
 	display: flex;
 	flex: 1;
 	justify-content: flex-end;
-	padding: 0 ${(props) => props.theme.spacer.horizontal};
+	//padding: 0 ${(props) => props.theme.spacer.horizontal};
 	a {
 		font-size: 1.25rem;
 		line-height: 20px;
@@ -107,13 +108,13 @@ const SocialMedia = styled.div`
 	a:not(:first-child) {
 		margin-left: 1rem;
 	}
-	@media (max-width: ${(props) => props.theme.breakpoints.s}) {
+	/* @media (max-width: ${(props) => props.theme.breakpoints.s}) {
 		float: right;
 		padding: 0.5rem 1rem;
 	}
 	@media (max-width: ${(props) => props.theme.breakpoints.xs}) {
 		order: 3;
-	}
+	} */
 `;
 
 // Grabs all MDX files from src/pages and puts them into the navigation
@@ -130,6 +131,47 @@ class Navigation extends React.Component {
 	};
 
 	render() {
+		return (
+			<Navbar isBordered variant="sticky">
+				<Navbar.Brand>
+					<Link to="/" className="logo">
+						<StaticImage
+							placeholder="blurred"
+							layout="constrained"
+							height={32}
+							src="../../static/logo.png"
+							alt="Site logo"
+						/>
+					</Link>
+				</Navbar.Brand>
+				<Navbar.Content hideIn="xs">
+					<Navbar.Link href="/">Home</Navbar.Link>
+					<Navbar.Link href="/about">
+						About
+					</Navbar.Link>
+					<Navbar.Link href="/resume">Resume</Navbar.Link>
+					<Navbar.Link href="/portfolio">Portfolio</Navbar.Link>
+					<Navbar.Link href="/contact">Contact</Navbar.Link>
+				</Navbar.Content>
+				<Navbar.Content>
+					<a
+						href="https://github.com/kylekarpack"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Github">
+						<FaGithub />
+					</a>
+					<a
+						href="https://www.linkedin.com/in/kylekarpack"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="LinkedIn">
+						<FaLinkedin />
+					</a>
+				</Navbar.Content>
+			</Navbar>
+		);
+		/*
 		return (
 			<StaticQuery
 				query={query}
@@ -187,28 +229,12 @@ class Navigation extends React.Component {
 								Contact
 							</Link>
 						</Nav>
-						<SocialMedia>
-							<a
-								href="https://github.com/kylekarpack"
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label="Github"
-							>
-								<FaGithub />
-							</a>
-							<a
-								href="https://www.linkedin.com/in/kylekarpack"
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label="LinkedIn"
-							>
-								<FaLinkedin />
-							</a>
-						</SocialMedia>
+
 					</Wrapper>
 				)}
 			/>
 		);
+		*/
 	}
 }
 

@@ -17,9 +17,6 @@ const Columns = styled(Container)`
 	img {
 		max-width: 100%;
 	}
-	@media (max-width: ${(props) => props.theme.breakpoints.m}) {
-		display: block;
-	}
 `;
 
 const AboutPage = ({ location, data: { profile } }) => (

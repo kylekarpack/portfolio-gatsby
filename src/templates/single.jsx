@@ -5,15 +5,10 @@ import styled from "styled-components";
 import { Container, Layout, SEO } from "../components";
 
 const Content = styled(Container)`
-	left: 0;
-	right: 0;
-	bottom: 0;
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+
 `;
 
 const Title = styled(animated.h1)`
-	margin-top: 0;
 `;
 
 const Single = ({ data: { mdx }, location, children }) => {

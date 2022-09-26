@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import { animated } from "react-spring";
 import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { Card, Col, Row, Button, Text } from "@nextui-org/react";
 
 const Item = styled(animated.div)`
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -106,37 +107,92 @@ const Overlay = styled.div`
 `;
 
 const ProjectItem = ({ node, style, testid }) => (
-	<Item key={node.fields.slug} style={style} data-testid={testid}>
-		<ImageContent>
-			<Content>
-				<ImageWrapper>
-					<GatsbyImage
-						alt={node.frontmatter.title}
-						image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData}
-					/>
-				</ImageWrapper>
-				<Link to={node.fields.slug}>
-					<Overlay
-						style={{ backgroundColor: node.fields.color, opacity: 0.95 }}
-					/>
-					<ProjectTitle>{node.frontmatter.title}</ProjectTitle>
-					<p>
-						{
-							node?.excerpt
-								?.replace("Case Study", "")
-								?.replace("Project Description", "")
-								?.split("Skills Used")[0]
-						}
-					</p>
-				</Link>
-			</Content>
-		</ImageContent>
-		<Link to={node.fields.slug}>
-			<TextContent customcolor={node.fields.color}>
-				<h2>{node.frontmatter.title}</h2>
-			</TextContent>
-		</Link>
-	</Item>
+	<Card css={{ w: "100%", h: "400px" }} isPressable isHoverable>
+		<Card.Header>
+			<Col>
+				<Text h3 color="black">
+				{node.frontmatter.title}
+				</Text>
+			</Col>
+		</Card.Header>
+		<Card.Body css={{ padding: 0 }}>
+			{/* <Card.Image
+				src="https://nextui.org/images/card-example-6.jpeg"
+				width="100%"
+				height="100%"
+				objectFit="cover"
+				alt="Card example background"
+			/> */}
+			<GatsbyImage
+			style={{objectFit:"cover"}}
+				alt={node.frontmatter.title}
+				image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData}
+			/>
+		</Card.Body>
+		<Card.Footer
+			isBlurred
+			css={{
+				bgBlur: "#ffffff66",
+				borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
+				bottom: 0,
+				zIndex: 1,
+			}}>
+			<Row>
+				<Col>
+					<Text color="#000" size={12}>
+						Available soon.
+					</Text>
+					<Text color="#000" size={12}>
+						Get notified.
+					</Text>
+				</Col>
+				<Col>
+					<Row justify="flex-end">
+						<Button flat auto rounded color={node.fields.color}>
+							<Text
+								css={{ color: "inherit" }}
+								size={12}
+								weight="bold"
+								transform="uppercase">
+								Read More
+							</Text>
+						</Button>
+					</Row>
+				</Col>
+			</Row>
+		</Card.Footer>
+	</Card>
+	// <Item key={node.fields.slug} style={style} data-testid={testid}>
+	// 	<ImageContent>
+	// 		<Content>
+	// 			<ImageWrapper>
+	// 				<GatsbyImage
+	// 					alt={node.frontmatter.title}
+	// 					image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData}
+	// 				/>
+	// 			</ImageWrapper>
+	// 			<Link to={node.fields.slug}>
+	// 				<Overlay
+	// 					style={{ backgroundColor: node.fields.color, opacity: 0.95 }}
+	// 				/>
+	// 				<ProjectTitle>{node.frontmatter.title}</ProjectTitle>
+	// 				<p>
+	// 					{
+	// 						node?.excerpt
+	// 							?.replace("Case Study", "")
+	// 							?.replace("Project Description", "")
+	// 							?.split("Skills Used")[0]
+	// 					}
+	// 				</p>
+	// 			</Link>
+	// 		</Content>
+	// 	</ImageContent>
+	// 	<Link to={node.fields.slug}>
+	// 		<TextContent customcolor={node.fields.color}>
+	// 			<h2>{node.frontmatter.title}</h2>
+	// 		</TextContent>
+	// 	</Link>
+	// </Item>
 );
 
 export default ProjectItem;

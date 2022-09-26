@@ -7,36 +7,20 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { SEO, Container, Layout } from "../components";
 
 const ImageContainer = styled(animated.div)`
-	padding: 1em;
 `;
 
 const TextContainer = styled(Container)`
-	max-width: 100%;
 `;
 
 const Content = styled(Container)`
-	padding-top: 2em;
-	width: 100%;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-	grid-auto-rows: 1fr;
-	color: #777;
-	@media (max-width: ${(props) => props.theme.breakpoints.m}) {
-		display: block;
-	}
 `;
 
 const InformationWrapper = styled(animated.div)`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+
 `;
 
 const Title = styled(animated.h1)`
-	margin-top: 0;
-	border-bottom: 4px solid;
-	display: inline-block;
+
 `;
 
 const ContentBlock = styled.div`
