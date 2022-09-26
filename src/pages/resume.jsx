@@ -37,12 +37,13 @@ const Content = styled(Container, {
 });
 
 const Resume = ({
+	location,
 	data: {
-		markdownRemark: { html, frontmatter },
+		markdownRemark: { html },
 	},
 }) => {
 	return (
-		<Layout pathname={`/${frontmatter?.slug}`}>
+		<Layout pathname={location.pathname}>
 			<Content>
 				<div dangerouslySetInnerHTML={{ __html: html }} />
 			</Content>
@@ -57,9 +58,6 @@ export const pageQuery = graphql`
 	query {
 		markdownRemark(fileAbsolutePath: { glob: "**/pages/resume.md" }) {
 			html
-			frontmatter {
-				slug
-			}
 		}
 	}
 `;
