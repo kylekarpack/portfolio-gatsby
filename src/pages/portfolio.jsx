@@ -1,21 +1,9 @@
-/* eslint react/display-name: 0 */
+import { Container, Grid, Spacer } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 import { config, useTrail } from "react-spring";
-import styled from "styled-components";
 import { Layout, ProjectItem } from "../components";
-
-const Wrapper = styled.div`
-	padding: 2vw;
-`;
-const ListWrapper = styled.div`
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	grid-column-gap: 2vw;
-	grid-row-gap: 2vw;
-	width: 100%;
-`;
 
 const Portfolio = ({
 	data: {
@@ -23,27 +11,20 @@ const Portfolio = ({
 	},
 	location,
 }) => {
-	const trail = useTrail(projectEdges.length, {
-		config: config.stiff,
-		from: { opacity: 0 },
-		to: { opacity: 1 },
-	});
-
 	return (
 		<Layout pathname={location.pathname}>
-			<Wrapper>
+			<Container>
+				<Spacer />
 				<h1>Recent Work</h1>
-				<ListWrapper>
-					{trail.map((style, index) => (
-						<ProjectItem
-							testid={`projectItem-${index}`}
-							style={style}
-							key={projectEdges[index].node.fields.slug}
-							node={projectEdges[index].node}
-						/>
+				<Spacer />
+				<Grid.Container gap={2} justify="center">
+					{projectEdges.map((edge, index) => (
+						<Grid xs={12} sm={4} md={3} key={edge.node.fields.slug}>
+							<ProjectItem testid={`projectItem-${index}`} node={edge.node} />
+						</Grid>
 					))}
-				</ListWrapper>
-			</Wrapper>
+				</Grid.Container>
+			</Container>
 		</Layout>
 	);
 };
@@ -82,7 +63,7 @@ export const pageQuery = graphql`
 						cover {
 							childImageSharp {
 								gatsbyImageData(
-									width: 350
+									width: 450
 									quality: 50
 									layout: CONSTRAINED
 									placeholder: BLURRED

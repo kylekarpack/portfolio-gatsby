@@ -1,18 +1,20 @@
-import { Avatar, Navbar, Link as TextLink } from "@nextui-org/react";
+import { Avatar, Link as TextLink, Navbar, Text } from "@nextui-org/react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const NavLink = ({ to, currentPath, children }) => {
+	const isActive = currentPath === to;
 	return (
 		<Link to={to}>
-			<Navbar.Link
-				as="span"
-				color="text"
-				activeColor="primary"
-				isActive={currentPath === to}>
-				{children}
+			<Navbar.Link as="span" isActive={isActive}>
+				{isActive && (
+					<Text as="span" color="$primary">
+						{children}
+					</Text>
+				)}
+				{!isActive && <Text as="span">{children}</Text>}
 			</Navbar.Link>
 		</Link>
 	);
