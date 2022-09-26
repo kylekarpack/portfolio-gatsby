@@ -52,6 +52,11 @@ const ContentBlock = styled.div`
 	p {
 		margin: 1em 0 0;
 	}
+	code {
+		margin 1em 0;
+		white-space: normal;
+		display: block;
+	}
 `;
 
 const Project = ({ data: { mdx: postNode }, location, children }) => {
