@@ -1,9 +1,16 @@
+import {
+	Button,
+	Container,
+	Input,
+	Spacer,
+	Text,
+	Textarea,
+} from "@nextui-org/react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import PropTypes from "prop-types";
 import React from "react";
 import ReactMapGL from "react-map-gl";
-import { Content, Layout } from "../../components";
-
+import { Layout } from "../../components";
 class ContactPage extends React.Component {
 	_onViewportChange = (viewport) => this.setState({ viewport });
 
@@ -63,21 +70,15 @@ class ContactPage extends React.Component {
 					{...this.state.map.viewport}
 				/>
 
-				<Content type="text">
-					<h1>Contact</h1>
-					{/* <h3>Get in Touch</h3>
-					<p>Have an idea for a project? Want me to work for you? Send me a message here and I’ll get back to you as soon as possible.</p>
-			
-					<h3>Based Out of the PNW</h3>
-					<p>Born and raised here, I love the Pacific Northwest and plan on being here for a long while.</p> */}
+				<Container css={{ maxWidth: "55em", padding: "2em 0" }}>
+					<Text h2>Contact</Text>
 					<form
 						name="contact"
 						method="POST"
 						data-netlify
 						data-netlify-honeypot="bot-field"
 						onSubmit={this.handleSubmit}
-						hidden={this.state.submitted}
-					>
+						hidden={this.state.submitted}>
 						<input type="hidden" name="form-name" value="contact" />
 
 						<p hidden>
@@ -87,33 +88,39 @@ class ContactPage extends React.Component {
 							</label>
 						</p>
 
-						<input
+						<Input
+							fullWidth
 							type="text"
 							name="name"
 							placeholder="Your name"
 							onChange={this.handleChange}
 						/>
-						<input
+						<Spacer />
+						<Input
+							fullWidth
 							type="email"
 							name="email"
 							placeholder="Your email"
 							required
 							onChange={this.handleChange}
 						/>
-						<textarea
+						<Spacer />
+						<Textarea
+							fullWidth
 							name="message"
 							placeholder="Your message"
 							rows="4"
 							required
 							onChange={this.handleChange}
-						></textarea>
-						<button type="submit">Send</button>
+						/>
+						<Spacer />
+						<Button type="submit">Send</Button>
 					</form>
 
 					<p hidden={!this.state.submitted}>
 						Thank you for your submission. I will get back to you shortly.
 					</p>
-				</Content>
+				</Container>
 			</Layout>
 		);
 	}

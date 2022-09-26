@@ -1,10 +1,9 @@
-/* eslint react/display-name: 0 */
 import { Button, Container, Grid, Spacer, Text } from "@nextui-org/react";
 import { graphql, Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import React from "react";
-import { useSpring, useTrail } from "react-spring";
+import { useTrail } from "react-spring";
 import { Layout, ProjectItem } from "../components";
 
 const Index = ({
@@ -14,11 +13,6 @@ const Index = ({
 	location,
 }) => {
 	projectEdges = projectEdges.filter((el) => el.node?.frontmatter?.cover);
-
-	const titleProps = useSpring({
-		from: { opacity: 0, transform: "translate3d(0, -30px, 0)" },
-		to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
-	});
 
 	const trail = useTrail(projectEdges.length, {
 		from: { opacity: 0 },
