@@ -9,8 +9,7 @@ import SEO from "./SEO";
 const Layout = ({ children, pathname, customSEO }) => (
 	<>
 		{!customSEO && <SEO pathname={pathname} />}
-		{/* <GlobalStyle /> */}
-		<Navigation />
+		<Navigation pathname={pathname} />
 		{children}
 		<Footer />
 	</>

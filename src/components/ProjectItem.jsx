@@ -111,7 +111,7 @@ const ProjectItem = ({ node, style, testid }) => (
 		<Card.Header>
 			<Col>
 				<Text h3 color="black">
-				{node.frontmatter.title}
+					{node.frontmatter.title}
 				</Text>
 			</Col>
 		</Card.Header>
@@ -124,7 +124,7 @@ const ProjectItem = ({ node, style, testid }) => (
 				alt="Card example background"
 			/> */}
 			<GatsbyImage
-			style={{objectFit:"cover"}}
+				style={{ objectFit: "cover" }}
 				alt={node.frontmatter.title}
 				image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData}
 			/>
@@ -199,6 +199,5 @@ export default ProjectItem;
 
 ProjectItem.propTypes = {
 	node: PropTypes.object.isRequired,
-	style: PropTypes.object.isRequired,
 	testid: PropTypes.string.isRequired,
 };

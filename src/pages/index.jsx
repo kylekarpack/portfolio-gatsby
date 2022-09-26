@@ -1,32 +1,11 @@
 /* eslint react/display-name: 0 */
-import { graphql } from "gatsby";
+import { Button, Container, Grid, Spacer, Text } from "@nextui-org/react";
+import { graphql, Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import { darken } from "polished";
 import PropTypes from "prop-types";
 import React from "react";
-import { animated, useSpring, useTrail } from "react-spring";
-import styled from "styled-components";
+import { useSpring, useTrail } from "react-spring";
 import { Layout, ProjectItem } from "../components";
-import { Grid } from "@nextui-org/react";
-
-const Wrapper = styled.div`
-	
-`;
-const MoreWrapper = styled.div`
-	
-`;
-
-const ImageContainer = styled.div`
-	
-`;
-
-const Profile = styled(animated.div)`
-	
-`;
-
-const ListWrapper = styled.div`
-	
-`;
 
 const Index = ({
 	data: {
@@ -48,35 +27,39 @@ const Index = ({
 
 	return (
 		<Layout pathname={location.pathname}>
-			<Wrapper>
-				<Profile style={titleProps}>
-					<ImageContainer>
+			<Container>
+				<Grid.Container css={{ padding: "4em 0" }} gap={4}>
+					<Grid xs={6} sm={3} md={2}>
 						<StaticImage
 							src="../../static/headshot.jpg"
 							width={400}
 							layout="constrained"
 							placeholder="blurred"
-							style={{ borderRadius: "100%" }}
 							alt="Kyle headshot"
+							style={{ aspectRatio: "1 / 1", borderRadius: "100%" }}
 						/>
-					</ImageContainer>
-					<div>
-						<h1>Kyle Karpack</h1>
-						<h2>Software Engineer in Seattle</h2>
-						<p>
+					</Grid>
+					<Grid>
+						<Text h1>Kyle Karpack</Text>
+						<Text h2>Software Engineer in Seattle</Text>
+						<Text p size="$lg">
 							Specializing in user-centered engineering for large web
 							applications
-						</p>
-					</div>
-				</Profile>
+						</Text>
+					</Grid>
+				</Grid.Container>
 
-				<hr />
+				<Spacer y={2} />
 
-				<h2>Recent Work</h2>
+				<Text h2>Recent Work</Text>
 				<Grid.Container gap={2} justify="center">
-					{projectEdges.map((item, index) => (
-						<Grid xs={12} sm={4} md={3} key={projectEdges[index].node.fields.slug}
-						>
+					{trail.map((style, index) => (
+						<Grid
+							xs={12}
+							sm={4}
+							md={3}
+							key={projectEdges[index].node.fields.slug}
+							style={style}>
 							<ProjectItem
 								testid={`projectItem-${index}`}
 								key={projectEdges[index].node.fields.slug}
@@ -86,12 +69,14 @@ const Index = ({
 					))}
 				</Grid.Container>
 
-				<MoreWrapper>
-					<a className="btn" href="/portfolio">
-						View More
-					</a>
-				</MoreWrapper>
-			</Wrapper>
+				<Grid.Container justify="center" css={{ padding: "2em 0" }}>
+					<Grid>
+						<Link to="/portfolio">
+							<Button>View More</Button>
+						</Link>
+					</Grid>
+				</Grid.Container>
+			</Container>
 		</Layout>
 	);
 };

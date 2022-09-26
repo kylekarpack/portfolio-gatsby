@@ -1,12 +1,15 @@
+import { Container } from "@nextui-org/react";
 import React from "react";
-import styled from "styled-components";
 
-const Wrapper = styled.footer`
-	
-`;
-const year = new Date().getFullYear();
-const Footer = () => (
-	<Wrapper data-testid="footer">Copyright &copy; {year} Kyle Karpack</Wrapper>
-);
+const Footer = () => {
+	const year = new Date().getFullYear();
+	return (
+		<Container
+			css={{ textAlign: "center", padding: "1em 0" }}
+			data-testid="footer">
+			Copyright &copy; {year} Kyle Karpack
+		</Container>
+	);
+};
 
 export default Footer;
