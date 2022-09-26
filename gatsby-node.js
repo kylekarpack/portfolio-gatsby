@@ -83,22 +83,24 @@ exports.createPages = async ({ graphql, actions }) => {
 				projects: allMdx(
 					filter: { fields: { sourceInstanceName: { eq: "projects" } } }
 				) {
-					edges {
-						node {
-							fields {
-								slug
-							}
+					nodes {
+						fields {
+							slug
+						}
+						internal {
+							contentFilePath
 						}
 					}
 				}
 				single: allMdx(
 					filter: { fields: { sourceInstanceName: { eq: "pages" } } }
 				) {
-					edges {
-						node {
-							fields {
-								slug
-							}
+					nodes {
+						fields {
+							slug
+						}
+						internal {
+							contentFilePath
 						}
 					}
 				}
@@ -107,24 +109,24 @@ exports.createPages = async ({ graphql, actions }) => {
 	);
 
 	// Create all portfolio pages
-	result.data.projects.edges.forEach((edge) => {
+	result.data.projects.nodes.forEach((node) => {
 		createPage({
-			path: edge.node.fields.slug,
-			component: projectPage,
+			path: node.fields.slug,
+			component: `${projectPage}?__contentFilePath=${node.internal.contentFilePath}`,
 			context: {
 				// Pass "slug" through context so we can reference it in our query like "$slug: String!"
-				slug: edge.node.fields.slug,
+				slug: node.fields.slug,
 			},
 		});
 	});
 
 	// Create all single pages
-	result.data.single.edges.forEach((edge) => {
+	result.data.single.nodes.forEach((node) => {
 		createPage({
-			path: edge.node.fields.slug,
-			component: singlePage,
+			path: node.fields.slug,
+			component: `${singlePage}?__contentFilePath=${node.internal.contentFilePath}`,
 			context: {
-				slug: edge.node.fields.slug,
+				slug: node.fields.slug,
 			},
 		});
 	});

@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { animated, useSpring, config } from "react-spring";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { SEO, Container, Layout } from "../components";
@@ -48,7 +47,7 @@ const ContentBlock = styled.div`
 	}
 `;
 
-const Project = ({ data: { mdx: postNode }, location }) => {
+const Project = ({ data: { mdx: postNode }, location, children }) => {
 	const project = postNode.frontmatter;
 
 	const titleProps = {
@@ -96,15 +95,15 @@ const Project = ({ data: { mdx: postNode }, location }) => {
 					</InformationWrapper>
 					<ContentBlock customcolor={project.color}>
 						<animated.div style={contentProps}>
-							<MDXRenderer>{postNode.body}</MDXRenderer>
+							{children}
 						</animated.div>
 					</ContentBlock>
 				</Container>
 				<ImageContainer style={imageProps}>
-					<GatsbyImage
+					{project.cover && <GatsbyImage
 						image={project.cover.childImageSharp.gatsbyImageData}
 						alt=""
-					/>
+					/>}
 				</ImageContainer>
 			</Content>
 		</Layout>
@@ -123,7 +122,6 @@ Project.propTypes = {
 export const pageQuery = graphql`
 	query ($slug: String!) {
 		mdx(fields: { slug: { eq: $slug } }) {
-			body
 			excerpt
 			fields {
 				slug
