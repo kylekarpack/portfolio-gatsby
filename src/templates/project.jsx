@@ -1,13 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { animated, useSpring, config } from "react-spring";
+import { Container, Spacer, Row, Col, styled as styled1, Text } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { SEO, Layout } from "../components";
-import { Container, Row, Col } from "@nextui-org/react";
-
-const ImageContainer = styled(animated.div)``;
+import PropTypes from "prop-types";
+import React from "react";
+import { animated, config, useSpring } from "react-spring";
+import styled from "styled-components";
+import { Layout, SEO } from "../components";
 
 const InformationWrapper = styled(animated.div)``;
 
@@ -32,6 +30,19 @@ const ContentBlock = styled.div`
 		display: block;
 	}
 `;
+
+const Empty = ({ children }) => <div>{children}</div>;
+const Grid = styled1(Text, {
+	display: "grid !important",
+	gridTemplateColumns: "1fr 1fr",
+	columnGap: "$xl",
+	"@smMax": {
+		gridTemplateColumns: "1fr",
+	},
+	"@lgMin": {
+		gridTemplateColumns: "3fr 2fr"
+	}
+});
 
 const Project = ({ data: { mdx: postNode }, location, children }) => {
 	const project = postNode.frontmatter;
@@ -68,12 +79,13 @@ const Project = ({ data: { mdx: postNode }, location, children }) => {
 	return (
 		<Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={postNode} article />
+			<Spacer />
 			<Container>
-				<Row wrap="wrap">
-					<Col span={6}>
-						<Title data-testid="project-title" style={titleProps}>
-							{project.title}
-						</Title>
+				<Title data-testid="project-title" style={titleProps}>
+					{project.title}
+				</Title>
+				<Grid>
+					<div>
 						<InformationWrapper style={infoProps}>
 							<ContentBlock customcolor={project.color}>
 								<h3>Date</h3>
@@ -83,18 +95,16 @@ const Project = ({ data: { mdx: postNode }, location, children }) => {
 						<ContentBlock customcolor={project.color}>
 							<animated.div style={contentProps}>{children}</animated.div>
 						</ContentBlock>
-					</Col>
-					<Col span={6}>
-						<ImageContainer style={imageProps}>
-							{project.cover && (
-								<GatsbyImage
-									image={project.cover.childImageSharp.gatsbyImageData}
-									alt={project.title}
-								/>
-							)}
-						</ImageContainer>
-					</Col>
-				</Row>
+					</div>
+					<div>
+						{project.cover && (
+							<GatsbyImage
+								image={project.cover.childImageSharp.gatsbyImageData}
+								alt={project.title}
+							/>
+						)}
+					</div>
+				</Grid>
 			</Container>
 		</Layout>
 	);
