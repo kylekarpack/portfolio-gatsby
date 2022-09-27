@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { Button, Card, Col, Row, Spacer, Text } from "@nextui-org/react";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { Card, Col, Row, Button, Text, Spacer } from "@nextui-org/react";
+import PropTypes from "prop-types";
+import React from "react";
 
-const ProjectItem = ({ node, style, testid }) => (
+const ProjectItem = ({ node, testid }) => (
 	<Link to={node.fields.slug} style={{ width: "100%" }} data-testid={testid}>
 		<Card css={{ width: "100%" }} isPressable isHoverable>
 			<Card.Header css={{ backgroundColor: node.fields.color }}>
@@ -36,9 +36,9 @@ const ProjectItem = ({ node, style, testid }) => (
 						size="$xs"
 						style={{
 							overflow: "hidden",
-							"-webkit-line-clamp": "2",
+							WebkitLineClamp: "2",
 							display: "-webkit-box",
-							"-webkit-box-orient": "vertical",
+							WebkitBoxOrient: "vertical",
 						}}>
 						{
 							node?.excerpt
@@ -65,37 +65,6 @@ const ProjectItem = ({ node, style, testid }) => (
 			</Card.Footer>
 		</Card>
 	</Link>
-	// <Item key={node.fields.slug} style={style} data-testid={testid}>
-	// 	<ImageContent>
-	// 		<Content>
-	// 			<ImageWrapper>
-	// 				<GatsbyImage
-	// 					alt={node.frontmatter.title}
-	// 					image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData}
-	// 				/>
-	// 			</ImageWrapper>
-	// 			<Link to={node.fields.slug}>
-	// 				<Overlay
-	// 					style={{ backgroundColor: node.fields.color, opacity: 0.95 }}
-	// 				/>
-	// 				<ProjectTitle>{node.frontmatter.title}</ProjectTitle>
-	// 				<p>
-	// 					{
-	// 						node?.excerpt
-	// 							?.replace("Case Study", "")
-	// 							?.replace("Project Description", "")
-	// 							?.split("Skills Used")[0]
-	// 					}
-	// 				</p>
-	// 			</Link>
-	// 		</Content>
-	// 	</ImageContent>
-	// 	<Link to={node.fields.slug}>
-	// 		<TextContent customcolor={node.fields.color}>
-	// 			<h2>{node.frontmatter.title}</h2>
-	// 		</TextContent>
-	// 	</Link>
-	// </Item>
 );
 
 export default ProjectItem;

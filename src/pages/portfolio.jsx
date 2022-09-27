@@ -2,12 +2,11 @@ import { Container, Grid, Spacer } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { config, useTrail } from "react-spring";
 import { Layout, ProjectItem } from "../components";
 
 const Portfolio = ({
 	data: {
-		allMdx: { edges: projectEdges },
+		allMdx: { nodes },
 	},
 	location,
 }) => {
@@ -18,9 +17,9 @@ const Portfolio = ({
 				<h1>Recent Work</h1>
 				<Spacer />
 				<Grid.Container gap={2} justify="center">
-					{projectEdges.map((edge, index) => (
-						<Grid xs={12} sm={4} md={3} key={edge.node.fields.slug}>
-							<ProjectItem testid={`projectItem-${index}`} node={edge.node} />
+					{nodes.map((node, index) => (
+						<Grid xs={12} sm={4} md={3} key={node.fields.slug}>
+							<ProjectItem testid={`projectItem-${index}`} node={node} />
 						</Grid>
 					))}
 				</Grid.Container>
@@ -34,7 +33,7 @@ export default Portfolio;
 Portfolio.propTypes = {
 	data: PropTypes.shape({
 		allMdx: PropTypes.shape({
-			edges: PropTypes.array.isRequired,
+			nodes: PropTypes.array.isRequired,
 		}),
 	}).isRequired,
 	location: PropTypes.object.isRequired,
@@ -49,26 +48,22 @@ export const pageQuery = graphql`
 				fields: { sourceInstanceName: { eq: "projects" } }
 			}
 		) {
-			edges {
-				node {
-					excerpt(pruneLength: 150)
+			nodes {
+				excerpt(pruneLength: 150)
+				fields {
+					slug
+					color
 				}
-				node {
-					fields {
-						slug
-						color
-					}
-					frontmatter {
-						title
-						cover {
-							childImageSharp {
-								gatsbyImageData(
-									width: 450
-									quality: 50
-									layout: CONSTRAINED
-									placeholder: BLURRED
-								)
-							}
+				frontmatter {
+					title
+					cover {
+						childImageSharp {
+							gatsbyImageData(
+								width: 450
+								quality: 50
+								layout: CONSTRAINED
+								placeholder: BLURRED
+							)
 						}
 					}
 				}
