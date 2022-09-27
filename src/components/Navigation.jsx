@@ -5,7 +5,11 @@ import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const NavLink = ({ to, currentPath, children }) => {
-	const isActive = currentPath === to;
+	const isActive =
+		to === "/"
+			? currentPath === "/"
+			: currentPath?.trimEnd("/").startsWith(to?.trimEnd("/"));
+
 	return (
 		<Link to={to}>
 			<Navbar.Link as="span" isActive={isActive}>

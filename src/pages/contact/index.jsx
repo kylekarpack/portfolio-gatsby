@@ -73,15 +73,9 @@ const ContactPage = ({ location }) => {
 					throw new Error(response.statusText);
 				}
 			})
-			.then(() => {
-				setForm(...form, { submitted: true });
-			})
-			.catch((error) => {
-				setError(error.message);
-			})
-			.finally(() => {
-				setLoading(false);
-			});
+			.then(() => setForm({ ...form, submitted: true }))
+			.catch((error) => setError(error.message))
+			.finally(() => setLoading(false));
 	};
 
 	return (
@@ -116,6 +110,7 @@ const ContactPage = ({ location }) => {
 						type="text"
 						name="name"
 						placeholder="Your name"
+						aria-label="Your name"
 						onChange={handleChange}
 					/>
 					<Spacer />
@@ -124,6 +119,7 @@ const ContactPage = ({ location }) => {
 						type="email"
 						name="email"
 						placeholder="Your email"
+						aria-label="Your email"
 						required
 						onChange={handleChange}
 					/>
@@ -132,13 +128,14 @@ const ContactPage = ({ location }) => {
 						fullWidth
 						name="message"
 						placeholder="Your message"
-						rows="4"
+						aria-label="Your message"
+						rows=""
 						required
 						onChange={handleChange}
 					/>
 					<Spacer />
-					<Button type="submit" isDisabled={loading}>
-						{loading ? <Loading /> : "Send"}
+					<Button type="submit" disabled={loading}>
+						{loading ? <Loading size="sm" /> : "Send"}
 					</Button>
 				</form>
 
