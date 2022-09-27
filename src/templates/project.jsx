@@ -1,4 +1,4 @@
-import { Container, Spacer, Row, Col, styled as styled1, Text } from "@nextui-org/react";
+import { Container, Spacer, styled as styled1, Text } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
@@ -7,18 +7,13 @@ import { animated, config, useSpring } from "react-spring";
 import styled from "styled-components";
 import { Layout, SEO } from "../components";
 
-const InformationWrapper = styled(animated.div)``;
-
-const Title = styled(animated.h1)``;
-
 const ContentBlock = styled.div`
 	h2,
 	h3 {
 		color: ${(props) =>
 			props.customcolor ? props.customcolor : props.theme.colors.grey};
-		text-transform: uppercase;
 		font-size: 1.1rem;
-		font-weight: 600;
+		font-weight: 700;
 		margin: 1.5em 0 0;
 	}
 	p {
@@ -29,19 +24,21 @@ const ContentBlock = styled.div`
 		white-space: normal;
 		display: block;
 	}
+	ul {
+		list-style: disc;
+	}
 `;
 
-const Empty = ({ children }) => <div>{children}</div>;
 const Grid = styled1(Text, {
-	display: "grid !important",
-	gridTemplateColumns: "1fr 1fr",
-	columnGap: "$xl",
-	"@smMax": {
-		gridTemplateColumns: "1fr",
+	display: "grid",
+	gridTemplateColumns: "1fr",
+	columnGap: "$2xl",
+	"@smMin": {
+		gridTemplateColumns: "1fr 1fr",
 	},
 	"@lgMin": {
-		gridTemplateColumns: "3fr 2fr"
-	}
+		gridTemplateColumns: "3fr 2fr",
+	},
 });
 
 const Project = ({ data: { mdx: postNode }, location, children }) => {
@@ -81,28 +78,30 @@ const Project = ({ data: { mdx: postNode }, location, children }) => {
 			<SEO pathname={location.pathname} postNode={postNode} article />
 			<Spacer />
 			<Container>
-				<Title data-testid="project-title" style={titleProps}>
-					{project.title}
-				</Title>
+				<Text h1 color={project.color} data-testid="project-title">
+					<animated.div style={titleProps}>{project.title}</animated.div>
+				</Text>
 				<Grid>
 					<div>
-						<InformationWrapper style={infoProps}>
+						<animated.div style={infoProps}>
 							<ContentBlock customcolor={project.color}>
 								<h3>Date</h3>
 								<p>{project.date}</p>
 							</ContentBlock>
-						</InformationWrapper>
+						</animated.div>
 						<ContentBlock customcolor={project.color}>
 							<animated.div style={contentProps}>{children}</animated.div>
 						</ContentBlock>
 					</div>
 					<div>
-						{project.cover && (
-							<GatsbyImage
-								image={project.cover.childImageSharp.gatsbyImageData}
-								alt={project.title}
-							/>
-						)}
+						<animated.div style={imageProps}>
+							{project.cover && (
+								<GatsbyImage
+									image={project.cover.childImageSharp.gatsbyImageData}
+									alt={project.title}
+								/>
+							)}
+						</animated.div>
 					</div>
 				</Grid>
 			</Container>
