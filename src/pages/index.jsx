@@ -36,7 +36,7 @@ const Index = ({
 					<Grid>
 						<Text h1>Kyle Karpack</Text>
 						<Text h2>Software Engineer in Seattle</Text>
-						<Text p size="$lg">
+						<Text size="$lg">
 							Specializing in user-centered engineering for large web
 							applications
 						</Text>

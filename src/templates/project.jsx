@@ -4,24 +4,14 @@ import styled from "styled-components";
 import { animated, useSpring, config } from "react-spring";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { SEO, Container, Layout } from "../components";
+import { SEO, Layout } from "../components";
+import { Container, Row, Col } from "@nextui-org/react";
 
-const ImageContainer = styled(animated.div)`
-`;
+const ImageContainer = styled(animated.div)``;
 
-const TextContainer = styled(Container)`
-`;
+const InformationWrapper = styled(animated.div)``;
 
-const Content = styled(Container)`
-`;
-
-const InformationWrapper = styled(animated.div)`
-
-`;
-
-const Title = styled(animated.h1)`
-
-`;
+const Title = styled(animated.h1)``;
 
 const ContentBlock = styled.div`
 	h2,
@@ -78,30 +68,34 @@ const Project = ({ data: { mdx: postNode }, location, children }) => {
 	return (
 		<Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={postNode} article />
-			<Content>
-				<TextContainer type="text">
-					<Title data-testid="project-title" style={titleProps}>
-						{project.title}
-					</Title>
-					<InformationWrapper style={infoProps}>
+			<Container>
+				<Row wrap="wrap">
+					<Col span={6}>
+						<Title data-testid="project-title" style={titleProps}>
+							{project.title}
+						</Title>
+						<InformationWrapper style={infoProps}>
+							<ContentBlock customcolor={project.color}>
+								<h3>Date</h3>
+								<p>{project.date}</p>
+							</ContentBlock>
+						</InformationWrapper>
 						<ContentBlock customcolor={project.color}>
-							<h3>Date</h3>
-							<p>{project.date}</p>
+							<animated.div style={contentProps}>{children}</animated.div>
 						</ContentBlock>
-					</InformationWrapper>
-					<ContentBlock customcolor={project.color}>
-						<animated.div style={contentProps}>
-							{children}
-						</animated.div>
-					</ContentBlock>
-				</TextContainer>
-				<ImageContainer style={imageProps}>
-					{project.cover && <GatsbyImage
-						image={project.cover.childImageSharp.gatsbyImageData}
-						alt=""
-					/>}
-				</ImageContainer>
-			</Content>
+					</Col>
+					<Col span={6}>
+						<ImageContainer style={imageProps}>
+							{project.cover && (
+								<GatsbyImage
+									image={project.cover.childImageSharp.gatsbyImageData}
+									alt={project.title}
+								/>
+							)}
+						</ImageContainer>
+					</Col>
+				</Row>
+			</Container>
 		</Layout>
 	);
 };

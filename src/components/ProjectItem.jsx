@@ -1,11 +1,15 @@
 import { Button, Card, Col, Row, Spacer, Text } from "@nextui-org/react";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { trimStart } from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 
 const ProjectItem = ({ node, testid }) => (
-	<Link to={node.fields.slug} style={{ width: "100%" }} data-testid={testid}>
+	<Link
+		to={`/portfolio/${trimStart(node.fields.slug, "/")}`}
+		style={{ width: "100%" }}
+		data-testid={testid}>
 		<Card css={{ width: "100%" }} isPressable isHoverable>
 			<Card.Header css={{ backgroundColor: node.fields.color }}>
 				<Col>

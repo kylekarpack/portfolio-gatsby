@@ -111,7 +111,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	// Create all portfolio pages
 	result.data.projects.nodes.forEach((node) => {
 		createPage({
-			path: node.fields.slug,
+			path: path.join("portfolio", node.fields.slug),
 			component: `${projectPage}?__contentFilePath=${node.internal.contentFilePath}`,
 			context: {
 				// Pass "slug" through context so we can reference it in our query like "$slug: String!"
