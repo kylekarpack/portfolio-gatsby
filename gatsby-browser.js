@@ -3,6 +3,11 @@ import React from "react";
 
 const darkTheme = createTheme({
 	type: "light",
+	theme: {
+		colors: {
+			primary: "#43a9d1"
+		}
+	}
 });
 
 export const wrapRootElement = ({ element }) => {
