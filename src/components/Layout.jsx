@@ -11,10 +11,11 @@ const MainContent = styled(Container, {
 
 // We can pass customSEO here to not include the <SEO> component twice. This prop is 'true' on the project template
 // as the SEO component there passes in some additional things. Otherwise things would be inserted two times
-const Layout = ({ children, pathname, customSEO, fixed }) => (
+const Layout = ({ children, pathname, customSEO, fixed, bannerContent }) => (
 	<>
 		{!customSEO && <SEO pathname={pathname} />}
 		<Navigation pathname={pathname} />
+		{bannerContent ? bannerContent : null}
 		<MainContent css={{ maxWidth: fixed ? "55em" : null }}>
 			{children}
 		</MainContent>
@@ -29,6 +30,7 @@ Layout.propTypes = {
 	pathname: PropTypes.string.isRequired,
 	customSEO: PropTypes.bool,
 	fixed: PropTypes.bool,
+	bannerContent: PropTypes.element
 };
 
 Layout.defaultProps = {

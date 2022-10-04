@@ -1,13 +1,12 @@
 import {
 	Button,
 	Card,
-	Container,
 	Input,
 	Loading,
 	Spacer,
+	styled,
 	Text,
 	Textarea,
-	styled,
 } from "@nextui-org/react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import PropTypes from "prop-types";
@@ -79,78 +78,79 @@ const ContactPage = ({ location }) => {
 	};
 
 	return (
-		<Layout pathname={location.pathname}>
-			<ReactMapGL
-				mapboxApiAccessToken={map.mapboxApiAccessToken}
-				mapStyle={map.mapStyle}
-				onViewportChange={(viewport) => setMap({ ...map, viewport })}
-				{...map.viewport}
-			/>
+		<Layout
+			pathname={location.pathname}
+			fixed
+			bannerContent={
+				<ReactMapGL
+					mapboxApiAccessToken={map.mapboxApiAccessToken}
+					mapStyle={map.mapStyle}
+					onViewportChange={(viewport) => setMap({ ...map, viewport })}
+					{...map.viewport}
+				/>
+			}>
+			<Text h2>Contact</Text>
+			<form
+				name="contact"
+				method="POST"
+				data-netlify
+				data-netlify-honeypot="bot-field"
+				onSubmit={handleSubmit}
+				hidden={form.submitted}>
+				<input type="hidden" name="form-name" value="contact" />
 
-			<Container css={{ maxWidth: "55em", padding: "2em 0" }}>
-				<Text h2>Contact</Text>
-				<form
-					name="contact"
-					method="POST"
-					data-netlify
-					data-netlify-honeypot="bot-field"
-					onSubmit={handleSubmit}
-					hidden={form.submitted}>
-					<input type="hidden" name="form-name" value="contact" />
-
-					<p hidden>
-						<label>
-							Don&quot;t fill this out:{" "}
-							<input name="bot-field" onChange={handleChange} />
-						</label>
-					</p>
-
-					<Input
-						fullWidth
-						type="text"
-						name="name"
-						placeholder="Your name"
-						aria-label="Your name"
-						onChange={handleChange}
-					/>
-					<Spacer />
-					<Input
-						fullWidth
-						type="email"
-						name="email"
-						placeholder="Your email"
-						aria-label="Your email"
-						required
-						onChange={handleChange}
-					/>
-					<Spacer />
-					<Textarea
-						fullWidth
-						name="message"
-						placeholder="Your message"
-						aria-label="Your message"
-						rows=""
-						required
-						onChange={handleChange}
-					/>
-					<Spacer />
-					<Button type="submit" disabled={loading}>
-						{loading ? <Loading size="sm" /> : "Send"}
-					</Button>
-				</form>
-
-				<Spacer />
-
-				{error && (
-					<Card>
-						<Alert>Error: {error}</Alert>
-					</Card>
-				)}
-
-				<p hidden={!form.submitted}>
-					Thank you for your submission. I will get back to you shortly.
+				<p hidden>
+					<label>
+						Don&quot;t fill this out:{" "}
+						<input name="bot-field" onChange={handleChange} />
+					</label>
 				</p>
-			</Container>
+
+				<Input
+					fullWidth
+					type="text"
+					name="name"
+					placeholder="Your name"
+					aria-label="Your name"
+					onChange={handleChange}
+				/>
+				<Spacer />
+				<Input
+					fullWidth
+					type="email"
+					name="email"
+					placeholder="Your email"
+					aria-label="Your email"
+					required
+					onChange={handleChange}
+				/>
+				<Spacer />
+				<Textarea
+					fullWidth
+					name="message"
+					placeholder="Your message"
+					aria-label="Your message"
+					rows=""
+					required
+					onChange={handleChange}
+				/>
+				<Spacer />
+				<Button type="submit" disabled={loading}>
+					{loading ? <Loading size="sm" /> : "Send"}
+				</Button>
+			</form>
+
+			<Spacer />
+
+			{error && (
+				<Card>
+					<Alert>Error: {error}</Alert>
+				</Card>
+			)}
+
+			<p hidden={!form.submitted}>
+				Thank you for your submission. I will get back to you shortly.
+			</p>
 		</Layout>
 	);
 };
