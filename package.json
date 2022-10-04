@@ -39,7 +39,6 @@
     "gatsby-plugin-react-helmet": "^5.1.0",
     "gatsby-plugin-sharp": "^4.1.1",
     "gatsby-plugin-sitemap": "^5.23.1",
-    "gatsby-plugin-styled-components": "^5.23.0",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^6.1.1",
     "gatsby-source-filesystem": "^4.1.0",
@@ -59,7 +58,6 @@
     "react-map-gl": "^6.1.17",
     "react-spring": "^8.0.27",
     "snyk": "^1.460.0",
-    "styled-components": "^5.3.3",
     "styled-theming": "^2.2.0"
   },
   "devDependencies": {
