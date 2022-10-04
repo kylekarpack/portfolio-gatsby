@@ -1,19 +1,20 @@
-import { Container, Spacer, styled } from "@nextui-org/react";
+import { Spacer, styled } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import React from "react";
 import { Layout } from "../components";
 
-const Content = styled(Container, {
+const Content = styled("div", {
 	maxWidth: "55em !important",
 	margin: "0 auto",
 	lineHeight: "1.1",
 	h1: {
 		color: "$primary",
 		fontSize: "$2xl",
-		marginTop: "$16",
+		marginTop: "$14",
 	},
 	"h1:first-of-type": {
 		fontSize: "$4xl",
+		marginTop: 0
 	},
 	h2: {
 		marginTop: "$12",
@@ -43,11 +44,11 @@ const Resume = ({
 	},
 }) => {
 	return (
-		<Layout pathname={location.pathname}>
+		<Layout pathname={location.pathname} fixed>
 			<Content>
 				<div dangerouslySetInnerHTML={{ __html: html }} />
 			</Content>
-			<Spacer y={4} />
+			<Spacer y={2} />
 		</Layout>
 	);
 };

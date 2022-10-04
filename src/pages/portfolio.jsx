@@ -1,4 +1,4 @@
-import { Container, Grid, Spacer } from "@nextui-org/react";
+import { Grid, Spacer } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
@@ -12,18 +12,15 @@ const Portfolio = ({
 }) => {
 	return (
 		<Layout pathname={location.pathname}>
-			<Container>
-				<Spacer />
-				<h1>Recent Work</h1>
-				<Spacer />
-				<Grid.Container gap={2} justify="center">
-					{nodes.map((node, index) => (
-						<Grid xs={12} sm={4} md={3} key={node.fields.slug}>
-							<ProjectItem testid={`projectItem-${index}`} node={node} />
-						</Grid>
-					))}
-				</Grid.Container>
-			</Container>
+			<h1>Recent Work</h1>
+			<Spacer />
+			<Grid.Container gap={2} justify="center">
+				{nodes.map((node, index) => (
+					<Grid xs={12} sm={4} md={3} xl={2} key={node.fields.slug}>
+						<ProjectItem testid={`projectItem-${index}`} node={node} />
+					</Grid>
+				))}
+			</Grid.Container>
 		</Layout>
 	);
 };
