@@ -36,7 +36,6 @@ const ProjectItem = ({ node, testid }) => (
 			<Card.Footer>
 				<div>
 					<Text
-						color="$black"
 						size="$xs"
 						style={{
 							overflow: "hidden",
@@ -57,7 +56,7 @@ const ProjectItem = ({ node, testid }) => (
 					<Row justify="center">
 						<Button flat auto rounded color={node.fields.color}>
 							<Text
-								css={{ color: "inherit", lineClamp: 2 }}
+								css={{ lineClamp: 2, color: "$black" }}
 								size="$xs"
 								weight="bold"
 								transform="uppercase">
