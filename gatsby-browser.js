@@ -1,4 +1,4 @@
-import { NextUIProvider, createTheme } from "@nextui-org/react";
+import { createTheme, NextUIProvider } from "@nextui-org/react";
 import React from "react";
 
 const darkTheme = createTheme({
@@ -6,9 +6,5 @@ const darkTheme = createTheme({
 });
 
 export const wrapRootElement = ({ element }) => {
-	return (
-		<NextUIProvider theme={darkTheme}>
-			{element}
-		</NextUIProvider>
-	);
+	return <NextUIProvider theme={darkTheme}>{element}</NextUIProvider>;
 };

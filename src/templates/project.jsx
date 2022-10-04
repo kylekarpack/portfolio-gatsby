@@ -1,35 +1,40 @@
-import { Container, Spacer, styled as styled1, Text } from "@nextui-org/react";
+import { Container, globalCss, Spacer, styled, Text } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import React from "react";
 import { animated, config, useSpring } from "react-spring";
-import styled from "styled-components";
 import { Layout, SEO } from "../components";
 
-const ContentBlock = styled.div`
-	h2,
-	h3 {
-		color: ${(props) =>
-			props.customcolor ? props.customcolor : props.theme.colors.grey};
-		font-size: 1.1rem;
-		font-weight: 700;
-		margin: 1.5em 0 0;
-	}
-	p {
-		margin: 1em 0 0;
-	}
-	code {
-		margin 1em 0;
-		white-space: normal;
-		display: block;
-	}
-	ul {
-		list-style: disc;
-	}
-`;
+const globalStyles = globalCss({
+	p: {
+		marginBottom: "1em",
+	},
+});
 
-const Grid = styled1(Text, {
+const ContentBlock = styled("div", {
+	"h2, h3": {
+		fontSize: "$2xl",
+		margin: "$lg 0 $xs",
+		fontWeight: "$bold",
+	},
+	p: {
+		margin: "$lg 0 0",
+	},
+	pre: {
+		margin: 0,
+	},
+	code: {
+		margin: "$6 0",
+		whiteSpace: "normal",
+		display: "block",
+	},
+	ul: {
+		listStyle: "disc",
+	},
+});
+
+const Grid = styled("div", {
 	display: "grid",
 	gridTemplateColumns: "1fr",
 	columnGap: "$2xl",
@@ -43,6 +48,12 @@ const Grid = styled1(Text, {
 
 const Project = ({ data: { mdx: postNode }, location, children }) => {
 	const project = postNode.frontmatter;
+
+	const ColoredContent = styled(ContentBlock, {
+		"h2, h3": {
+			color: project.color,
+		},
+	});
 
 	const titleProps = {
 		...useSpring({
@@ -73,36 +84,36 @@ const Project = ({ data: { mdx: postNode }, location, children }) => {
 		to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
 	});
 
+	globalStyles();
+
 	return (
 		<Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={postNode} article />
 			<Spacer />
 			<Container>
-				<Text h1 color={project.color} data-testid="project-title">
-					<animated.div style={titleProps}>{project.title}</animated.div>
-				</Text>
+				<animated.div style={titleProps}>
+					<Text h1 color={project.color} data-testid="project-title">
+						{project.title}
+					</Text>
+				</animated.div>
 				<Grid>
-					<div>
+					<ColoredContent>
 						<animated.div style={infoProps}>
-							<ContentBlock customcolor={project.color}>
-								<h3>Date</h3>
-								<p>{project.date}</p>
-							</ContentBlock>
+							<Text h3 style={{ marginTop: 0 }}>
+								Date
+							</Text>
+							<Text>{project.date}</Text>
 						</animated.div>
-						<ContentBlock customcolor={project.color}>
-							<animated.div style={contentProps}>{children}</animated.div>
-						</ContentBlock>
-					</div>
-					<div>
-						<animated.div style={imageProps}>
-							{project.cover && (
-								<GatsbyImage
-									image={project.cover.childImageSharp.gatsbyImageData}
-									alt={project.title}
-								/>
-							)}
-						</animated.div>
-					</div>
+						<animated.div style={contentProps}>{children}</animated.div>
+					</ColoredContent>
+					<animated.div style={imageProps}>
+						{project.cover && (
+							<GatsbyImage
+								image={project.cover.childImageSharp.gatsbyImageData}
+								alt={project.title}
+							/>
+						)}
+					</animated.div>
 				</Grid>
 			</Container>
 		</Layout>

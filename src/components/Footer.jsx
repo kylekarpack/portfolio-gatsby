@@ -5,7 +5,7 @@ const Footer = () => {
 	const year = new Date().getFullYear();
 	return (
 		<Container
-			css={{ textAlign: "center", padding: "1em 0" }}
+			css={{ textAlign: "center", padding: "2em 0" }}
 			data-testid="footer">
 			Copyright &copy; {year} Kyle Karpack
 		</Container>
