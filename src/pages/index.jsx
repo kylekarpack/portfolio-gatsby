@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import React from "react";
-import { useTrail, animated } from "react-spring";
+import { animated, useSpring, useTrail } from "react-spring";
 import { Layout, ProjectItem } from "../components";
 
 const Index = ({
@@ -19,31 +19,41 @@ const Index = ({
 		to: { opacity: 1 },
 	});
 
+	const titleAnimation = useSpring({
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+	});
+
 	return (
 		<Layout pathname={location.pathname}>
-			<Grid.Container padding={0} gap={4}>
-				<Grid xs={6} sm={3} md={2}>
-					<StaticImage
-						src="../../static/headshot.jpg"
-						width={400}
-						layout="constrained"
-						placeholder="blurred"
-						alt="Kyle headshot"
-						style={{ aspectRatio: "1 / 1", borderRadius: "100%" }}
-					/>
-				</Grid>
+			<animated.div style={titleAnimation}>
+				<Grid.Container padding={0} gap={4}>
+					<Grid xs={6} sm={3} md={2}>
+						<StaticImage
+							src="../../static/headshot.jpg"
+							width={400}
+							layout="constrained"
+							placeholder="blurred"
+							alt="Kyle headshot"
+							style={{ aspectRatio: "1 / 1", borderRadius: "100%" }}
+						/>
+					</Grid>
+					<Grid>
+						<Text h1>Kyle Karpack</Text>
+						<Text h2>Software Engineer in Seattle</Text>
+						<Text size="$lg">
+							Specializing in user-centered engineering for large web
+							applications
+						</Text>
+					</Grid>
+				</Grid.Container>
+			</animated.div>
+			<Spacer y={2} />
+			<Grid.Container gap={2}>
 				<Grid>
-					<Text h1>Kyle Karpack</Text>
-					<Text h2>Software Engineer in Seattle</Text>
-					<Text size="$lg">
-						Specializing in user-centered engineering for large web applications
-					</Text>
+					<Text style={titleAnimation} h2>Recent Work</Text>
 				</Grid>
 			</Grid.Container>
-
-			<Spacer y={3} />
-
-			<Text h2>Recent Work</Text>
 			<Grid.Container gap={2} justify="center">
 				{trail.map((style, index) => (
 					<Grid
@@ -51,13 +61,12 @@ const Index = ({
 						sm={4}
 						md={3}
 						key={projectEdges[index].node.fields.slug}>
-						<animated.div style={{ ...style, maxWidth: "100%" }}>
-							<ProjectItem
-								testid={`projectItem-${index}`}
-								key={projectEdges[index].node.fields.slug}
-								node={projectEdges[index].node}
-							/>
-						</animated.div>
+						<ProjectItem
+							testid={`projectItem-${index}`}
+							key={projectEdges[index].node.fields.slug}
+							node={projectEdges[index].node}
+							style={style}
+						/>
 					</Grid>
 				))}
 			</Grid.Container>
