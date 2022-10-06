@@ -4,29 +4,41 @@ import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const NavLink = ({ to, currentPath, children }) => {
+const menuItems = [
+	{ href: "/", title: "Home" },
+	{ href: "/about", title: "About" },
+	{ href: "/resume", title: "Resume" },
+	{ href: "/portfolio", title: "Portfolio" },
+	{ href: "/contact", title: "Contact" },
+];
+
+const NavLink = ({ to, currentPath, children, isCollapse }) => {
 	const isActive =
 		to === "/"
 			? currentPath === "/"
 			: currentPath?.trimEnd("/").startsWith(to?.trimEnd("/"));
 
+	const LinkComponent = isCollapse ? Navbar.CollapseItem : Navbar.Link;
+
 	return (
-		<Link to={to}>
-			<Navbar.Link as="span" isActive={isActive}>
+		<LinkComponent as="span" isActive={isActive}>
+			<Link to={to}>
 				{isActive && (
 					<Text as="span" color="$primary">
 						{children}
 					</Text>
 				)}
 				{!isActive && <Text as="span">{children}</Text>}
-			</Navbar.Link>
-		</Link>
+			</Link>
+		</LinkComponent>
 	);
 };
 
 const Navigation = ({ pathname }) => {
 	return (
 		<Navbar variant="sticky">
+			<Navbar.Toggle showIn="xs" aria-label="Toggle navigation" />
+
 			<Navbar.Brand>
 				<Link to="/" className="logo">
 					<StaticImage
@@ -38,22 +50,12 @@ const Navigation = ({ pathname }) => {
 					/>
 				</Link>
 			</Navbar.Brand>
-			<Navbar.Content hideIn="xs">
-				<NavLink to="/" currentPath={pathname}>
-					Home
-				</NavLink>
-				<NavLink to="/about" currentPath={pathname}>
-					About
-				</NavLink>
-				<NavLink to="/resume" currentPath={pathname}>
-					Resume
-				</NavLink>
-				<NavLink to="/portfolio" currentPath={pathname}>
-					Portfolio
-				</NavLink>
-				<NavLink to="/contact" currentPath={pathname}>
-					Contact
-				</NavLink>
+			<Navbar.Content hideIn="xs" variant="underline" activeColor="primary">
+				{menuItems.map((el) => (
+					<NavLink key={el.href} to={el.href} currentPath={pathname}>
+						{el.title}
+					</NavLink>
+				))}
 			</Navbar.Content>
 			<Navbar.Content>
 				<TextLink
@@ -73,6 +75,17 @@ const Navigation = ({ pathname }) => {
 					<Avatar pointer={true} icon={<FaLinkedin />} />
 				</TextLink>
 			</Navbar.Content>
+			<Navbar.Collapse>
+				{menuItems.map((el) => (
+					<NavLink
+						key={el.href}
+						to={el.href}
+						currentPath={pathname}
+						isCollapse={true}>
+						{el.title}
+					</NavLink>
+				))}
+			</Navbar.Collapse>
 		</Navbar>
 	);
 	/*
