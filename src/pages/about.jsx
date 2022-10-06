@@ -1,4 +1,4 @@
-import { Col, Row, Spacer, Text } from "@nextui-org/react";
+import { Spacer, styled, Text } from "@nextui-org/react";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
@@ -8,10 +8,19 @@ import { GoodreadsBookshelf } from "react-goodreads-shelf";
 import { Layout } from "../components";
 import { bookFilter } from "../util/bookFilter";
 
+const Grid = styled("div", {
+	display: "grid",
+	gridTemplateColumns: "1fr",
+	gap: "$12",
+	"@xsMin": {
+		gridTemplateColumns: "7fr 5fr",
+	},
+});
+
 const AboutPage = ({ location, data: { profile } }) => (
 	<Layout pathname={location.pathname} fixed>
-		<Row>
-			<Col span={7}>
+		<Grid>
+			<div>
 				<Text h1>About</Text>
 				<Text size="$lg">
 					Thanks for checking out my site. I&#39;m a software engineer based in
@@ -20,15 +29,15 @@ const AboutPage = ({ location, data: { profile } }) => (
 					free to <a href="/contact">contact me</a> any time. Outside work, I
 					enjoy hiking, soccer, cooking, reading, and spending time with family.
 				</Text>
-			</Col>
-			<Col span={4} offset={1}>
+			</div>
+			<div>
 				<Spacer />
 				<GatsbyImage
 					image={profile.childImageSharp.gatsbyImageData}
 					alt="Kyle and Kristin in the Rockies"
 				/>
-			</Col>
-		</Row>
+			</div>
+		</Grid>
 
 		<Spacer y={3} />
 
