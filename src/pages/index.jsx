@@ -3,21 +3,16 @@ import { graphql, Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import React from "react";
-import { animated, useSpring, useTrail } from "react-spring";
-import { Layout, ProjectItem } from "../components";
+import { animated, useSpring } from "react-spring";
+import { Layout, ProjectGrid } from "../components";
 
 const Index = ({
 	data: {
-		allMdx: { edges: projectEdges },
+		allMdx: { nodes },
 	},
 	location,
 }) => {
-	projectEdges = projectEdges.filter((el) => el.node?.frontmatter?.cover);
-
-	const trail = useTrail(projectEdges.length, {
-		from: { opacity: 0 },
-		to: { opacity: 1 },
-	});
+	nodes = nodes.filter((el) => el?.frontmatter?.cover);
 
 	const titleAnimation = useSpring({
 		from: { opacity: 0 },
@@ -48,29 +43,13 @@ const Index = ({
 					</Grid>
 				</Grid.Container>
 			</animated.div>
+			
 			<Spacer y={2} />
-			<Grid.Container gap={2}>
-				<Grid>
-					<Text style={titleAnimation} h2>Recent Work</Text>
-				</Grid>
-			</Grid.Container>
-			<Grid.Container gap={2} justify="center">
-				{trail.map((style, index) => (
-					<Grid
-						xs={12}
-						sm={4}
-						md={3}
-						key={projectEdges[index].node.fields.slug}>
-						<ProjectItem
-							testid={`projectItem-${index}`}
-							key={projectEdges[index].node.fields.slug}
-							node={projectEdges[index].node}
-							style={style}
-						/>
-					</Grid>
-				))}
-			</Grid.Container>
 
+			<Text style={titleAnimation} h2>
+				Recent Work
+			</Text>
+			<ProjectGrid nodes={nodes} />
 			<Grid.Container justify="center" css={{ padding: "2em 0" }}>
 				<Grid>
 					<Link to="/portfolio">
@@ -87,7 +66,7 @@ export default Index;
 Index.propTypes = {
 	data: PropTypes.shape({
 		allMdx: PropTypes.shape({
-			edges: PropTypes.array.isRequired,
+			nodes: PropTypes.array.isRequired,
 		}),
 	}).isRequired,
 	location: PropTypes.object.isRequired,
@@ -103,24 +82,22 @@ export const pageQuery = graphql`
 			}
 			limit: 4
 		) {
-			edges {
-				node {
-					excerpt(pruneLength: 130)
-					fields {
-						slug
-						color
-					}
-					frontmatter {
-						title
-						cover {
-							childImageSharp {
-								gatsbyImageData(
-									width: 600
-									quality: 60
-									layout: CONSTRAINED
-									placeholder: BLURRED
-								)
-							}
+			nodes {
+				excerpt(pruneLength: 130)
+				fields {
+					slug
+					color
+				}
+				frontmatter {
+					title
+					cover {
+						childImageSharp {
+							gatsbyImageData(
+								width: 600
+								quality: 60
+								layout: CONSTRAINED
+								placeholder: BLURRED
+							)
 						}
 					}
 				}
