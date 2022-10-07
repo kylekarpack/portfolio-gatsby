@@ -11,7 +11,7 @@ const theme = createTheme({
 	},
 });
 
-export const wrapRootElement = ({ element }) => {
+const wrapRootElement = ({ element }) => {
 	return (
 		<HelmetProvider>
 			<Helmet>{CssBaseline.flush()}</Helmet>
@@ -19,3 +19,5 @@ export const wrapRootElement = ({ element }) => {
 		</HelmetProvider>
 	);
 };
+
+export default wrapRootElement;
