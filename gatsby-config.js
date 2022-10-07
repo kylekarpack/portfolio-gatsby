@@ -8,13 +8,12 @@ module.exports = {
 		siteUrl: config.siteUrl + pathPrefix,
 	},
 	flags: {
-		DEV_SSR: false,
+		DEV_SSR: true,
 		PRESERVE_FILE_DOWNLOAD_CACHE: true,
 		PARALLEL_SOURCING: true,
 		FAST_DEV: true,
 	},
 	plugins: [
-		"gatsby-plugin-react-helmet",
 		"gatsby-transformer-remark",
 		{
 			resolve: "gatsby-source-filesystem",
