@@ -1,6 +1,6 @@
 import { createTheme, CssBaseline, NextUIProvider } from "@nextui-org/react";
 import React from "react";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 
 const theme = createTheme({
 	type: "light",
@@ -14,7 +14,7 @@ const theme = createTheme({
 const wrapRootElement = ({ element }) => {
 	return (
 		<HelmetProvider>
-			<Helmet>{CssBaseline.flush()}</Helmet>
+			{CssBaseline.flush()}
 			<NextUIProvider theme={theme}>{element}</NextUIProvider>
 		</HelmetProvider>
 	);

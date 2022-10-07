@@ -43,7 +43,7 @@ const Index = ({
 					</Grid>
 				</Grid.Container>
 			</animated.div>
-			
+
 			<Spacer y={2} />
 
 			<Text style={titleAnimation} h2>
