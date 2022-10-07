@@ -49,7 +49,7 @@ const AboutPage = ({ location, data: { profile } }) => (
 			<h2>Recently Read</h2>
 			<GoodreadsBookshelf
 				userId="63515611"
-				limit={16}
+				limit={14}
 				width={100}
 				filter={bookFilter}
 				displayOptions={{ hideDetails: true }}
