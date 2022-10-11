@@ -14,6 +14,7 @@ module.exports = {
 		FAST_DEV: true,
 	},
 	plugins: [
+		"gatsby-plugin-react-helmet-async",
 		"gatsby-transformer-remark",
 		{
 			resolve: "gatsby-source-filesystem",
