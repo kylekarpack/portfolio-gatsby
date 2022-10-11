@@ -1,4 +1,4 @@
-import { Container, createTheme, CssBaseline, NextUIProvider, styled } from "@nextui-org/react";
+import { Container, createTheme, CssBaseline, NextUIProvider, styled, globalCss } from "@nextui-org/react";
 import PropTypes from "prop-types";
 import React from "react";
 import Footer from "./Footer";
@@ -9,13 +9,22 @@ const MainContent = styled(Container, {
 	padding: "$16 0",
 });
 
+const primary = "#43a9d1"; 
+
 const theme = createTheme({
 	type: "light",
 	theme: {
 		colors: {
-			primary: "#43a9d1",
+			primary,
 		},
 	},
+});
+
+const globalStyles = globalCss({
+  ":root": {
+		"--nextui-colors-primary": primary,
+		"--nextui-colors-link": primary
+	}
 });
 
 // We can pass customSEO here to not include the <SEO> component twice. This prop is 'true' on the project template
@@ -24,7 +33,7 @@ const Layout = ({ children, pathname, customSEO, fixed, bannerContent }) => {
 	return (
 			<>
 				{CssBaseline.flush()}
-				<style dangerouslySetInnerHTML={{__html: ":root { --nextui-colors-primary: #43a9d1; --nextui-colors-link: #43a9d1 }" }} />
+				{globalStyles()}
 				<NextUIProvider theme={theme}>
 					{!customSEO && <SEO pathname={pathname} />}
 					<Navigation pathname={pathname} />
