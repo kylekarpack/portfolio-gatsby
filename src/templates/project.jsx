@@ -1,66 +1,59 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { animated, useSpring, config } from "react-spring";
+import { Container, globalCss, Spacer, styled, Text } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { SEO, Container, Layout } from "../components";
+import PropTypes from "prop-types";
+import React from "react";
+import { animated, config, useSpring } from "react-spring";
+import { Layout, SEO } from "../components";
 
-const ImageContainer = styled(animated.div)`
-	padding: 1em;
-`;
+const globalStyles = globalCss({
+	p: {
+		marginBottom: "1em",
+	},
+});
 
-const TextContainer = styled(Container)`
-	max-width: 100%;
-`;
+const ContentBlock = styled("div", {
+	"h2, h3": {
+		fontSize: "$2xl",
+		margin: "$lg 0 $xs",
+		fontWeight: "$bold",
+	},
+	p: {
+		margin: "$lg 0 0",
+	},
+	pre: {
+		margin: 0,
+	},
+	code: {
+		margin: "$6 0",
+		whiteSpace: "normal",
+		display: "block",
+	},
+	ul: {
+		listStyle: "disc",
+	},
+});
 
-const Content = styled(Container)`
-	padding-top: 2em;
-	width: 100%;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-	grid-auto-rows: 1fr;
-	color: #777;
-	@media (max-width: ${(props) => props.theme.breakpoints.m}) {
-		display: block;
-	}
-`;
-
-const InformationWrapper = styled(animated.div)`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-`;
-
-const Title = styled(animated.h1)`
-	margin-top: 0;
-	border-bottom: 4px solid;
-	display: inline-block;
-`;
-
-const ContentBlock = styled.div`
-	h2,
-	h3 {
-		color: ${(props) =>
-			props.customcolor ? props.customcolor : props.theme.colors.grey};
-		text-transform: uppercase;
-		font-size: 1.1rem;
-		font-weight: 600;
-		margin: 1.5em 0 0;
-	}
-	p {
-		margin: 1em 0 0;
-	}
-	code {
-		margin 1em 0;
-		white-space: normal;
-		display: block;
-	}
-`;
+const Grid = styled("div", {
+	display: "grid",
+	gridTemplateColumns: "1fr",
+	columnGap: "$2xl",
+	"@smMin": {
+		gridTemplateColumns: "1fr 1fr",
+	},
+	"@lgMin": {
+		gridTemplateColumns: "3fr 2fr",
+	},
+});
 
 const Project = ({ data: { mdx: postNode }, location, children }) => {
 	const project = postNode.frontmatter;
+
+	const ColoredContent = styled(ContentBlock, {
+		"h2, h3": {
+			color: project.color,
+		},
+	});
 
 	const titleProps = {
 		...useSpring({
@@ -91,33 +84,38 @@ const Project = ({ data: { mdx: postNode }, location, children }) => {
 		to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
 	});
 
+	globalStyles();
+
 	return (
 		<Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={postNode} article />
-			<Content>
-				<TextContainer type="text">
-					<Title data-testid="project-title" style={titleProps}>
+			<Spacer />
+			<Container>
+				<animated.div style={titleProps}>
+					<Text h1 color={project.color} data-testid="project-title">
 						{project.title}
-					</Title>
-					<InformationWrapper style={infoProps}>
-						<ContentBlock customcolor={project.color}>
-							<h3>Date</h3>
-							<p>{project.date}</p>
-						</ContentBlock>
-					</InformationWrapper>
-					<ContentBlock customcolor={project.color}>
-						<animated.div style={contentProps}>
-							{children}
+					</Text>
+				</animated.div>
+				<Grid>
+					<ColoredContent>
+						<animated.div style={infoProps}>
+							<Text h3 style={{ marginTop: 0 }}>
+								Date
+							</Text>
+							<Text>{project.date}</Text>
 						</animated.div>
-					</ContentBlock>
-				</TextContainer>
-				<ImageContainer style={imageProps}>
-					{project.cover && <GatsbyImage
-						image={project.cover.childImageSharp.gatsbyImageData}
-						alt=""
-					/>}
-				</ImageContainer>
-			</Content>
+						<animated.div style={contentProps}>{children}</animated.div>
+					</ColoredContent>
+					<animated.div style={imageProps}>
+						{project.cover && (
+							<GatsbyImage
+								image={project.cover.childImageSharp.gatsbyImageData}
+								alt={project.title}
+							/>
+						)}
+					</animated.div>
+				</Grid>
+			</Container>
 		</Layout>
 	);
 };

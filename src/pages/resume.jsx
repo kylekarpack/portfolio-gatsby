@@ -1,63 +1,54 @@
+import { Spacer, styled } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import React from "react";
-import styled from "styled-components";
-import { Container, Layout } from "../components";
+import { Layout } from "../components";
 
-const Content = styled(Container)`
-	line-height: 1.2;
-	ul li {
-		line-height: 1.5;
-		font-size: 0.9rem;
-	}
-	p {
-		font-size: 1rem;
-	}
-	p > span,
-	p > a > span {
-		font-size: 1em !important;
-	}
-	h1:first-of-type {
-		font-size: 2rem;
-	}
-	h1 {
-		font-size: 1.4rem;
-		margin-top: 3rem;
-		color: ${(props) => props.theme.brand.primary};
-	}
-	h2 {
-		margin-top: 2rem;
-		font-weight: 400;
-		font-size: 1.2rem;
-		span:first-child {
-			font-weight: 700;
-		}
-	}
-	h3 {
-		font-size: 1rem;
-		font-weight: 500;
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		margin: 1.5rem 0 0;
-		em {
-			font-weight: 500;
-		}
-	}
-	h1,
-	h2,
-	h3 {
-		> span {
-			font-size: 1em !important;
-		}
-	}
-`;
+const Content = styled("div", {
+	maxWidth: "55em !important",
+	margin: "0 auto",
+	lineHeight: "1.1",
+	h1: {
+		color: "$primary",
+		fontSize: "$2xl",
+		marginTop: "$14",
+	},
+	"h1:first-of-type": {
+		fontSize: "$4xl",
+		marginTop: 0
+	},
+	h2: {
+		marginTop: "$12",
+		fontWeight: "$normal",
+		fontSize: "$xl",
+	},
+	h3: {
+		fontSize: "$lg",
+		fontWeight: "$semibold",
+		display: "flex",
+		justifyContent: "space-between",
+		flexWrap: "wrap",
+		margin: "$10 0 $4",
+	},
+	"ul li": {
+		lineHeight: "1.5",
+		fontSize: "$sm",
+		listStyle: "disc",
+		marginLeft: "$4",
+	},
+});
 
-const Resume = ({ data: { markdownRemark: { html } } }, location) => {
+const Resume = ({
+	location,
+	data: {
+		markdownRemark: { html },
+	},
+}) => {
 	return (
-		<Layout pathname={location.pathname}>
-			<Content type="text">
-				<div dangerouslySetInnerHTML={{__html: html}} />
+		<Layout pathname={location.pathname} fixed>
+			<Content>
+				<div dangerouslySetInnerHTML={{ __html: html }} />
 			</Content>
+			<Spacer y={2} />
 		</Layout>
 	);
 };

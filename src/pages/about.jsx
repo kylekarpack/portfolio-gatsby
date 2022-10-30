@@ -1,66 +1,62 @@
+import { Spacer, styled, Text } from "@nextui-org/react";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import React from "react";
 import { GithubContributions } from "react-github-graph";
 import { GoodreadsBookshelf } from "react-goodreads-shelf";
-import styled from "styled-components";
-import { Container, Layout } from "../components";
+import { Layout } from "../components";
 import { bookFilter } from "../util/bookFilter";
 
-const Columns = styled(Container)`
-	display: grid;
-	max-width: 100%;
-	grid-template-columns: 1fr 1fr;
-	grid-column-gap: 2vw;
-	padding: 0;
-	img {
-		max-width: 100%;
-	}
-	@media (max-width: ${(props) => props.theme.breakpoints.m}) {
-		display: block;
-	}
-`;
+const Grid = styled("div", {
+	display: "grid",
+	gridTemplateColumns: "1fr",
+	gap: "$12",
+	"@xsMin": {
+		gridTemplateColumns: "7fr 5fr",
+	},
+});
 
 const AboutPage = ({ location, data: { profile } }) => (
-	<Layout pathname={location.pathname}>
-		<Container type="text">
-			<Columns>
-				<div>
-					<h1>About</h1>
-					<p>
-						Thanks for checking out my site. I&#39;m a software engineer based
-						in Seattle. If you are looking to hire an experienced front-end
-						developer, please check out my <a href="/resume">resume</a> and feel
-						free to <a href="/contact">contact me</a> any time. Outside work, I
-						enjoy hiking, soccer, cooking, reading, and spending time with
-						family.
-					</p>
-				</div>
-				<div>
-					<br />
-					<GatsbyImage
-						image={profile.childImageSharp.gatsbyImageData}
-						alt="Kyle and Kristin in the Rockies"
-					/>
-				</div>
-			</Columns>
-
-			<GithubContributions username="kylekarpack" />
-
-			<div className="recently-read">
-				<h2>Recently Read</h2>
-				<GoodreadsBookshelf
-					userId="63515611"
-					limit={16}
-					width={100}
-					filter={bookFilter}
-					displayOptions={{ hideDetails: true }}
-				/>
-
-				<Link to="/about/reading">See more</Link>
+	<Layout pathname={location.pathname} fixed>
+		<Grid>
+			<div>
+				<Text h1>About</Text>
+				<Text size="$lg">
+					Thanks for checking out my site. I&#39;m a software engineer based in
+					Seattle. If you are looking to hire an experienced front-end
+					developer, please check out my <a href="/resume">resume</a> and feel
+					free to <a href="/contact">contact me</a> any time. Outside work, I
+					enjoy hiking, soccer, cooking, reading, and spending time with family.
+				</Text>
 			</div>
-		</Container>
+			<div>
+				<Spacer />
+				<GatsbyImage
+					image={profile.childImageSharp.gatsbyImageData}
+					alt="Kyle and Kristin in the Rockies"
+				/>
+			</div>
+		</Grid>
+
+		<Spacer y={3} />
+
+		<GithubContributions username="kylekarpack" />
+
+		<Spacer y={3} />
+
+		<div className="recently-read">
+			<h2>Recently Read</h2>
+			<GoodreadsBookshelf
+				userId="63515611"
+				limit={14}
+				width={100}
+				filter={bookFilter}
+				displayOptions={{ hideDetails: true }}
+			/>
+
+			<Link to="/about/reading">See more</Link>
+		</div>
 	</Layout>
 );
 

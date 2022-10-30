@@ -1,7 +1,7 @@
-import React from "react";
-import Helmet from "react-helmet";
-import PropTypes from "prop-types";
 import { graphql, StaticQuery } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
+import { Helmet } from "react-helmet-async";
 import config from "../../config/website";
 
 const replaceTrailing = (_path) => _path?.replace(/\/$/, "") ?? "";

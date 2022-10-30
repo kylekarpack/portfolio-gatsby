@@ -1,20 +1,8 @@
+import { Container, Text } from "@nextui-org/react";
 import PropTypes from "prop-types";
 import React from "react";
 import { animated, config, useSpring } from "react-spring";
-import styled from "styled-components";
-import { Container, Layout, SEO } from "../components";
-
-const Content = styled(Container)`
-	left: 0;
-	right: 0;
-	bottom: 0;
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-`;
-
-const Title = styled(animated.h1)`
-	margin-top: 0;
-`;
+import { Layout, SEO } from "../components";
 
 const Single = ({ data: { mdx }, location, children }) => {
 	const single = mdx.frontmatter;
@@ -34,15 +22,11 @@ const Single = ({ data: { mdx }, location, children }) => {
 	return (
 		<Layout pathname={location.pathname} customSEO>
 			<SEO pathname={location.pathname} postNode={mdx} single />
-			<Content type="text">
-				<Title data-testid="single-title" style={titleProps}>
+			<Container>
+				<Text h1 data-testid="single-title" style={titleProps}>
 					{single.title}
-				</Title>
-			</Content>
-			<Container type="text">
-				<animated.div style={contentProps}>
-					{children}
-				</animated.div>
+				</Text>
+				<animated.div style={contentProps}>{children}</animated.div>
 			</Container>
 		</Layout>
 	);

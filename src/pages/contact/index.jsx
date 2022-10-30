@@ -1,123 +1,159 @@
+import {
+	Button,
+	Card,
+	Input,
+	Loading,
+	Spacer,
+	styled,
+	Text,
+	Textarea,
+} from "@nextui-org/react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import ReactMapGL from "react-map-gl";
-import { Content, Layout } from "../../components";
+import { Layout } from "../../components";
 
-class ContactPage extends React.Component {
-	_onViewportChange = (viewport) => this.setState({ viewport });
+const Alert = styled(Card.Body, {
+	backgroundColor: "$error",
+	color: "$white",
+	border: "2px solid $errorBorder",
+});
 
-	state = {
-		map: {
-			mapboxApiAccessToken:
-				"pk.eyJ1Ijoia3lsZWthcnBhY2siLCJhIjoiY2pvZXZmNTh4MDZ2dzN3bm1pbmk1dDlmZiJ9.Gapqs5j98RUsHOBl2rqOGQ",
-			mapStyle: "mapbox://styles/mapbox/outdoors-v10",
-			viewport: {
-				width: "100%",
-				height: "33vh",
-				latitude: 47.6798,
-				longitude: -122.3258,
-				zoom: 11,
-			},
+const ContactPage = ({ location }) => {
+	const [map, setMap] = useState({
+		mapboxApiAccessToken:
+			"pk.eyJ1Ijoia3lsZWthcnBhY2siLCJhIjoiY2pvZXZmNTh4MDZ2dzN3bm1pbmk1dDlmZiJ9.Gapqs5j98RUsHOBl2rqOGQ",
+		mapStyle: "mapbox://styles/mapbox/outdoors-v10",
+		viewport: {
+			width: "100%",
+			height: "33vh",
+			latitude: 47.6798,
+			longitude: -122.3258,
+			zoom: 11,
 		},
-	};
+	});
 
-	encode(data) {
+	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const [form, setForm] = useState({});
+
+	const encode = (data) => {
 		return Object.keys(data)
 			.map(
 				(key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
 			)
 			.join("&");
-	}
-
-	handleChange = (e) => {
-		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	handleSubmit = (e) => {
+	const handleChange = (e) => {
+		setForm({ ...form, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		const form = e.target,
-			data = this.encode({
+			data = encode({
 				"form-name": form.getAttribute("name"),
-				...this.state,
+				...form,
 			});
 
 		delete data.map;
 
+		setError(null);
+		setLoading(true);
 		fetch("/", {
 			method: "POST",
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			body: data,
 		})
-			.then(() => this.setState({ submitted: true }))
-			.catch((error) => alert(error));
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(response.statusText);
+				}
+			})
+			.then(() => setForm({ ...form, submitted: true }))
+			.catch((error) => setError(error.message))
+			.finally(() => setLoading(false));
 	};
 
-	render() {
-		return (
-			<Layout pathname={this.props.location.pathname}>
+	return (
+		<Layout
+			pathname={location.pathname}
+			fixed
+			bannerContent={
 				<ReactMapGL
-					mapboxApiAccessToken={this.state.map.mapboxApiAccessToken}
-					mapStyle={this.state.map.mapStyle}
-					onViewportChange={this._onViewportChange}
-					{...this.state.map.viewport}
+					mapboxApiAccessToken={map.mapboxApiAccessToken}
+					mapStyle={map.mapStyle}
+					onViewportChange={(viewport) => setMap({ ...map, viewport })}
+					{...map.viewport}
 				/>
+			}>
+			<Text h2>Contact</Text>
+			<form
+				name="contact"
+				method="POST"
+				data-netlify
+				data-netlify-honeypot="bot-field"
+				onSubmit={handleSubmit}
+				hidden={form.submitted}>
+				<input type="hidden" name="form-name" value="contact" />
 
-				<Content type="text">
-					<h1>Contact</h1>
-					{/* <h3>Get in Touch</h3>
-					<p>Have an idea for a project? Want me to work for you? Send me a message here and I’ll get back to you as soon as possible.</p>
-			
-					<h3>Based Out of the PNW</h3>
-					<p>Born and raised here, I love the Pacific Northwest and plan on being here for a long while.</p> */}
-					<form
-						name="contact"
-						method="POST"
-						data-netlify
-						data-netlify-honeypot="bot-field"
-						onSubmit={this.handleSubmit}
-						hidden={this.state.submitted}
-					>
-						<input type="hidden" name="form-name" value="contact" />
+				<p hidden>
+					<label>
+						Don&quot;t fill this out:{" "}
+						<input name="bot-field" onChange={handleChange} />
+					</label>
+				</p>
 
-						<p hidden>
-							<label>
-								Don’t fill this out:{" "}
-								<input name="bot-field" onChange={this.handleChange} />
-							</label>
-						</p>
+				<Input
+					fullWidth
+					type="text"
+					name="name"
+					placeholder="Your name"
+					aria-label="Your name"
+					onChange={handleChange}
+				/>
+				<Spacer />
+				<Input
+					fullWidth
+					type="email"
+					name="email"
+					placeholder="Your email"
+					aria-label="Your email"
+					required
+					onChange={handleChange}
+				/>
+				<Spacer />
+				<Textarea
+					fullWidth
+					name="message"
+					placeholder="Your message"
+					aria-label="Your message"
+					rows=""
+					required
+					onChange={handleChange}
+				/>
+				<Spacer />
+				<Button type="submit" disabled={loading}>
+					{loading ? <Loading size="sm" /> : "Send"}
+				</Button>
+			</form>
 
-						<input
-							type="text"
-							name="name"
-							placeholder="Your name"
-							onChange={this.handleChange}
-						/>
-						<input
-							type="email"
-							name="email"
-							placeholder="Your email"
-							required
-							onChange={this.handleChange}
-						/>
-						<textarea
-							name="message"
-							placeholder="Your message"
-							rows="4"
-							required
-							onChange={this.handleChange}
-						></textarea>
-						<button type="submit">Send</button>
-					</form>
+			<Spacer />
 
-					<p hidden={!this.state.submitted}>
-						Thank you for your submission. I will get back to you shortly.
-					</p>
-				</Content>
-			</Layout>
-		);
-	}
-}
+			{error && (
+				<Card>
+					<Alert>Error: {error}</Alert>
+				</Card>
+			)}
+
+			<p hidden={!form.submitted}>
+				Thank you for your submission. I will get back to you shortly.
+			</p>
+		</Layout>
+	);
+};
 
 export default ContactPage;
 

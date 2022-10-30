@@ -1,49 +1,20 @@
-/* eslint react/display-name: 0 */
+import { Spacer } from "@nextui-org/react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { config, useTrail } from "react-spring";
-import styled from "styled-components";
-import { Layout, ProjectItem } from "../components";
-
-const Wrapper = styled.div`
-	padding: 2vw;
-`;
-const ListWrapper = styled.div`
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	grid-column-gap: 2vw;
-	grid-row-gap: 2vw;
-	width: 100%;
-`;
+import { Layout, ProjectGrid } from "../components";
 
 const Portfolio = ({
 	data: {
-		allMdx: { edges: projectEdges },
+		allMdx: { nodes },
 	},
 	location,
 }) => {
-	const trail = useTrail(projectEdges.length, {
-		config: config.stiff,
-		from: { opacity: 0 },
-		to: { opacity: 1 },
-	});
-
 	return (
 		<Layout pathname={location.pathname}>
-			<Wrapper>
-				<h1>Recent Work</h1>
-				<ListWrapper>
-					{trail.map((style, index) => (
-						<ProjectItem
-							testid={`projectItem-${index}`}
-							style={style}
-							key={projectEdges[index].node.fields.slug}
-							node={projectEdges[index].node}
-						/>
-					))}
-				</ListWrapper>
-			</Wrapper>
+			<h1>Recent Work</h1>
+			<Spacer />
+			<ProjectGrid nodes={nodes} />
 		</Layout>
 	);
 };
@@ -53,7 +24,7 @@ export default Portfolio;
 Portfolio.propTypes = {
 	data: PropTypes.shape({
 		allMdx: PropTypes.shape({
-			edges: PropTypes.array.isRequired,
+			nodes: PropTypes.array.isRequired,
 		}),
 	}).isRequired,
 	location: PropTypes.object.isRequired,
@@ -68,26 +39,22 @@ export const pageQuery = graphql`
 				fields: { sourceInstanceName: { eq: "projects" } }
 			}
 		) {
-			edges {
-				node {
-					excerpt(pruneLength: 150)
+			nodes {
+				excerpt(pruneLength: 150)
+				fields {
+					slug
+					color
 				}
-				node {
-					fields {
-						slug
-						color
-					}
-					frontmatter {
-						title
-						cover {
-							childImageSharp {
-								gatsbyImageData(
-									width: 350
-									quality: 50
-									layout: CONSTRAINED
-									placeholder: BLURRED
-								)
-							}
+				frontmatter {
+					title
+					cover {
+						childImageSharp {
+							gatsbyImageData(
+								width: 450
+								quality: 50
+								layout: CONSTRAINED
+								placeholder: BLURRED
+							)
 						}
 					}
 				}

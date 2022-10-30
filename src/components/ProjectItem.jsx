@@ -1,148 +1,82 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { Button, Card, Col, Row, Spacer, Text } from "@nextui-org/react";
 import { Link } from "gatsby";
-import { animated } from "react-spring";
-import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
-
-const Item = styled(animated.div)`
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
-	background: #fff;
-`;
-
-const TextContent = styled.div`
-	border-bottom: 5px solid
-		${(props) =>
-			props.customcolor ? props.customcolor : props.theme.colors.grey};
-	padding: 0.1em 1em;
-	h2 {
-		color: #444;
-		font-size: 1.2rem;
-		text-align: center;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		max-width: 100%;
-	}
-`;
-
-const ImageContent = styled(animated.div)`
-	position: relative;
-	&:before {
-		content: "";
-		display: block;
-		padding-top: 100%;
-	}
-`;
-
-const Content = styled.div`
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	word-break: break-word;
-
-	p {
-		font-weight: 300;
-	}
-
-	a {
-		color: #fff;
-		height: 100%;
-		left: 0;
-		opacity: 0;
-		padding: 1.5rem;
-		position: absolute;
-		top: 0;
-		width: 100%;
-		z-index: 10;
-		transition: all 0.3s ease-in-out;
-		text-decoration: none;
-		overflow: hidden;
-
-		&:hover {
-			color: #fff;
-			opacity: 1;
-			text-decoration: none;
-		}
-	}
-`;
-
-const ProjectTitle = styled.h2`
-	margin-top: 0;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-	font-size: 1.2rem;
-	line-height: 1;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-`;
-
-const ImageWrapper = styled.div`
-	> div {
-		height: 100%;
-		left: 0;
-		position: absolute !important;
-		top: 0;
-		width: 100%;
-
-		> div {
-			position: static !important;
-		}
-	}
-`;
-
-const Overlay = styled.div`
-	background-color: ${(props) => props.theme.brand.primary};
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: -2;
-`;
+import { trimStart } from "lodash";
+import PropTypes from "prop-types";
+import React from "react";
+import { animated } from "react-spring";
 
 const ProjectItem = ({ node, style, testid }) => (
-	<Item key={node.fields.slug} style={style} data-testid={testid}>
-		<ImageContent>
-			<Content>
-				<ImageWrapper>
+	<animated.div style={{ ...style, maxWidth: "100%", boxShadow: "inset 0 0 0 0.09px transparent" }}>
+		<Link
+			to={`/portfolio/${trimStart(node.fields.slug, "/")}`}
+			style={{ width: "100%" }}
+			data-testid={testid}>
+			<Card css={{ width: "100%" }} isPressable isHoverable>
+				<Card.Header css={{ backgroundColor: node.fields.color }}>
+					<Col>
+						<Text
+							h3
+							color="white"
+							css={{
+								margin: 0,
+								whiteSpace: "nowrap",
+								textOverflow: "ellipsis",
+								overflow: "hidden",
+							}}>
+							{node.frontmatter.title}
+						</Text>
+					</Col>
+				</Card.Header>
+				<Card.Body css={{ padding: 0 }}>
 					<GatsbyImage
+						style={{ objectFit: "cover", height: "250px" }}
 						alt={node.frontmatter.title}
 						image={node.frontmatter.cover?.childImageSharp?.gatsbyImageData}
 					/>
-				</ImageWrapper>
-				<Link to={node.fields.slug}>
-					<Overlay
-						style={{ backgroundColor: node.fields.color, opacity: 0.95 }}
-					/>
-					<ProjectTitle>{node.frontmatter.title}</ProjectTitle>
-					<p>
-						{
-							node?.excerpt
-								?.replace("Case Study", "")
-								?.replace("Project Description", "")
-								?.split("Skills Used")[0]
-						}
-					</p>
-				</Link>
-			</Content>
-		</ImageContent>
-		<Link to={node.fields.slug}>
-			<TextContent customcolor={node.fields.color}>
-				<h2>{node.frontmatter.title}</h2>
-			</TextContent>
+				</Card.Body>
+				<Card.Footer>
+					<div>
+						<Text
+							size="$xs"
+							style={{
+								overflow: "hidden",
+								WebkitLineClamp: "2",
+								display: "-webkit-box",
+								WebkitBoxOrient: "vertical",
+							}}>
+							{
+								node?.excerpt
+									?.replace("Case Study", "")
+									?.replace("Project Description", "")
+									?.split("Skills Used")[0]
+							}
+						</Text>
+
+						<Spacer />
+
+						<Row justify="center">
+							<Button flat auto rounded color={node.fields.color}>
+								<Text
+									css={{ lineClamp: 2, color: "$black" }}
+									size="$xs"
+									weight="bold"
+									transform="uppercase">
+									Read More
+								</Text>
+							</Button>
+						</Row>
+					</div>
+				</Card.Footer>
+			</Card>
 		</Link>
-	</Item>
+	</animated.div>
 );
 
 export default ProjectItem;
 
 ProjectItem.propTypes = {
 	node: PropTypes.object.isRequired,
-	style: PropTypes.object.isRequired,
 	testid: PropTypes.string.isRequired,
+	style: PropTypes.any,
 };
