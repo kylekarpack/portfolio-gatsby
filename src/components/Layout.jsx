@@ -4,6 +4,7 @@ import {
 	CssBaseline,
 	NextUIProvider,
 	styled,
+	getCssText
 } from "@nextui-org/react";
 import PropTypes from "prop-types";
 import React from "react";
@@ -32,6 +33,7 @@ const Layout = ({ children, pathname, customSEO, fixed, bannerContent }) => {
 	return (
 		<>
 			{CssBaseline.flush()}
+			<style dangerouslySetInnerHTML={{__html: getCssText()}} />
 			<style
 				dangerouslySetInnerHTML={{
 					__html: `:root { --nextui-colors-primary: ${primary}; --nextui-colors-link: ${primary} }`,
