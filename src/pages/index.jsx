@@ -22,8 +22,8 @@ const Index = ({
 	return (
 		<Layout pathname={location.pathname}>
 			<animated.div style={titleAnimation}>
-				<Grid.Container padding={0} gap={4}>
-					<Grid xs={6} sm={3} md={2}>
+				<Grid.Container css={{ padding: 0 }} padding={0} gap={4}>
+					<Grid xs={0} sm={3} md={2}>
 						<StaticImage
 							src="../../static/headshot.jpg"
 							width={400}
