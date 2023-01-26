@@ -58,7 +58,7 @@
     "react-icons": "^3.11.0",
     "react-map-gl": "^6.1.17",
     "react-spring": "^8.0.27",
-    "snyk": "^1.996.0"
+    "snyk": "^1.1064.0"
   },
   "devDependencies": {
     "@testing-library/cypress": "^7.0.6",
